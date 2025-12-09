@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Install Bambuddy - step-by-step guide for setting up self-hosted print management for your Bambu Lab printers.">
+  <title>Installation - Bambuddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="18" r="5" stroke="url(#logo-gradient)" stroke-width="2"/>
+          <circle cx="16" cy="18" r="2" fill="url(#logo-gradient)"/>
+          <defs>
+            <linearGradient id="logo-gradient" x1="11" y1="13" x2="21" y2="23">
+              <stop stop-color="#00d4ff"/>
+              <stop offset="1" stop-color="#00ff88"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        Bambuddy
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="installation.html" class="nav-link active">Installation</a>
+        <a href="docs.html" class="nav-link">Docs</a>
+        <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Installation <span class="text-gradient">Guide</span></h1>
+      <p>Get Bambuddy up and running in just a few minutes.</p>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="content-section" id="requirements">
+    <div class="container">
+      <h2 class="mb-xl reveal">Requirements</h2>
+      <div class="requirements-grid">
+        <div class="requirement-card reveal stagger-1">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05z"/>
+            </svg>
+            Python
+          </h4>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Python 3.10 or higher
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Python 3.11/3.12 recommended
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              pip package manager
+            </li>
+          </ul>
+        </div>
+
+        <div class="requirement-card reveal stagger-2">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            Bambu Printer
+          </h4>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              LAN Mode enabled
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Access code noted
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              IP address & serial number
+            </li>
+          </ul>
+        </div>
+
+        <div class="requirement-card reveal stagger-3">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+              <line x1="6" y1="6" x2="6.01" y2="6"/>
+              <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+            Network
+          </h4>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Same local network
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Ports 8883 (MQTT) open
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Port 990 (FTPS) open
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section class="content-section" id="quickstart" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="mb-xl reveal">Quick Start</h2>
+      <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
+        Follow these steps to get Bambuddy running on your system.
+      </p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Clone the Repository</h4>
+            <p style="color: var(--text-secondary);">Download the latest version from GitHub.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>git clone https://github.com/maziggy/bambuddy.git
+cd bambuddy</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Create Virtual Environment</h4>
+            <p style="color: var(--text-secondary);">Set up an isolated Python environment for dependencies.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
+            </div>
+            <div class="alert alert-info mt-md">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <div>
+                <strong>Windows users:</strong> Use <code>venv\Scripts\activate</code> instead.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Install Dependencies</h4>
+            <p style="color: var(--text-secondary);">Install all required Python packages.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>pip install -r requirements.txt</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Start the Server</h4>
+            <p style="color: var(--text-secondary);">Launch Bambuddy with uvicorn.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>uvicorn backend.app.main:app --host 0.0.0.0 --port 8000</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Access the Interface</h4>
+            <p style="color: var(--text-secondary);">Open your browser and navigate to Bambuddy.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">url</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>http://localhost:8000</code></pre>
+            </div>
+            <div class="alert alert-success mt-md">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <div>
+                <strong>Success!</strong> You should now see the Bambuddy dashboard.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAN Mode Setup -->
+  <section class="content-section" id="lan-mode">
+    <div class="container">
+      <h2 class="mb-xl reveal">Enable LAN Mode on Your Printer</h2>
+      <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
+        LAN Mode allows Bambuddy to communicate directly with your printer over your local network.
+      </p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Access Printer Settings</h4>
+            <p style="color: var(--text-secondary);">On your printer's touchscreen, navigate to <strong>Settings</strong> (gear icon).</p>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Find Network Settings</h4>
+            <p style="color: var(--text-secondary);">Look for <strong>Network</strong> or <strong>WLAN</strong> settings section.</p>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Enable LAN Mode</h4>
+            <p style="color: var(--text-secondary);">Toggle <strong>LAN Only Mode</strong> or <strong>LAN Mode</strong> to ON.</p>
+            <div class="alert alert-warning mt-md">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <div>
+                <strong>Note:</strong> Enabling LAN Mode will disable cloud features. You can switch back anytime.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Record the Access Code</h4>
+            <p style="color: var(--text-secondary);">An access code will be displayed. Write this down - you'll need it for Bambuddy.</p>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Note IP Address & Serial Number</h4>
+            <p style="color: var(--text-secondary);">Find these in the printer's network settings or device info. You'll need both to connect.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docker Installation -->
+  <section class="content-section" id="docker" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="mb-xl reveal">Docker Installation (Alternative)</h2>
+      <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
+        Prefer containers? Bambuddy can also be run with Docker.
+      </p>
+
+      <div class="alert alert-info mb-xl reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          Check the <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub repository</a> for the latest Docker instructions and docker-compose files.
+        </div>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code># Clone and enter directory
+git clone https://github.com/maziggy/bambuddy.git
+cd bambuddy
+
+# Build and run with Docker Compose
+docker-compose up -d</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section class="content-section" id="troubleshooting">
+    <div class="container">
+      <h2 class="mb-xl reveal">Troubleshooting</h2>
+
+      <div class="feature-detail reveal">
+        <h4 class="mb-md">Can't connect to printer?</h4>
+        <ul style="color: var(--text-secondary);">
+          <li style="margin-bottom: 0.5rem;">Verify the printer and computer are on the same network</li>
+          <li style="margin-bottom: 0.5rem;">Double-check the IP address, serial number, and access code</li>
+          <li style="margin-bottom: 0.5rem;">Ensure LAN Mode is enabled on the printer</li>
+          <li style="margin-bottom: 0.5rem;">Check that ports 8883 and 990 aren't blocked by a firewall</li>
+        </ul>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Python version issues?</h4>
+        <ul style="color: var(--text-secondary);">
+          <li style="margin-bottom: 0.5rem;">Run <code>python3 --version</code> to check your version</li>
+          <li style="margin-bottom: 0.5rem;">Ensure you have Python 3.10+ installed</li>
+          <li style="margin-bottom: 0.5rem;">On some systems, you may need to use <code>python</code> instead of <code>python3</code></li>
+        </ul>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Need more help?</h4>
+        <p style="color: var(--text-secondary);">
+          Check the <a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          for known problems, or open a new issue if you've found a bug.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What's Next?</h2>
+        <p>Now that Bambuddy is running, explore the documentation to configure notifications, integrations, and more.</p>
+        <div class="hero-buttons mt-xl">
+          <a href="docs.html" class="btn btn-primary">
+            Read Documentation
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="features.html" class="btn btn-secondary">
+            Explore Features
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="16" cy="18" r="5" stroke="url(#footer-gradient)" stroke-width="2"/>
+              <circle cx="16" cy="18" r="2" fill="url(#footer-gradient)"/>
+              <defs>
+                <linearGradient id="footer-gradient" x1="11" y1="13" x2="21" y2="23">
+                  <stop stop-color="#00d4ff"/>
+                  <stop offset="1" stop-color="#00ff88"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            Bambuddy
+          </a>
+          <p>Self-hosted print archive and management for Bambu Lab 3D printers.</p>
+        </div>
+
+        <div class="footer-column">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">Issues</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://github.com/maziggy/bambuddy/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Released under the MIT License. Made with care for the 3D printing community.</p>
+        <div class="footer-social">
+          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

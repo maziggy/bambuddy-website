@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bambuddy documentation - configuration, integrations, API reference, and more.">
+  <title>Documentation - Bambuddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="18" r="5" stroke="url(#logo-gradient)" stroke-width="2"/>
+          <circle cx="16" cy="18" r="2" fill="url(#logo-gradient)"/>
+          <defs>
+            <linearGradient id="logo-gradient" x1="11" y1="13" x2="21" y2="23">
+              <stop stop-color="#00d4ff"/>
+              <stop offset="1" stop-color="#00ff88"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        Bambuddy
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="docs.html" class="nav-link active">Docs</a>
+        <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1><span class="text-gradient">Documentation</span></h1>
+      <p>Configuration guides, integration setup, and API reference.</p>
+    </div>
+  </section>
+
+  <!-- Documentation Content -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Sidebar -->
+        <aside class="content-sidebar">
+          <nav class="sidebar-nav">
+            <a href="#configuration" class="active">Configuration</a>
+            <a href="#printer-setup">Printer Setup</a>
+            <a href="#notifications">Notifications</a>
+            <a href="#integrations">Integrations</a>
+            <a href="#api">API Reference</a>
+            <a href="#development">Development</a>
+          </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+          <!-- Configuration -->
+          <section id="configuration" class="mb-2xl">
+            <h2 class="mb-lg reveal">Configuration</h2>
+            <p class="mb-lg reveal" style="color: var(--text-secondary);">
+              Bambuddy can be configured through the web interface or by setting environment variables.
+            </p>
+
+            <h3 class="mb-md reveal">Environment Variables</h3>
+            <div class="table-wrapper reveal">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>HOST</code></td>
+                    <td>Server bind address</td>
+                    <td><code>0.0.0.0</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>PORT</code></td>
+                    <td>Server port</td>
+                    <td><code>8000</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>DATABASE_URL</code></td>
+                    <td>SQLite database path</td>
+                    <td><code>sqlite:///./bambuddy.db</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>LOG_LEVEL</code></td>
+                    <td>Logging verbosity</td>
+                    <td><code>INFO</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>TIMEZONE</code></td>
+                    <td>Server timezone</td>
+                    <td><code>UTC</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block reveal mt-lg">
+              <div class="code-header">
+                <span class="code-lang">.env</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code># Example .env file
+HOST=0.0.0.0
+PORT=8000
+LOG_LEVEL=INFO
+TIMEZONE=America/New_York</code></pre>
+            </div>
+          </section>
+
+          <!-- Printer Setup -->
+          <section id="printer-setup" class="mb-2xl">
+            <h2 class="mb-lg reveal">Printer Setup</h2>
+            <p class="mb-lg reveal" style="color: var(--text-secondary);">
+              Add printers through the Bambuddy web interface. You'll need the following information for each printer:
+            </p>
+
+            <div class="requirements-grid reveal">
+              <div class="requirement-card">
+                <h4>Required Information</h4>
+                <ul>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Printer IP address
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Serial number
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    LAN access code
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Printer model
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="alert alert-info mt-lg reveal">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <div>
+                <strong>Finding Printer Info:</strong> IP address and serial number can be found in your printer's network settings. The access code is displayed when you enable LAN Mode.
+              </div>
+            </div>
+          </section>
+
+          <!-- Notifications -->
+          <section id="notifications" class="mb-2xl">
+            <h2 class="mb-lg reveal">Notification Setup</h2>
+            <p class="mb-lg reveal" style="color: var(--text-secondary);">
+              Configure notifications to stay informed about print status, errors, and completions.
+            </p>
+
+            <h3 class="mb-md reveal">Telegram</h3>
+            <div class="steps reveal">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Create a bot via <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a> on Telegram</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Copy the bot token provided by BotFather</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Get your chat ID by messaging <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a></p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Enter both values in Bambuddy's notification settings</p>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Discord</h3>
+            <div class="steps reveal">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">In your Discord server, go to Server Settings > Integrations > Webhooks</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Create a new webhook and copy the URL</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <p style="color: var(--text-secondary);">Paste the webhook URL in Bambuddy's Discord notification settings</p>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Other Services</h3>
+            <p class="reveal" style="color: var(--text-secondary);">
+              Bambuddy also supports <strong>WhatsApp</strong>, <strong>Email</strong>, <strong>Pushover</strong>, and <strong>ntfy</strong>.
+              Configure these in the Settings > Notifications section of the web interface.
+            </p>
+          </section>
+
+          <!-- Integrations -->
+          <section id="integrations" class="mb-2xl">
+            <h2 class="mb-lg reveal">Integrations</h2>
+
+            <h3 class="mb-md reveal">Spoolman</h3>
+            <p class="mb-md reveal" style="color: var(--text-secondary);">
+              <a href="https://github.com/Donkie/Spoolman" target="_blank" rel="noopener">Spoolman</a> is a filament inventory management system.
+              Bambuddy can sync with Spoolman to track filament usage automatically.
+            </p>
+            <div class="code-block reveal">
+              <div class="code-header">
+                <span class="code-lang">configuration</span>
+              </div>
+              <pre><code># In Bambuddy settings
+Spoolman URL: http://your-spoolman-host:7912
+Enable Sync: Yes</code></pre>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Tasmota Smart Plugs</h3>
+            <p class="mb-md reveal" style="color: var(--text-secondary);">
+              Control your printer's power with Tasmota-compatible smart plugs. This enables:
+            </p>
+            <ul class="reveal" style="color: var(--text-secondary); margin-left: 1.5rem;">
+              <li style="margin-bottom: 0.5rem; list-style: disc;">Automatic power-on before scheduled prints</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;">Safe shutdown after prints complete and cool down</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;">Remote power control from the dashboard</li>
+            </ul>
+            <div class="code-block reveal mt-md">
+              <div class="code-header">
+                <span class="code-lang">configuration</span>
+              </div>
+              <pre><code># Per-printer Tasmota settings
+Tasmota IP: 192.168.1.xxx
+Cooldown Delay: 300  # seconds to wait after print</code></pre>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Bambu Cloud (Optional)</h3>
+            <p class="reveal" style="color: var(--text-secondary);">
+              While Bambuddy is designed for local-only operation, you can optionally sync profiles from Bambu Cloud
+              for convenience. This is entirely optional and can be disabled.
+            </p>
+          </section>
+
+          <!-- API Reference -->
+          <section id="api" class="mb-2xl">
+            <h2 class="mb-lg reveal">API Reference</h2>
+            <p class="mb-lg reveal" style="color: var(--text-secondary);">
+              Bambuddy exposes a REST API for integration with other tools and automation.
+            </p>
+
+            <div class="alert alert-info mb-lg reveal">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <div>
+                <strong>Interactive Docs:</strong> Access the full API documentation at
+                <code>http://your-bambuddy-host:8000/docs</code> (Swagger UI) or
+                <code>/redoc</code> (ReDoc).
+              </div>
+            </div>
+
+            <h3 class="mb-md reveal">Key Endpoints</h3>
+            <div class="table-wrapper reveal">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Endpoint</th>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>/api/printers</code></td>
+                    <td>GET</td>
+                    <td>List all printers and their status</td>
+                  </tr>
+                  <tr>
+                    <td><code>/api/printers/{id}</code></td>
+                    <td>GET</td>
+                    <td>Get specific printer details</td>
+                  </tr>
+                  <tr>
+                    <td><code>/api/prints</code></td>
+                    <td>GET</td>
+                    <td>List archived prints</td>
+                  </tr>
+                  <tr>
+                    <td><code>/api/prints/{id}/reprint</code></td>
+                    <td>POST</td>
+                    <td>Send print to a printer</td>
+                  </tr>
+                  <tr>
+                    <td><code>/api/queue</code></td>
+                    <td>GET</td>
+                    <td>View print queue</td>
+                  </tr>
+                  <tr>
+                    <td><code>/api/stats</code></td>
+                    <td>GET</td>
+                    <td>Get printing statistics</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">WebSocket Events</h3>
+            <p class="mb-md reveal" style="color: var(--text-secondary);">
+              Real-time updates are available via WebSocket at <code>/ws</code>.
+            </p>
+            <div class="code-block reveal">
+              <div class="code-header">
+                <span class="code-lang">javascript</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code>const ws = new WebSocket('ws://localhost:8000/ws');
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log('Printer update:', data);
+};
+
+// Event types: printer_status, print_progress,
+// print_complete, print_error, hms_error</code></pre>
+            </div>
+          </section>
+
+          <!-- Development -->
+          <section id="development">
+            <h2 class="mb-lg reveal">Development</h2>
+            <p class="mb-lg reveal" style="color: var(--text-secondary);">
+              Want to contribute or customize Bambuddy? Here's how to set up a development environment.
+            </p>
+
+            <h3 class="mb-md reveal">Development Setup</h3>
+            <div class="code-block reveal">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="code-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <pre><code># Clone the repository
+git clone https://github.com/maziggy/bambuddy.git
+cd bambuddy
+
+# Backend setup
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Run backend with hot reload
+uvicorn backend.app.main:app --reload
+
+# Frontend setup (separate terminal)
+cd frontend
+npm install
+npm run dev</code></pre>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Project Structure</h3>
+            <div class="code-block reveal">
+              <div class="code-header">
+                <span class="code-lang">text</span>
+              </div>
+              <pre><code>bambuddy/
+├── backend/
+│   ├── app/
+│   │   ├── main.py          # FastAPI application
+│   │   ├── models/          # SQLAlchemy models
+│   │   ├── routers/         # API endpoints
+│   │   ├── services/        # Business logic
+│   │   └── utils/           # Helper functions
+│   └── tests/
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # React components
+│   │   ├── pages/           # Page components
+│   │   ├── hooks/           # Custom hooks
+│   │   └── utils/           # Utilities
+│   └── public/
+└── docs/</code></pre>
+            </div>
+
+            <h3 class="mb-md mt-xl reveal">Contributing</h3>
+            <p class="reveal" style="color: var(--text-secondary);">
+              Contributions are welcome! Please read the
+              <a href="https://github.com/maziggy/bambuddy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guide</a>
+              before submitting a pull request.
+            </p>
+          </section>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="16" cy="18" r="5" stroke="url(#footer-gradient)" stroke-width="2"/>
+              <circle cx="16" cy="18" r="2" fill="url(#footer-gradient)"/>
+              <defs>
+                <linearGradient id="footer-gradient" x1="11" y1="13" x2="21" y2="23">
+                  <stop stop-color="#00d4ff"/>
+                  <stop offset="1" stop-color="#00ff88"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            Bambuddy
+          </a>
+          <p>Self-hosted print archive and management for Bambu Lab 3D printers.</p>
+        </div>
+
+        <div class="footer-column">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">Issues</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://github.com/maziggy/bambuddy/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Released under the MIT License. Made with care for the 3D printing community.</p>
+        <div class="footer-social">
+          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
