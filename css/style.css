@@ -208,6 +208,11 @@ p {
   height: 32px;
 }
 
+.nav-logo .logo-img {
+  height: 40px;
+  width: auto;
+}
+
 .nav-logo:hover {
   color: var(--text-primary);
 }
@@ -381,6 +386,89 @@ p {
   gap: var(--spacing-md);
 }
 
+.hero-logo {
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-logo img {
+  max-width: 600px;
+  height: auto;
+}
+
+/* Screenshot Collage - Fanned Cards */
+.screenshot-collage {
+  position: relative;
+  margin-top: var(--spacing-3xl);
+  height: 650px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  perspective: 1200px;
+}
+
+.collage-item {
+  position: absolute;
+  width: 55%;
+  left: 50%;
+  top: 50%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+  transform-origin: center bottom;
+}
+
+.collage-item:hover {
+  z-index: 100 !important;
+  opacity: 1 !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+.collage-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Outer fan - back layer (spread far left/right) */
+.fan-1  { transform: translate(-130%, -50%) rotate(-12deg); z-index: 1; opacity: 0.5; }
+.fan-2  { transform: translate(-100%, -50%) rotate(-8deg); z-index: 2; opacity: 0.55; }
+.fan-3  { transform: translate(0%, -50%) rotate(8deg); z-index: 2; opacity: 0.55; }
+.fan-4  { transform: translate(30%, -50%) rotate(12deg); z-index: 1; opacity: 0.5; }
+
+/* Middle fan */
+.fan-5  { transform: translate(-85%, -50%) rotate(-6deg); z-index: 3; opacity: 0.7; }
+.fan-6  { transform: translate(-70%, -50%) rotate(-4deg); z-index: 4; opacity: 0.75; }
+.fan-7  { transform: translate(-30%, -50%) rotate(4deg); z-index: 4; opacity: 0.75; }
+.fan-8  { transform: translate(-15%, -50%) rotate(6deg); z-index: 3; opacity: 0.7; }
+
+/* Inner fan - front layer */
+.fan-9  { transform: translate(-60%, -50%) rotate(-2deg); z-index: 5; opacity: 0.9; }
+.fan-10 { transform: translate(-40%, -50%) rotate(2deg); z-index: 5; opacity: 0.9; }
+
+/* Center - hero screenshots */
+.fan-11 { transform: translate(-53%, -50%) rotate(-1deg); z-index: 6; }
+.fan-center {
+  transform: translate(-47%, -50%) rotate(0deg);
+  z-index: 7;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 212, 255, 0.15);
+}
+
+/* Hover states */
+.fan-1:hover  { transform: translate(-130%, -55%) rotate(-6deg) scale(1.08); }
+.fan-2:hover  { transform: translate(-100%, -55%) rotate(-4deg) scale(1.08); }
+.fan-3:hover  { transform: translate(0%, -55%) rotate(4deg) scale(1.08); }
+.fan-4:hover  { transform: translate(30%, -55%) rotate(6deg) scale(1.08); }
+.fan-5:hover  { transform: translate(-85%, -55%) rotate(-3deg) scale(1.08); }
+.fan-6:hover  { transform: translate(-70%, -55%) rotate(-2deg) scale(1.08); }
+.fan-7:hover  { transform: translate(-30%, -55%) rotate(2deg) scale(1.08); }
+.fan-8:hover  { transform: translate(-15%, -55%) rotate(3deg) scale(1.08); }
+.fan-9:hover  { transform: translate(-60%, -55%) rotate(-1deg) scale(1.08); }
+.fan-10:hover { transform: translate(-40%, -55%) rotate(1deg) scale(1.08); }
+.fan-11:hover { transform: translate(-53%, -55%) rotate(0deg) scale(1.08); }
+.fan-center:hover { transform: translate(-47%, -55%) rotate(0deg) scale(1.08); }
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -548,6 +636,110 @@ p {
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   color: var(--accent-green);
+}
+
+/* Printer Images */
+.printer-images {
+  position: relative;
+  height: 100px;
+  margin: 0 auto var(--spacing-md);
+  perspective: 400px;
+  overflow: hidden;
+}
+
+.printer-images img {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: transform var(--transition-base);
+}
+
+/* Single printer image */
+.printer-img-single {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 2-image collage (X1, P1 series) */
+.printer-collage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.printer-collage .printer-img-main {
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(3deg);
+  z-index: 2;
+}
+
+.printer-collage .printer-img-secondary {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.printer-card:hover .printer-collage .printer-img-main {
+  transform: translate(-50%, -55%) rotate(5deg) scale(1.05);
+}
+
+.printer-card:hover .printer-collage .printer-img-secondary {
+  transform: translate(-50%, -55%) rotate(-8deg) scale(1.02);
+  opacity: 0.9;
+}
+
+/* 3-image collage (A1 series) */
+.printer-triple .printer-img-main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.printer-triple .printer-img-left {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  z-index: 1;
+  opacity: 0.75;
+  max-height: 65px !important;
+}
+
+.printer-triple .printer-img-right {
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(8deg);
+  z-index: 2;
+  opacity: 0.8;
+  max-height: 70px !important;
+}
+
+.printer-card:hover .printer-triple .printer-img-main {
+  transform: translate(-50%, -55%) scale(1.05);
+}
+
+.printer-card:hover .printer-triple .printer-img-left {
+  transform: translate(-60%, -55%) rotate(-12deg) scale(1.02);
+}
+
+.printer-card:hover .printer-triple .printer-img-right {
+  transform: translate(-40%, -55%) rotate(12deg) scale(1.02);
+}
+
+/* Single image hover */
+.printer-card:hover .printer-img-single {
+  transform: translate(-50%, -55%) scale(1.08);
 }
 
 /* Tech Stack */
@@ -980,6 +1172,21 @@ tr:hover td {
   margin-top: 2px;
 }
 
+/* Feature Screenshots */
+.feature-screenshot {
+  margin-top: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Requirements */
 .requirements-grid {
   display: grid;
@@ -1074,6 +1281,24 @@ tr:hover td {
 
   .hero-buttons .btn {
     width: 100%;
+  }
+
+  .hero-logo img {
+    max-width: 280px;
+  }
+
+  .screenshot-collage {
+    height: 250px;
+  }
+
+  .collage-item {
+    width: 70%;
+  }
+
+  /* Hide outer fans on mobile */
+  .fan-1, .fan-2, .fan-3, .fan-4,
+  .fan-5, .fan-6, .fan-7, .fan-8 {
+    display: none;
   }
 
   .features-grid {

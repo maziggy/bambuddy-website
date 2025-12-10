@@ -6,6 +6,10 @@
   <meta name="description" content="Bambuddy - A self-hosted print archive and management system for Bambu Lab 3D printers. Manage your printer fleet locally without cloud dependency.">
   <meta name="keywords" content="Bambu Lab, 3D printing, print management, self-hosted, P1S, X1C, A1">
   <title>Bambuddy - Self-Hosted Print Management for Bambu Lab</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,19 +24,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
-          <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
-          <circle cx="16" cy="18" r="5" stroke="url(#logo-gradient)" stroke-width="2"/>
-          <circle cx="16" cy="18" r="2" fill="url(#logo-gradient)"/>
-          <defs>
-            <linearGradient id="logo-gradient" x1="11" y1="13" x2="21" y2="23">
-              <stop stop-color="#00d4ff"/>
-              <stop offset="1" stop-color="#00ff88"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        Bambuddy
+        <img src="assets/img/logo_transparent.png" alt="Bambuddy" class="logo-img">
       </a>
 
       <button class="nav-toggle" aria-label="Toggle navigation">
@@ -60,6 +52,9 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="hero-logo">
+          <img src="assets/img/logo_transparent.png" alt="Bambuddy">
+        </div>
         <span class="hero-badge">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -67,7 +62,7 @@
           Open Source & Self-Hosted
         </span>
         <h1 class="hero-title">
-          Your <span class="text-gradient">Bambu Lab</span> Fleet,<br>Under Your Control
+          Stay Connected<br>to Your <span class="text-gradient">Prints</span>
         </h1>
         <p class="hero-description">
           A powerful, self-hosted print archive and management system for Bambu Lab 3D printers. No cloud dependency, complete privacy, full control.
@@ -85,6 +80,26 @@
             </svg>
             View on GitHub
           </a>
+        </div>
+
+        <!-- Screenshot Collage -->
+        <div class="screenshot-collage reveal">
+          <!-- Outer fan - back layer -->
+          <div class="collage-item fan-1"><img src="assets/screenshots/cloud_profiles.png" alt="Cloud Profiles" loading="lazy"></div>
+          <div class="collage-item fan-2"><img src="assets/screenshots/maintenance_settings.png" alt="Maintenance Settings" loading="lazy"></div>
+          <div class="collage-item fan-3"><img src="assets/screenshots/k_profiles.png" alt="K-Profiles" loading="lazy"></div>
+          <div class="collage-item fan-4"><img src="assets/screenshots/cloud_profiles_2.png" alt="Cloud Profiles Detail" loading="lazy"></div>
+          <!-- Middle fan -->
+          <div class="collage-item fan-5"><img src="assets/screenshots/settings.png" alt="Settings" loading="lazy"></div>
+          <div class="collage-item fan-6"><img src="assets/screenshots/smart_plugs.png" alt="Smart Plugs" loading="lazy"></div>
+          <div class="collage-item fan-7"><img src="assets/screenshots/notifications.png" alt="Notifications" loading="lazy"></div>
+          <div class="collage-item fan-8"><img src="assets/screenshots/maintenance_status.png" alt="Maintenance Status" loading="lazy"></div>
+          <!-- Inner fan - front layer (most detailed) -->
+          <div class="collage-item fan-9"><img src="assets/screenshots/printers.png" alt="Printer Dashboard" loading="lazy"></div>
+          <div class="collage-item fan-10"><img src="assets/screenshots/queue.png" alt="Print Queue" loading="lazy"></div>
+          <!-- Center - hero screenshots -->
+          <div class="collage-item fan-11"><img src="assets/screenshots/archives.png" alt="Print Archives" loading="lazy"></div>
+          <div class="collage-item fan-center"><img src="assets/screenshots/statistics.png" alt="Statistics" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -197,27 +212,19 @@
 
       <div class="printers-grid">
         <div class="printer-card reveal stagger-1">
-          <div class="printer-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="8" y="20" width="48" height="36" rx="4"/>
-              <rect x="16" y="28" width="32" height="20" rx="2" stroke-opacity="0.5"/>
-              <path d="M24 8h16v12H24z"/>
-              <circle cx="32" cy="38" r="6"/>
-            </svg>
+          <div class="printer-images printer-collage">
+            <img src="assets/img/printers/x1c.png" alt="X1 Carbon" class="printer-img-main">
+            <img src="assets/img/printers/x1e.png" alt="X1E" class="printer-img-secondary">
           </div>
           <h4>X1 Series</h4>
-          <p class="models">X1, X1 Carbon</p>
+          <p class="models">X1 Carbon, X1E</p>
           <span class="badge">Tested</span>
         </div>
 
         <div class="printer-card reveal stagger-2">
-          <div class="printer-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="8" y="20" width="48" height="36" rx="4"/>
-              <rect x="16" y="28" width="32" height="20" rx="2" stroke-opacity="0.5"/>
-              <path d="M24 8h16v12H24z"/>
-              <circle cx="32" cy="38" r="6"/>
-            </svg>
+          <div class="printer-images printer-collage">
+            <img src="assets/img/printers/p1s.png" alt="P1S" class="printer-img-main">
+            <img src="assets/img/printers/p1p.png" alt="P1P" class="printer-img-secondary">
           </div>
           <h4>P1 Series</h4>
           <p class="models">P1P, P1S</p>
@@ -225,29 +232,30 @@
         </div>
 
         <div class="printer-card reveal stagger-3">
-          <div class="printer-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="12" y="24" width="40" height="32" rx="4"/>
-              <rect x="18" y="30" width="28" height="18" rx="2" stroke-opacity="0.5"/>
-              <circle cx="32" cy="39" r="5"/>
-            </svg>
+          <div class="printer-images">
+            <img src="assets/img/printers/p2s.png" alt="P2S" class="printer-img-single">
+          </div>
+          <h4>P2 Series</h4>
+          <p class="models">P2S</p>
+          <span class="badge">Compatible</span>
+        </div>
+
+        <div class="printer-card reveal stagger-4">
+          <div class="printer-images printer-collage">
+            <img src="assets/img/printers/a1.png" alt="A1" class="printer-img-main">
+            <img src="assets/img/printers/a1mini.png" alt="A1 Mini" class="printer-img-secondary">
           </div>
           <h4>A1 Series</h4>
           <p class="models">A1, A1 Mini</p>
           <span class="badge">Compatible</span>
         </div>
 
-        <div class="printer-card reveal stagger-4">
-          <div class="printer-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="8" y="16" width="48" height="40" rx="4"/>
-              <rect x="14" y="24" width="36" height="24" rx="2" stroke-opacity="0.5"/>
-              <path d="M20 8h24v8H20z"/>
-              <circle cx="32" cy="36" r="7"/>
-            </svg>
+        <div class="printer-card reveal stagger-5">
+          <div class="printer-images">
+            <img src="assets/img/printers/h2d.png" alt="H2D" class="printer-img-single">
           </div>
           <h4>H2 Series</h4>
-          <p class="models">H2C, H2D, H2S</p>
+          <p class="models">H2D</p>
           <span class="badge">Tested</span>
         </div>
       </div>
@@ -339,19 +347,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
-              <path d="M8 8V6a4 4 0 014-4h8a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/>
-              <circle cx="16" cy="18" r="5" stroke="url(#footer-gradient)" stroke-width="2"/>
-              <circle cx="16" cy="18" r="2" fill="url(#footer-gradient)"/>
-              <defs>
-                <linearGradient id="footer-gradient" x1="11" y1="13" x2="21" y2="23">
-                  <stop stop-color="#00d4ff"/>
-                  <stop offset="1" stop-color="#00ff88"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            Bambuddy
+            <img src="assets/img/logo_transparent.png" alt="Bambuddy" class="logo-img">
           </a>
           <p>Self-hosted print archive and management for Bambu Lab 3D printers.</p>
         </div>
