@@ -371,7 +371,32 @@ git clone https://github.com/maziggy/bambuddy.git
 cd bambuddy
 
 # Build and run with Docker Compose
-docker-compose up -d</code></pre>
+docker compose up -d</code></pre>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Updating / Rebuilding</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          After pulling new updates or if you need to rebuild the container, use the <code>--build</code> flag:
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code># Pull latest changes
+git pull
+
+# Rebuild and restart container
+docker compose up --build -d</code></pre>
       </div>
     </div>
   </section>
