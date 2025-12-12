@@ -35,7 +35,7 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="features.html" class="nav-link active">Features</a>
         <a href="installation.html" class="nav-link">Installation</a>
-        <a href="https://github.com/maziggy/bambuddy-wiki" target="_blank" rel="noopener" class="nav-link">Docs</a>
+        <a href="https://wiki.bambuddy.cool" target="_blank" rel="noopener" class="nav-link">Docs</a>
         <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -363,7 +363,7 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal">
-          <img src="assets/screenshots/notifications.png" alt="Bambuddy Notifications - Multi-platform notification settings" loading="lazy">
+          <img src="assets/screenshots/settings_notifications.png" alt="Bambuddy Notifications - Multi-platform notification settings" loading="lazy">
         </div>
       </div>
     </div>
@@ -465,7 +465,7 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal">
-          <img src="assets/screenshots/maintenance_status.png" alt="Bambuddy Analysis - Track and analyze print data" loading="lazy">
+          <img src="assets/screenshots/statistics.png" alt="Bambuddy Analysis - Track and analyze print data" loading="lazy">
         </div>
       </div>
     </div>
@@ -516,7 +516,7 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal">
-          <img src="assets/screenshots/api_keys.png" alt="Bambuddy API Keys - Webhook endpoints and permissions" loading="lazy">
+          <img src="assets/screenshots/settings_api_keys.png" alt="Bambuddy API Keys - Webhook endpoints and permissions" loading="lazy">
         </div>
       </div>
     </div>
@@ -568,9 +568,9 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <img src="assets/screenshots/profiles_create.png" alt="Bambuddy Profiles - Create new filament preset" loading="lazy" style="flex: 1; min-width: 280px;">
-          <img src="assets/screenshots/profiles_edit.png" alt="Bambuddy Profiles - Edit filament preset" loading="lazy" style="flex: 1; min-width: 280px;">
-          <img src="assets/screenshots/profiles_k.png" alt="Bambuddy K-Profiles - Pressure advance settings" loading="lazy" style="flex: 1; min-width: 280px;">
+          <img src="assets/screenshots/cloud_profiles-1.png" alt="Bambuddy Cloud Profiles - Filament presets" loading="lazy" style="flex: 1; min-width: 280px;">
+          <img src="assets/screenshots/cloud_profiles-2.png" alt="Bambuddy Cloud Profiles - Edit filament preset" loading="lazy" style="flex: 1; min-width: 280px;">
+          <img src="assets/screenshots/k_profiles-1.png" alt="Bambuddy K-Profiles - Pressure advance settings" loading="lazy" style="flex: 1; min-width: 280px;">
         </div>
       </div>
     </div>
@@ -620,8 +620,8 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <img src="assets/screenshots/maintenance_settings.png" alt="Bambuddy Maintenance - Configure maintenance types and intervals" loading="lazy" style="flex: 1; min-width: 300px;">
-          <img src="assets/screenshots/maintenance_overdue.png" alt="Bambuddy Maintenance - Overdue maintenance alerts" loading="lazy" style="flex: 1; min-width: 300px;">
+          <img src="assets/screenshots/maintenance-1.png" alt="Bambuddy Maintenance - Maintenance overview and status" loading="lazy" style="flex: 1; min-width: 300px;">
+          <img src="assets/screenshots/maintenance-2.png" alt="Bambuddy Maintenance - Maintenance settings and intervals" loading="lazy" style="flex: 1; min-width: 300px;">
         </div>
       </div>
     </div>
@@ -685,7 +685,7 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal">
-          <img src="assets/screenshots/settings.png" alt="Bambuddy Settings - General configuration and integrations" loading="lazy">
+          <img src="assets/screenshots/settings_general.png" alt="Bambuddy Settings - General configuration and integrations" loading="lazy">
         </div>
       </div>
     </div>
@@ -742,7 +742,7 @@
           </li>
         </ul>
         <div class="feature-screenshot reveal">
-          <img src="assets/screenshots/smart_plugs.png" alt="Bambuddy Smart Plugs - Power control and energy monitoring" loading="lazy">
+          <img src="assets/screenshots/settings_smart_plugs.png" alt="Bambuddy Smart Plugs - Power control and energy monitoring" loading="lazy">
         </div>
       </div>
     </div>
@@ -800,6 +800,342 @@
     </div>
   </section>
 
+  <!-- Camera Streaming -->
+  <section class="content-section" id="camera" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 7l-7 5 7 5V7z"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+          Camera Streaming
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Watch your prints in real-time with built-in camera streaming support.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>MJPEG Stream</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Direct camera feed from your printer's built-in camera.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Embedded in Dashboard</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">View camera feed directly alongside printer status without switching apps.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Multi-Printer View</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor cameras from multiple printers on a single screen.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Local Network Only</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Streams stay on your local network - no cloud exposure.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMS Monitoring -->
+  <section class="content-section" id="ams">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+          </svg>
+          AMS & Humidity Monitoring
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Keep track of your Automatic Material System status and filament conditions.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Real-Time Humidity</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor humidity levels inside each AMS unit to protect hygroscopic filaments.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Temperature Tracking</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">View temperature readings from AMS-HT units for heated drying.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Slot Status</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">See which filament slots are loaded and their current states.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Multi-AMS Support</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor up to 4 AMS units per printer with unified display.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Printer Control -->
+  <section class="content-section" id="printer-control" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          Printer Control
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Fine-tune your prints with real-time control over printer settings.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Speed Adjustment</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Adjust print speed on-the-fly for quality vs speed trade-offs.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Chamber Control</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Control chamber fan and LED settings for enclosed printers.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Aux Fan Control</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Adjust auxiliary and part cooling fan speeds during prints.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>AI Detection Toggle</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Enable or disable spaghetti detection and first layer inspection.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Energy Tracking -->
+  <section class="content-section" id="energy">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          Energy Tracking
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Monitor electricity consumption and calculate true printing costs.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Real-Time Power Draw</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">See current wattage consumption via Tasmota smart plugs.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Per-Print Energy Cost</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Calculate electricity cost for each print based on your utility rate.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Historical Usage</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Track energy consumption trends over time in statistics.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Custom Electricity Rate</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set your local electricity price for accurate cost calculations.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Backup & Restore -->
+  <section class="content-section" id="backup" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          Backup & Restore
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Protect your data with easy backup and restore functionality.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>One-Click Backup</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Export your entire database, settings, and archived 3MFs with a single click.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Selective Restore</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Choose to restore settings, archives, or both from backup files.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Portable Backups</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Download backup files to store externally or migrate to new installations.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Migration Support</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Easily move your Bambuddy installation to new hardware.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Info -->
+  <section class="content-section" id="system-info">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          System Info
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Monitor your Bambuddy installation health and system resources.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Version Information</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">View current Bambuddy version and check for updates.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Database Stats</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor database size and number of archived prints.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Storage Usage</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">See how much disk space your archives consume.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Connection Status</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Real-time status of all printer MQTT connections.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile PWA -->
+  <section class="content-section" id="mobile" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          Mobile Access (PWA)
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
+          Access Bambuddy from any device with Progressive Web App support.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Install as App</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Add Bambuddy to your home screen for native app-like experience.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Responsive Design</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Full functionality on phones, tablets, and desktops.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Touch-Optimized</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Large touch targets and swipe gestures for mobile users.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Works Offline</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Basic functionality available even without network connection.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section">
     <div class="container">
@@ -813,7 +1149,7 @@
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="https://github.com/maziggy/bambuddy-wiki" target="_blank" rel="noopener" class="btn btn-secondary">
+          <a href="https://wiki.bambuddy.cool" target="_blank" rel="noopener" class="btn btn-secondary">
             Read the Docs
           </a>
         </div>
@@ -837,7 +1173,7 @@
           <ul>
             <li><a href="features.html">Features</a></li>
             <li><a href="installation.html">Installation</a></li>
-            <li><a href="https://github.com/maziggy/bambuddy-wiki" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://wiki.bambuddy.cool" target="_blank" rel="noopener">Documentation</a></li>
           </ul>
         </div>
 
