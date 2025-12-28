@@ -374,6 +374,17 @@ cd bambuddy
 docker compose up -d</code></pre>
       </div>
 
+      <div class="alert alert-warning mt-xl reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+          <strong>Printer Discovery:</strong> For automatic printer discovery and camera streaming, use <code>network_mode: host</code> in docker-compose.yml. Bambuddy will then let you scan your network subnet to find printers.
+        </div>
+      </div>
+
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating / Rebuilding</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
