@@ -403,7 +403,7 @@ docker compose up -d</code></pre>
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating / Rebuilding</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          After pulling new updates or if you need to rebuild the container, use the <code>--build</code> flag:
+          Docker installations are updated via command line. When an update is available, Bambuddy shows these instructions in Settings → Updates:
         </p>
       </div>
 
@@ -421,9 +421,14 @@ docker compose up -d</code></pre>
         <pre><code># Pull latest changes
 git pull
 
-# Rebuild and restart container
-docker compose up --build -d</code></pre>
+# Rebuild with fresh base image and restart
+docker compose build --pull
+docker compose up -d</code></pre>
       </div>
+
+      <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
+        The <code>--pull</code> flag ensures you get the latest base image with security updates.
+      </p>
     </div>
   </section>
 
