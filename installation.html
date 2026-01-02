@@ -354,20 +354,26 @@ source venv/bin/activate</code></pre>
   <!-- Docker Installation -->
   <section class="content-section" id="docker" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 class="mb-xl reveal">Docker Installation (Alternative)</h2>
+      <h2 class="mb-xl reveal">Docker Installation (Recommended)</h2>
       <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
-        Prefer containers? Bambuddy can also be run with Docker.
+        The easiest way to run Bambuddy. Pre-built images available for Intel/AMD and ARM (Raspberry Pi).
       </p>
 
-      <div class="alert alert-info mb-xl reveal">
+      <div class="alert alert-success mb-xl reveal">
         <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="12" y1="16" x2="12" y2="12"/>
-          <line x1="12" y1="8" x2="12.01" y2="8"/>
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
         <div>
-          Check the <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub repository</a> for the latest Docker instructions and docker-compose files.
+          <strong>Multi-Architecture Support:</strong> Pre-built images work on <code>linux/amd64</code> (Intel/AMD) and <code>linux/arm64</code> (Raspberry Pi 4/5, Apple Silicon). Docker automatically pulls the right image for your system.
         </div>
+      </div>
+
+      <div class="feature-detail reveal">
+        <h4 class="mb-md">Option A: Pre-built Image (Fastest)</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          No building required - just download the compose file and run:
+        </p>
       </div>
 
       <div class="code-block reveal">
@@ -381,12 +387,32 @@ source venv/bin/activate</code></pre>
             Copy
           </button>
         </div>
-        <pre><code># Clone and enter directory
-git clone https://github.com/maziggy/bambuddy.git
-cd bambuddy
-
-# Build and run with Docker Compose
+        <pre><code>mkdir bambuddy && cd bambuddy
+curl -O https://raw.githubusercontent.com/maziggy/bambuddy/main/docker-compose.yml
 docker compose up -d</code></pre>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Option B: Build from Source</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          If you want to modify the code or build locally:
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>git clone https://github.com/maziggy/bambuddy.git
+cd bambuddy
+docker compose up -d --build</code></pre>
       </div>
 
       <div class="alert alert-warning mt-xl reveal">
@@ -401,7 +427,7 @@ docker compose up -d</code></pre>
       </div>
 
       <div class="feature-detail reveal mt-xl">
-        <h4 class="mb-md">Updating / Rebuilding</h4>
+        <h4 class="mb-md">Updating</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
           Docker installations are updated via command line. When an update is available, Bambuddy shows these instructions in Settings → Updates:
         </p>
@@ -418,17 +444,12 @@ docker compose up -d</code></pre>
             Copy
           </button>
         </div>
-        <pre><code># Pull latest changes
-git pull
+        <pre><code># Pre-built image: just pull and restart
+docker compose pull && docker compose up -d
 
-# Rebuild with fresh base image and restart
-docker compose build --pull
-docker compose up -d</code></pre>
+# From source: pull changes and rebuild
+git pull && docker compose up -d --build</code></pre>
       </div>
-
-      <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
-        The <code>--pull</code> flag ensures you get the latest base image with security updates.
-      </p>
     </div>
   </section>
 
