@@ -426,6 +426,17 @@ docker compose up -d --build</code></pre>
         </div>
       </div>
 
+      <div class="alert alert-info mt-md reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          <strong>macOS/Windows Users:</strong> Docker Desktop doesn't support <code>network_mode: host</code>. Edit docker-compose.yml: comment out <code>network_mode: host</code> and uncomment the <code>ports:</code> section. Printer discovery won't work — add printers manually by IP address.
+        </div>
+      </div>
+
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
