@@ -109,7 +109,7 @@
           <ul>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              LAN Mode enabled
+              Developer Mode enabled
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -289,12 +289,12 @@ source venv/bin/activate</code></pre>
     </div>
   </section>
 
-  <!-- LAN Mode Setup -->
-  <section class="content-section" id="lan-mode">
+  <!-- Developer Mode Setup -->
+  <section class="content-section" id="developer-mode">
     <div class="container">
-      <h2 class="mb-xl reveal">Enable LAN Mode on Your Printer</h2>
+      <h2 class="mb-xl reveal">Enable Developer Mode on Your Printer</h2>
       <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
-        LAN Mode allows Bambuddy to communicate directly with your printer over your local network.
+        Developer Mode allows Bambuddy to control your printer directly over your local network.
       </p>
 
       <div class="steps">
@@ -317,8 +317,16 @@ source venv/bin/activate</code></pre>
         <div class="step reveal">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h4>Enable LAN Mode</h4>
-            <p style="color: var(--text-secondary);">Toggle <strong>LAN Only Mode</strong> or <strong>LAN Mode</strong> to ON.</p>
+            <h4>Enable LAN Only Mode</h4>
+            <p style="color: var(--text-secondary);">Toggle <strong>LAN Only Mode</strong> to ON.</p>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Enable Developer Mode</h4>
+            <p style="color: var(--text-secondary);">After enabling LAN Only Mode, a <strong>Developer Mode</strong> option will appear. Enable it.</p>
             <div class="alert alert-warning mt-md">
               <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
@@ -326,14 +334,14 @@ source venv/bin/activate</code></pre>
                 <line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
               <div>
-                <strong>Note:</strong> Enabling LAN Mode will disable cloud features. You can switch back anytime.
+                <strong>Note:</strong> Developer Mode disables cloud features but enables full local control. Without it, you can only monitor (read-only).
               </div>
             </div>
           </div>
         </div>
 
         <div class="step reveal">
-          <div class="step-number">4</div>
+          <div class="step-number">5</div>
           <div class="step-content">
             <h4>Record the Access Code</h4>
             <p style="color: var(--text-secondary);">An access code will be displayed. Write this down - you'll need it for Bambuddy.</p>
@@ -341,7 +349,7 @@ source venv/bin/activate</code></pre>
         </div>
 
         <div class="step reveal">
-          <div class="step-number">5</div>
+          <div class="step-number">6</div>
           <div class="step-content">
             <h4>Note IP Address & Serial Number</h4>
             <p style="color: var(--text-secondary);">Find these in the printer's network settings or device info. You'll need both to connect.</p>
@@ -474,7 +482,7 @@ git pull && docker compose up -d --build</code></pre>
         <ul style="color: var(--text-secondary);">
           <li style="margin-bottom: 0.5rem;">Verify the printer and computer are on the same network</li>
           <li style="margin-bottom: 0.5rem;">Double-check the IP address, serial number, and access code</li>
-          <li style="margin-bottom: 0.5rem;">Ensure LAN Mode is enabled on the printer</li>
+          <li style="margin-bottom: 0.5rem;">Ensure Developer Mode is enabled on the printer (LAN Only Mode + Developer Mode)</li>
           <li style="margin-bottom: 0.5rem;">Check that ports 8883 and 990 aren't blocked by a firewall</li>
         </ul>
       </div>
