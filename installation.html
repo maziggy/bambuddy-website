@@ -445,6 +445,17 @@ docker compose up -d --build</code></pre>
         </div>
       </div>
 
+      <div class="alert alert-info mt-md reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          <strong>Custom Port:</strong> To run on a different port, use <code>PORT=8080 docker compose up -d</code>. If you get "permission denied" errors on Linux, prefix with <code>sudo</code> or <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">add your user to the docker group</a>.
+        </div>
+      </div>
+
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
