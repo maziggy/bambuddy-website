@@ -151,12 +151,85 @@
     </div>
   </section>
 
-  <!-- Quick Start -->
+  <!-- One-Line Install -->
   <section class="content-section" id="quickstart" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 class="mb-xl reveal">Quick Start</h2>
+      <h2 class="mb-xl reveal">One-Line Install <span class="text-gradient">(Recommended)</span></h2>
       <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
-        Follow these steps to get Bambuddy running on your system.
+        Interactive install scripts that handle everything for you. Just run one command.
+      </p>
+
+      <div class="feature-detail reveal">
+        <h4 class="mb-md">Docker Installation</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          The easiest way to get started. Works on any system with Docker installed.
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/maziggy/bambuddy/main/install/docker-install.sh | bash</code></pre>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Native Installation</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Installs with Python virtual environment and systemd/launchd service.
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/maziggy/bambuddy/main/install/install.sh | bash</code></pre>
+      </div>
+
+      <div class="alert alert-info mt-xl reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          <strong>What the scripts do:</strong> Prompts for install path, port, bind address, timezone, and more. Automatically installs dependencies, sets up the service, and starts Bambuddy. Use <code>--yes</code> for unattended mode.
+        </div>
+      </div>
+
+      <div class="alert alert-success mt-md reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <div>
+          <strong>Supported systems:</strong> Debian/Ubuntu, RHEL/Fedora/CentOS, Arch Linux, openSUSE, and macOS (Homebrew).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manual Install -->
+  <section class="content-section" id="manual-install">
+    <div class="container">
+      <h2 class="mb-xl reveal">Manual Installation</h2>
+      <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
+        Prefer to do it yourself? Follow these steps.
       </p>
 
       <div class="steps">
@@ -200,16 +273,6 @@ cd bambuddy</code></pre>
               </div>
               <pre><code>python3 -m venv venv
 source venv/bin/activate</code></pre>
-            </div>
-            <div class="alert alert-info mt-md">
-              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="16" x2="12" y2="12"/>
-                <line x1="12" y1="8" x2="12.01" y2="8"/>
-              </svg>
-              <div>
-                <strong>Windows users:</strong> Use <code>venv\Scripts\activate</code> instead.
-              </div>
             </div>
           </div>
         </div>
@@ -362,9 +425,9 @@ source venv/bin/activate</code></pre>
   <!-- Docker Installation -->
   <section class="content-section" id="docker" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 class="mb-xl reveal">Docker Installation (Recommended)</h2>
+      <h2 class="mb-xl reveal">Docker Installation</h2>
       <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
-        The easiest way to run Bambuddy. Pre-built images available for Intel/AMD and ARM (Raspberry Pi).
+        Pre-built images available for Intel/AMD and ARM (Raspberry Pi).
       </p>
 
       <div class="alert alert-success mb-xl reveal">
@@ -378,7 +441,28 @@ source venv/bin/activate</code></pre>
       </div>
 
       <div class="feature-detail reveal">
-        <h4 class="mb-md">Option A: Pre-built Image (Fastest)</h4>
+        <h4 class="mb-md">Option A: Interactive Install Script (Recommended)</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Prompts for configuration options and sets everything up for you:
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/maziggy/bambuddy/main/install/docker-install.sh | bash</code></pre>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Option B: Pre-built Image (Manual)</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
           No building required - just download the compose file and run:
         </p>
@@ -401,7 +485,7 @@ docker compose up -d</code></pre>
       </div>
 
       <div class="feature-detail reveal mt-xl">
-        <h4 class="mb-md">Option B: Build from Source</h4>
+        <h4 class="mb-md">Option C: Build from Source</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
           If you want to modify the code or build locally:
         </p>
