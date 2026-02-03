@@ -224,10 +224,65 @@
     </div>
   </section>
 
+  <!-- Windows Portable -->
+  <section class="content-section" id="windows" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="mb-xl reveal">Windows <span class="text-gradient">(Portable)</span></h2>
+      <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
+        The easiest way to run Bambuddy on Windows - no installation required.
+      </p>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">batch</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>git clone https://github.com/maziggy/bambuddy.git
+cd bambuddy
+start_bambuddy.bat</code></pre>
+      </div>
+
+      <div class="alert alert-success mt-xl reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <div>
+          <strong>What happens:</strong> On first run, the script automatically downloads Python 3.13 and Node.js 22 (portable, no system changes), verifies checksums, installs dependencies, builds the frontend, and opens your browser.
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-md reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          <strong>Commands:</strong><br>
+          <code>start_bambuddy.bat</code> — Launch<br>
+          <code>start_bambuddy.bat update</code> — Update dependencies<br>
+          <code>start_bambuddy.bat reset</code> — Clean start<br>
+          <code>set PORT=9000 & start_bambuddy.bat</code> — Custom port
+        </div>
+      </div>
+
+      <p class="mt-xl reveal" style="color: var(--text-secondary);">
+        Everything is stored in the <code>.portable\</code> folder. Requires Windows 10 version 1803+. Supports x64 and ARM64.
+      </p>
+    </div>
+  </section>
+
   <!-- Manual Install -->
   <section class="content-section" id="manual-install">
     <div class="container">
-      <h2 class="mb-xl reveal">Manual Installation</h2>
+      <h2 class="mb-xl reveal">Manual Installation <span class="text-gradient">(Linux/macOS)</span></h2>
       <p class="mb-xl reveal" style="color: var(--text-secondary); font-size: 1.1rem;">
         Prefer to do it yourself? Follow these steps.
       </p>
