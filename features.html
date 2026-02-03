@@ -69,6 +69,93 @@
     </div>
   </section>
 
+  <!-- Featured: Proxy Mode -->
+  <section class="content-section" id="proxy-mode" style="background: linear-gradient(135deg, rgba(0, 174, 66, 0.1) 0%, rgba(0, 174, 66, 0.02) 100%); border-top: 2px solid var(--accent-primary); border-bottom: 2px solid var(--accent-primary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: var(--accent-primary); color: white; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">New in 0.1.7</span>
+        </div>
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          Virtual Printer Proxy Mode
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.25rem; max-width: 700px;">
+          <strong>Print from anywhere in the world.</strong> Control your Bambu Lab printer remotely without Bambu Cloud, port forwarding, or VPN.
+        </p>
+
+        <div class="feature-screenshot reveal" style="margin: 2rem 0;">
+          <img src="assets/img/proxy-mode-diagram.png" alt="Proxy Mode Network Architecture - Remote slicer connects through Bambuddy to local printer" loading="lazy" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);">
+        </div>
+
+        <ul class="feature-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>No Port Forwarding Required</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Bambuddy relays TLS traffic securely. Your printer stays safely on your local network.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>No VPN Needed</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Connect from coffee shops, hotels, work — anywhere with internet access.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>No Bambu Cloud</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Full remote printing without relying on Bambu Lab's cloud infrastructure.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>End-to-End TLS Encryption</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Secure FTP (port 9990) and MQTT (port 8883) relay with full encryption.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Works with Bambu Studio &amp; OrcaSlicer</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Add Bambuddy as a network printer and send prints directly from your slicer.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Real Printer Credentials</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Uses your actual printer's serial number and access code for authentication.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 174, 66, 0.1); border-radius: 12px; border-left: 4px solid var(--accent-primary);">
+          <p style="margin: 0; color: var(--text-secondary);">
+            <strong style="color: var(--text-primary);">How it works:</strong> Configure Proxy Mode in Settings → Virtual Printer. Add your Bambuddy server as a network printer in your slicer using the external IP/hostname. Bambuddy receives your print, authenticates with your local printer, and relays everything securely.
+          </p>
+        </div>
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="http://wiki.bambuddy.cool/features/virtual-printer/#proxy-mode-new-in-017" class="nav-cta" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+            Read the Full Guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Print Management -->
   <section class="content-section" id="print-management">
     <div class="container">
@@ -982,6 +1069,14 @@
         <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
           Send prints directly from Bambu Studio or Orca Slicer to Bambuddy without needing a physical printer connection.
         </p>
+
+        <div style="margin-bottom: 1.5rem; padding: 1rem 1.25rem; background: rgba(0, 174, 66, 0.1); border-radius: 8px; border-left: 3px solid var(--accent-primary);">
+          <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem;">
+            <strong style="color: var(--text-primary);">🌍 New: Proxy Mode</strong> — Print from anywhere in the world without VPN or port forwarding.
+            <a href="#proxy-mode" style="color: var(--accent-primary); margin-left: 0.5rem;">Learn more ↑</a>
+          </p>
+        </div>
+
         <ul class="feature-list">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -993,8 +1088,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Three Flexible Modes</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Archive immediately, review before archiving, or add directly to print queue for later assignment.</p>
+              <strong>Four Flexible Modes</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Archive immediately, review before archiving, add to print queue, or proxy to a real printer remotely.</p>
             </div>
           </li>
           <li>
