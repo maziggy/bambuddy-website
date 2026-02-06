@@ -1825,6 +1825,10 @@ tr:hover td {
   flex-shrink: 0;
 }
 
+.compare-highlights li.compare-con svg {
+  color: #ef4444;
+}
+
 .compare-highlights li .cell-yes,
 .compare-highlights li svg[stroke="currentColor"]:first-child {
   color: var(--accent-green);
