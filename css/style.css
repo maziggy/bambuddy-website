@@ -1885,7 +1885,7 @@ tr:hover td {
 }
 
 .cell-no {
-  color: var(--text-muted);
+  color: #ef4444;
   font-weight: 500;
 }
 
