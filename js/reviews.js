@@ -4,8 +4,8 @@
    ============================================ */
 
 const SUPABASE_CONFIG = {
-  url: 'https://YOUR_PROJECT.supabase.co',
-  anonKey: 'YOUR_ANON_KEY'
+  url: 'https://oyrtdabedqlnkroumtlp.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im95cnRkYWJlZHFsbmtyb3VtdGxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzODg1MzUsImV4cCI6MjA4NTk2NDUzNX0.muG2cOhAdsnLm13Ugmi9_0ZSRq_Vn0CAQZoFNw6wFcA'
 };
 
 /* ---- Supabase REST helpers ---- */
