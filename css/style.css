@@ -1770,6 +1770,7 @@ tr:hover td {
 .compare-logo {
   height: 48px;
   width: auto;
+  border-radius: var(--radius-lg);
 }
 
 .compare-logo-placeholder {
