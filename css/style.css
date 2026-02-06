@@ -1725,3 +1725,216 @@ tr:hover td {
   border: 1px solid rgba(249, 115, 22, 0.3);
   color: var(--accent-orange);
 }
+
+/* ============================================
+   Comparison Page
+   ============================================ */
+
+/* Summary Cards */
+.compare-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.compare-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.compare-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.compare-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.compare-card-highlight {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 255, 136, 0.08));
+  border-bottom-color: rgba(0, 212, 255, 0.15);
+}
+
+.compare-card-header h3 {
+  font-size: 1.25rem;
+}
+
+.compare-logo {
+  height: 48px;
+  width: auto;
+}
+
+.compare-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--text-muted);
+}
+
+.compare-tag {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.compare-card-highlight .compare-tag {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent-cyan);
+}
+
+.compare-card-body {
+  padding: var(--spacing-xl);
+}
+
+.compare-card-body p {
+  font-size: 0.9375rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.compare-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.compare-highlights li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.compare-highlights li svg {
+  flex-shrink: 0;
+}
+
+.compare-highlights li .cell-yes,
+.compare-highlights li svg[stroke="currentColor"]:first-child {
+  color: var(--accent-green);
+}
+
+/* Comparison Table */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9375rem;
+}
+
+.compare-table thead th {
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  position: sticky;
+  top: 60px;
+  z-index: 10;
+}
+
+.compare-table .col-highlight {
+  background: rgba(0, 212, 255, 0.04);
+}
+
+.compare-table thead .col-highlight {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--accent-cyan);
+}
+
+.compare-table tbody td:first-child {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.table-section-row td {
+  background: rgba(255, 255, 255, 0.02) !important;
+  font-weight: 700 !important;
+  font-size: 0.8125rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan) !important;
+  padding: var(--spacing-sm) var(--spacing-lg) !important;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.15) !important;
+}
+
+.cell-yes {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+.cell-no {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.cell-partial {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.cell-na {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Legend */
+.compare-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.compare-legend span {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .compare-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.8125rem;
+  }
+
+  .compare-table th:first-child,
+  .compare-table td:first-child {
+    min-width: 140px;
+  }
+
+  .compare-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+}
