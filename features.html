@@ -214,7 +214,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Re-print with AMS Mapping & Print Options</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send any archived print to any printer. For multi-plate 3MF files, select which plate to print with thumbnail previews. Auto-matches filaments by type and color, or manually select AMS slots from dropdown. Color names decoded from Bambu filament codes. Re-read button refreshes AMS status. Configure print options (bed leveling, flow calibration, vibration calibration, first layer inspection, timelapse) before starting.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send any archived print to any printer. For multi-plate 3MF files, select which plate to print with thumbnail previews. Auto-matches filaments by type and color, or manually select AMS slots from dropdown. On dual-nozzle printers (H2D/H2D Pro), filament matching is nozzle-aware — only AMS trays connected to the correct nozzle (L/R) are considered. Color names decoded from Bambu filament codes. Re-read button refreshes AMS status. Configure print options (bed leveling, flow calibration, vibration calibration, first layer inspection, timelapse) before starting.</p>
             </div>
           </li>
           <li>
@@ -559,7 +559,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Customizable Templates</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Configure message templates and quiet hours for each service.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Configure message templates with per-filament usage details, progress tracking, and quiet hours for each service. Filament data available for completed, failed, and cancelled prints.</p>
             </div>
           </li>
           <li>
@@ -931,7 +931,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Spool Inventory</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Automatic usage tracking: RFID-based for Bambu Lab spools, 3MF slicer estimates for third-party spools. Progress-scaled tracking for failed and aborted prints.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Automatic usage tracking via 3MF slicer data for all spools, with per-layer G-code accuracy for partial prints. AMS remain% delta as fallback.</p>
             </div>
           </li>
           <li>
@@ -1360,6 +1360,13 @@
             <div>
               <strong>Multi-AMS Support</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor up to 4 AMS units per printer with unified display.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Nozzle-Aware Filament Mapping</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">On dual-nozzle printers (H2D/H2D Pro), AMS filament matching respects nozzle assignments from the 3MF file. Each AMS unit feeds a specific nozzle (left or right), and Bambuddy constrains matching accordingly. L/R badges shown in the filament mapping UI.</p>
             </div>
           </li>
         </ul>
