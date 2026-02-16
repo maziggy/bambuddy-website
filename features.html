@@ -351,7 +351,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>HMS Error Tracking & Notifications</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor Health Management System errors with human-readable descriptions (853 error codes translated). Get instant push notifications for printer errors including AMS issues, nozzle problems, and more.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor Health Management System errors with human-readable descriptions (853 error codes translated). Clear stale errors directly from the UI after print cancellation or transient events. Get instant push notifications for printer errors including AMS issues, nozzle problems, and more.</p>
             </div>
           </li>
           <li>
@@ -945,7 +945,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Spool Inventory</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Automatic usage tracking via 3MF slicer data for all spools, with per-layer G-code accuracy for partial prints. AMS remain% delta as fallback.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Automatic usage tracking via 3MF slicer data for all spools, with per-layer G-code accuracy for partial prints. AMS remain% delta as fallback. Manual AMS weight sync for recovery from corrupted data.</p>
             </div>
           </li>
           <li>
@@ -1474,6 +1474,13 @@
             <div>
               <strong>AI Detection Toggle</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Enable or disable spaghetti detection and first layer inspection.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Clear HMS Errors</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Dismiss stale HMS errors directly from the error modal. Sends a clear command to the printer and updates the UI instantly. Useful after print cancellation or transient events that leave error codes behind.</p>
             </div>
           </li>
         </ul>
