@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Read user reviews and share your experience with Bambuddy - self-hosted print management for Bambu Lab 3D printers.">
+  <meta name="description" content="SpoolBuddy - An optional Raspberry Pi add-on for Bambuddy that adds NFC-based spool identification and management to your 3D printing workflow.">
+  <meta name="keywords" content="SpoolBuddy, Bambuddy, NFC, spool management, Raspberry Pi, 3D printing, filament tracking">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://bambuddy.cool/reviews.html">
-  <meta property="og:title" content="User Reviews - Bambuddy">
-  <meta property="og:description" content="Read user reviews and share your experience with Bambuddy - self-hosted print management for Bambu Lab 3D printers.">
+  <meta property="og:url" content="http://bambuddy.cool/spoolbuddy.html">
+  <meta property="og:title" content="SpoolBuddy - NFC Spool Management Add-on for Bambuddy">
+  <meta property="og:description" content="An optional Raspberry Pi add-on that adds NFC-based spool identification and management to your Bambuddy setup.">
   <meta property="og:image" content="http://bambuddy.cool/assets/screenshots/printers.png">
   <meta property="og:site_name" content="Bambuddy">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="User Reviews - Bambuddy">
-  <meta name="twitter:description" content="Read user reviews and share your experience with Bambuddy - self-hosted print management for Bambu Lab 3D printers.">
+  <meta name="twitter:title" content="SpoolBuddy - NFC Spool Management Add-on for Bambuddy">
+  <meta name="twitter:description" content="An optional Raspberry Pi add-on that adds NFC-based spool identification and management to your Bambuddy setup.">
   <meta name="twitter:image" content="http://bambuddy.cool/assets/screenshots/printers.png">
 
-  <title>User Reviews - Bambuddy</title>
+  <title>SpoolBuddy - NFC Spool Management Add-on</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
@@ -49,13 +50,14 @@
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="features.html" class="nav-link">Features</a>
-        <a href="spoolbuddy.html" class="nav-link">SpoolBuddy</a>
+        <a href="spoolbuddy.html" class="nav-link active">SpoolBuddy</a>
         <a href="installation.html" class="nav-link">Installation</a>
         <a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener" class="nav-link">Docs</a>
+        <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" class="nav-link">Discord</a>
         <a href="comparison.html" class="nav-link">Compare</a>
-        <a href="reviews.html" class="nav-link active">Reviews</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
         <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
           GitHub
@@ -67,77 +69,110 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>User <span class="text-gradient">Reviews</span></h1>
-      <p>Hear from the community about their experience with Bambuddy.</p>
+      <h1>Spool<span class="text-gradient">Buddy</span></h1>
+      <p>An optional Raspberry Pi add-on for NFC-based spool identification and management.</p>
     </div>
   </section>
 
-  <!-- Review Stats -->
+  <!-- What is SpoolBuddy -->
   <section class="section">
     <div class="container">
-      <div id="review-stats"></div>
-    </div>
-  </section>
+      <div class="section-header reveal">
+        <h2>What is <span class="text-gradient">SpoolBuddy</span>?</h2>
+        <p>SpoolBuddy is a companion hardware add-on that brings NFC-powered spool management to your Bambuddy setup. Using a Raspberry Pi and an NFC reader, SpoolBuddy lets you tag your filament spools with NFC stickers and instantly identify them by tapping &mdash; no more guessing which spool is which.</p>
+      </div>
 
-  <!-- All Reviews -->
-  <section class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="reviews-grid" id="all-reviews-grid"></div>
-    </div>
-  </section>
-
-  <!-- Submit Review Form -->
-  <section class="section">
-    <div class="container">
-      <div class="review-form-container">
-        <div class="section-header reveal">
-          <h2>Share Your <span class="text-gradient">Experience</span></h2>
-          <p>Let others know how Bambuddy is working for you.</p>
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3>Instant Spool Identification</h3>
+          <p>Tap any NFC-tagged spool to instantly pull up its details &mdash; material, color, weight, and usage history.</p>
         </div>
 
-        <form id="review-form" class="review-form">
-          <div class="form-group">
-            <label class="form-label">Your Rating</label>
-            <div class="star-selector">
-              <button type="button" class="star-select-btn" data-value="1" aria-label="1 star">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-              <button type="button" class="star-select-btn" data-value="2" aria-label="2 stars">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-              <button type="button" class="star-select-btn" data-value="3" aria-label="3 stars">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-              <button type="button" class="star-select-btn" data-value="4" aria-label="4 stars">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-              <button type="button" class="star-select-btn" data-value="5" aria-label="5 stars">
-                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-            </div>
-            <input type="hidden" id="review-rating" name="rating" value="">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
           </div>
+          <h3>Raspberry Pi Powered</h3>
+          <p>Runs on affordable Raspberry Pi hardware with a standard NFC reader. Easy to build and set up.</p>
+        </div>
 
-          <div class="form-group">
-            <label class="form-label" for="review-text">Your Review</label>
-            <textarea id="review-text" name="review_text" class="form-textarea" rows="5" minlength="10" maxlength="2000" placeholder="Share your experience with Bambuddy (at least 10 characters)..." required></textarea>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
           </div>
+          <h3>Fully Local</h3>
+          <p>Just like Bambuddy itself, SpoolBuddy runs entirely on your local network. No cloud, no subscriptions.</p>
+        </div>
 
-          <div class="form-group">
-            <label class="form-label" for="review-name">Name (optional)</label>
-            <input type="text" id="review-name" name="reviewer_name" class="form-input" placeholder="Anonymous" maxlength="100">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
           </div>
-
-          <button type="submit" class="btn btn-primary review-submit-btn">Submit Review</button>
-
-          <p class="review-form-disclaimer">Reviews are moderated before appearing on the site.</p>
-        </form>
+          <h3>Bambuddy Integration</h3>
+          <p>Seamlessly connects to your Bambuddy instance. Spool data syncs with your inventory automatically.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Toast Container -->
-  <div id="review-toast-container" class="review-toast-container"></div>
+  <!-- Coming Soon -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Getting <span class="text-gradient">Started</span></h2>
+        <p>Documentation for SpoolBuddy is being written by our contributors. Check back soon for hardware requirements, setup guides, and configuration instructions.</p>
+      </div>
+
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3>Hardware Requirements</h3>
+          <p>What you need to build your own SpoolBuddy &mdash; Raspberry Pi model, NFC reader, and accessories.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <h3>Installation Guide</h3>
+          <p>Step-by-step instructions for setting up your Raspberry Pi and getting SpoolBuddy running.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+              <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <h3>Configuration</h3>
+          <p>How to connect SpoolBuddy to your Bambuddy instance and configure NFC tag management.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--spacing-xl);" class="reveal">
+        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">Want to help write the docs? SpoolBuddy is open source and contributions are welcome.</p>
+        <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+        <a href="http://wiki.bambuddy.cool/spoolbuddy/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-left: var(--spacing-sm);">View Wiki</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -205,6 +240,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/reviews.js"></script>
 </body>
 </html>

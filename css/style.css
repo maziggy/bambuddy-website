@@ -1358,6 +1358,54 @@ tr:hover td {
   }
 }
 
+/* Highlight Split Layout (image + text side by side) */
+.highlight-split {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  text-align: left;
+}
+
+.highlight-split .highlight-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.highlight-split .highlight-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  filter: drop-shadow(0 8px 32px rgba(0, 212, 255, 0.15));
+}
+
+.highlight-split .highlight-text {
+  flex: 1;
+}
+
+.highlight-split .highlight-features {
+  justify-content: flex-start;
+}
+
+.highlight-split .highlight-description {
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .highlight-split {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .highlight-split .highlight-image {
+    flex: none;
+    max-width: 70%;
+  }
+
+  .highlight-split .highlight-features {
+    justify-content: center;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   :root {
