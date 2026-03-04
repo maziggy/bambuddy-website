@@ -1,9 +1,18 @@
 # Copy to /etc/systemd/system/bambuddy-bug-relay.service
 # Then: systemctl daemon-reload && systemctl enable --now bambuddy-bug-relay
 #
-# Create /etc/bambuddy-relay/env with:
-#   BUG_REPORT_GITHUB_TOKEN=ghp_your_token_here
+# Create /etc/bambuddy-relay/env with all required variables (see below).
 # Then: chmod 600 /etc/bambuddy-relay/env
+#
+# Required env vars in /etc/bambuddy-relay/env:
+#   BUG_REPORT_GITHUB_TOKEN=ghp_...
+#   SMTP_HOST=smtp.example.com
+#   SMTP_PORT=587
+#   SMTP_USERNAME=user@example.com
+#   SMTP_PASSWORD=secret
+#   SMTP_FROM_EMAIL=noreply@bambuddy.cool
+#   SMTP_USE_TLS=true
+#   MAINTAINER_EMAIL=mz@v8w.de
 
 [Unit]
 Description=Bambuddy Bug Report Relay

@@ -1,13 +1,16 @@
 """Bug report relay service for bambuddy.cool.
 
-Holds the GitHub PAT server-side and proxies bug report submissions
-from Bambuddy instances to the GitHub Issues API.
+Holds the GitHub PAT and SMTP credentials server-side and proxies bug report
+submissions from Bambuddy instances to the GitHub Issues API.
 """
 
 import base64
+import logging
 import os
+import smtplib
 import time
 import uuid
+from email.mime.text import MIMEText
 
 import requests
 from flask import Flask, jsonify, request
@@ -17,6 +20,18 @@ app = Flask(__name__)
 GITHUB_TOKEN = os.environ.get("BUG_REPORT_GITHUB_TOKEN", "")
 GITHUB_REPO = "maziggy/bambuddy"
 GITHUB_API_BASE = "https://api.github.com"
+
+# SMTP config (all from env vars)
+SMTP_HOST = os.environ.get("SMTP_HOST", "")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USERNAME = os.environ.get("SMTP_USERNAME", "")
+SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
+SMTP_FROM_EMAIL = os.environ.get("SMTP_FROM_EMAIL", "")
+SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "true").lower() == "true"
+MAINTAINER_EMAIL = os.environ.get("MAINTAINER_EMAIL", "mz@v8w.de")
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Rate limiting: 5 requests per hour per IP
 RATE_LIMIT_WINDOW = 3600
@@ -70,7 +85,6 @@ def _ensure_assets_branch() -> None:
 def _upload_screenshot(screenshot_b64: str) -> str | None:
     """Upload screenshot to GitHub repo, return raw URL or None."""
     try:
-        # Validate base64
         base64.b64decode(screenshot_b64)
     except Exception:
         return None
@@ -111,6 +125,8 @@ def _build_issue_body(
         parts.append("")
 
     if support_info:
+        recent_logs = support_info.pop("recent_logs", None)
+
         parts.append("<details>")
         parts.append("<summary>System Information</summary>")
         parts.append("")
@@ -120,9 +136,56 @@ def _build_issue_body(
         parts.append("</details>")
         parts.append("")
 
+        if recent_logs:
+            parts.append("<details>")
+            parts.append("<summary>Recent Logs (sanitized)</summary>")
+            parts.append("")
+            parts.append("```")
+            parts.append(recent_logs)
+            parts.append("```")
+            parts.append("</details>")
+            parts.append("")
+
     parts.append("---")
     parts.append("*Submitted via BamBuddy Bug Report*")
     return "\n".join(parts)
+
+
+def _send_maintainer_email(
+    reporter_email: str, issue_url: str, issue_number: int, description: str
+) -> None:
+    """Send email notification to maintainer with reporter's contact email."""
+    if not all([SMTP_HOST, SMTP_FROM_EMAIL]):
+        logger.warning("SMTP not configured, skipping maintainer email")
+        return
+
+    subject = f"[BamBuddy Bug #{issue_number}] New report from {reporter_email}"
+    body = (
+        f"New bug report submitted.\n\n"
+        f"Reporter email: {reporter_email}\n"
+        f"GitHub issue: {issue_url}\n\n"
+        f"Description:\n{description}"
+    )
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = SMTP_FROM_EMAIL
+    msg["To"] = MAINTAINER_EMAIL
+    msg["Reply-To"] = reporter_email
+
+    try:
+        if SMTP_USE_TLS:
+            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+            server.starttls()
+        else:
+            server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
+        if SMTP_USERNAME and SMTP_PASSWORD:
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+        server.sendmail(SMTP_FROM_EMAIL, MAINTAINER_EMAIL, msg.as_string())
+        server.quit()
+        logger.info("Maintainer email sent for bug #%s (reporter: %s)", issue_number, reporter_email)
+    except Exception:
+        logger.exception("Failed to send maintainer email for bug #%s", issue_number)
 
 
 @app.after_request
@@ -156,6 +219,8 @@ def bug_report():
     if not description:
         return jsonify({"success": False, "message": "Description is required."}), 400
 
+    reporter_email = data.get("reporter_email", "").strip()
+
     if not GITHUB_TOKEN:
         return jsonify({"success": False, "message": "Relay not configured."}), 503
 
@@ -183,11 +248,18 @@ def bug_report():
         return jsonify({"success": False, "message": "Failed to create GitHub issue."}), 502
 
     issue_data = resp.json()
+    issue_html_url = issue_data["html_url"]
+    issue_number = issue_data["number"]
+
+    # Send maintainer email (non-blocking — don't fail the request if email fails)
+    if reporter_email:
+        _send_maintainer_email(reporter_email, issue_html_url, issue_number, description)
+
     return jsonify({
         "success": True,
         "message": "Bug report submitted successfully!",
-        "issue_url": issue_data["html_url"],
-        "issue_number": issue_data["number"],
+        "issue_url": issue_html_url,
+        "issue_number": issue_number,
     })
 
 
