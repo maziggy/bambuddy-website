@@ -111,8 +111,36 @@ def _upload_screenshot(screenshot_b64: str) -> str | None:
     return None
 
 
+def _upload_log_file(log_content: str) -> str | None:
+    """Upload sanitized logs to bug-report-assets branch, return raw URL."""
+    try:
+        _ensure_assets_branch()
+        filename = f"{uuid.uuid4().hex}.log"
+        url = f"{GITHUB_API_BASE}/repos/{GITHUB_REPO}/contents/logs/{filename}"
+        log_b64 = base64.b64encode(log_content.encode("utf-8")).decode("ascii")
+        resp = requests.put(
+            url,
+            headers=_github_headers(),
+            json={
+                "message": f"Bug report logs {filename}",
+                "content": log_b64,
+                "branch": "bug-report-assets",
+            },
+            timeout=30,
+        )
+        if resp.status_code in (200, 201):
+            owner, repo = GITHUB_REPO.split("/")
+            return f"https://raw.githubusercontent.com/{owner}/{repo}/bug-report-assets/logs/{filename}"
+    except Exception:
+        pass
+    return None
+
+
 def _build_issue_body(
-    description: str, screenshot_url: str | None, support_info: dict | None
+    description: str,
+    screenshot_url: str | None,
+    support_info: dict | None,
+    reporter_email: str | None,
 ) -> str:
     """Build the GitHub issue body markdown."""
     import json
@@ -122,6 +150,15 @@ def _build_issue_body(
     if screenshot_url:
         parts.append("### Screenshot")
         parts.append(f"![Bug Report Screenshot]({screenshot_url})")
+        parts.append("")
+
+    if reporter_email:
+        parts.append("<details>")
+        parts.append("<summary>Reporter Contact</summary>")
+        parts.append("")
+        parts.append(f"Email: {reporter_email}")
+        parts.append("")
+        parts.append("</details>")
         parts.append("")
 
     if support_info:
@@ -137,13 +174,17 @@ def _build_issue_body(
         parts.append("")
 
         if recent_logs:
-            parts.append("<details>")
-            parts.append("<summary>Recent Logs (sanitized)</summary>")
-            parts.append("")
-            parts.append("```")
-            parts.append(recent_logs)
-            parts.append("```")
-            parts.append("</details>")
+            log_url = _upload_log_file(recent_logs)
+            if log_url:
+                parts.append(f"**Logs (sanitized):** [bambuddy.log]({log_url})")
+            else:
+                parts.append("<details>")
+                parts.append("<summary>Recent Logs (sanitized)</summary>")
+                parts.append("")
+                parts.append("```")
+                parts.append(recent_logs)
+                parts.append("```")
+                parts.append("</details>")
             parts.append("")
 
     parts.append("---")
@@ -233,7 +274,7 @@ def bug_report():
     # Build and create issue
     support_info = data.get("support_info")
     title = f"[Bug Report] {description[:80]}"
-    body = _build_issue_body(description, screenshot_url, support_info)
+    body = _build_issue_body(description, screenshot_url, support_info, reporter_email)
     labels = ["bug", "user-report"]
 
     issue_url = f"{GITHUB_API_BASE}/repos/{GITHUB_REPO}/issues"
