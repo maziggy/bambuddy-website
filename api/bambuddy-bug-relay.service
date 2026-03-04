@@ -1,7 +1,9 @@
 # Copy to /etc/systemd/system/bambuddy-bug-relay.service
 # Then: systemctl daemon-reload && systemctl enable --now bambuddy-bug-relay
 #
-# Set BUG_REPORT_GITHUB_TOKEN to a GitHub PAT with repo scope for maziggy/bambuddy
+# Create /etc/bambuddy-relay/env with:
+#   BUG_REPORT_GITHUB_TOKEN=ghp_your_token_here
+# Then: chmod 600 /etc/bambuddy-relay/env
 
 [Unit]
 Description=Bambuddy Bug Report Relay
@@ -12,7 +14,7 @@ Type=simple
 User=www-data
 Group=www-data
 WorkingDirectory=/opt/bambuddy-relay/api
-Environment=BUG_REPORT_GITHUB_TOKEN=<configure-on-server>
+EnvironmentFile=/etc/bambuddy-relay/env
 ExecStart=/opt/bambuddy-relay/venv/bin/gunicorn --bind 127.0.0.1:5050 --workers 2 wsgi:app
 Restart=on-failure
 RestartSec=5
