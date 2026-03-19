@@ -99,7 +99,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>No Port Forwarding Required</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Bambuddy relays TLS traffic securely. Your printer stays safely on your local network.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Bambuddy transparently proxies traffic between your slicer and printer. Your printer stays safely on your local network.</p>
             </div>
           </li>
           <li>
@@ -119,8 +119,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>TLS-Encrypted Control Channels</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">MQTT and FTP control fully encrypted. For full data encryption, pair with a VPN like Tailscale.</p>
+              <strong>True End-to-End TLS</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">FTP, FileTransfer, and Camera use transparent TCP proxying with your printer's real TLS certificate. MQTT is TLS-terminated only to rewrite network addresses.</p>
             </div>
           </li>
           <li>
