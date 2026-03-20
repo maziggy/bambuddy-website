@@ -193,17 +193,21 @@ def _build_issue_body(
 
 
 def _send_maintainer_email(
-    reporter_email: str, issue_url: str, issue_number: int, description: str
+    reporter_email: str | None, issue_url: str, issue_number: int, description: str
 ) -> None:
-    """Send email notification to maintainer with reporter's contact email."""
+    """Send email notification to maintainer about new bug report."""
     if not all([SMTP_HOST, SMTP_FROM_EMAIL]):
         logger.warning("SMTP not configured, skipping maintainer email")
         return
 
-    subject = f"[BamBuddy Bug #{issue_number}] New report from {reporter_email}"
+    if reporter_email:
+        subject = f"[BamBuddy Bug #{issue_number}] New report from {reporter_email}"
+    else:
+        subject = f"[BamBuddy Bug #{issue_number}] New report (anonymous)"
+
     body = (
         f"New bug report submitted.\n\n"
-        f"Reporter email: {reporter_email}\n"
+        f"Reporter email: {reporter_email or 'not provided'}\n"
         f"GitHub issue: {issue_url}\n\n"
         f"Description:\n{description}"
     )
@@ -212,7 +216,8 @@ def _send_maintainer_email(
     msg["Subject"] = subject
     msg["From"] = SMTP_FROM_EMAIL
     msg["To"] = MAINTAINER_EMAIL
-    msg["Reply-To"] = reporter_email
+    if reporter_email:
+        msg["Reply-To"] = reporter_email
 
     try:
         if SMTP_USE_TLS:
@@ -293,8 +298,7 @@ def bug_report():
     issue_number = issue_data["number"]
 
     # Send maintainer email (non-blocking — don't fail the request if email fails)
-    if reporter_email:
-        _send_maintainer_email(reporter_email, issue_html_url, issue_number, description)
+    _send_maintainer_email(reporter_email or None, issue_html_url, issue_number, description)
 
     return jsonify({
         "success": True,
