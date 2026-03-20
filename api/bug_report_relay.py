@@ -27,7 +27,7 @@ SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USERNAME = os.environ.get("SMTP_USERNAME", "")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 SMTP_FROM_EMAIL = os.environ.get("SMTP_FROM_EMAIL", "")
-SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "true").lower() == "true"
+SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "starttls").lower()  # "starttls", "ssl", or "none"
 MAINTAINER_EMAIL = os.environ.get("MAINTAINER_EMAIL", "mz@v8w.de")
 
 logging.basicConfig(level=logging.INFO)
@@ -220,11 +220,12 @@ def _send_maintainer_email(
         msg["Reply-To"] = reporter_email
 
     try:
-        if SMTP_USE_TLS:
-            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
-            server.starttls()
-        else:
+        if SMTP_USE_TLS == "ssl":
             server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
+        else:
+            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+            if SMTP_USE_TLS == "starttls":
+                server.starttls()
         if SMTP_USERNAME and SMTP_PASSWORD:
             server.login(SMTP_USERNAME, SMTP_PASSWORD)
         server.sendmail(SMTP_FROM_EMAIL, MAINTAINER_EMAIL, msg.as_string())
