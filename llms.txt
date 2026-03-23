@@ -1,0 +1,34 @@
+# Bambuddy
+
+> A self-hosted print archive and management system for Bambu Lab 3D printers.
+
+Bambuddy lets you monitor and manage your Bambu Lab printer fleet locally, without cloud dependency. It supports all current Bambu Lab models (P1S, P1P, X1C, X1E, A1, A1 Mini, H2D, H2C) and integrates with Spoolman for filament management.
+
+## Key Features
+
+- Real-time printer monitoring via local MQTT
+- Print job archive with thumbnails and history
+- Print queue with scheduling and auto-start
+- AMS filament tracking and spool management
+- Spoolman integration for inventory
+- SpoolBuddy NFC spool identification
+- Virtual printer support (proxy and server modes)
+- Multi-language support (English, German, Japanese)
+- Optional authentication
+
+## Links
+
+- Website: https://bambuddy.cool
+- Documentation: https://wiki.bambuddy.cool
+- GitHub: https://github.com/maziggy/bambuddy
+- Installation: https://bambuddy.cool/installation.html
+- Features: https://bambuddy.cool/features.html
+
+## Pages
+
+- [Home](https://bambuddy.cool/)
+- [Features](https://bambuddy.cool/features.html)
+- [Installation](https://bambuddy.cool/installation.html)
+- [Documentation](https://bambuddy.cool/docs.html)
+- [Comparison](https://bambuddy.cool/comparison.html)
+- [Reviews](https://bambuddy.cool/reviews.html)

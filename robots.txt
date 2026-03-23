@@ -1,0 +1,5 @@
+# Bambuddy - https://bambuddy.cool
+User-agent: *
+Allow: /
+
+Sitemap: https://bambuddy.cool/sitemap.xml
