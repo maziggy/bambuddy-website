@@ -445,7 +445,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Multi-Printer Selection</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send prints to multiple printers at once with per-printer AMS mapping. Configure filament slots individually for each printer.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send prints to multiple printers at once with per-printer AMS mapping. Configure filament slots individually for each printer. Supports staggered starts directly from the Print dialog to avoid power spikes.</p>
             </div>
           </li>
           <li>
@@ -487,7 +487,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Staggered Batch Start</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Stagger multi-printer starts to avoid power spikes. Define group size and interval — printers start in waves instead of all at once. Ideal for larger farms where simultaneous bed heating can trip breakers.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Stagger multi-printer starts to avoid power spikes. Available in both the Print dialog and the Queue dialog — prints sent to multiple printers are automatically queued with staggered start times. Define group size and interval — printers start in waves instead of all at once. Ideal for larger farms where simultaneous bed heating can trip breakers.</p>
             </div>
           </li>
           <li>
@@ -515,7 +515,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Clear Plate Confirmation</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Require user confirmation between queued prints to ensure the build plate is cleared before the next print starts.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Require user confirmation between queued prints to ensure the build plate is cleared before the next print starts. Disable per-printer confirmations in Settings for unattended farm workflows where plates are cleared automatically.</p>
             </div>
           </li>
           <li>
