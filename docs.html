@@ -269,22 +269,33 @@ Enable Sync: Yes
 # Optional: Enable partial usage reporting for failed prints</code></pre>
             </div>
 
-            <h3 class="mb-md mt-xl reveal">Tasmota Smart Plugs</h3>
+            <h3 class="mb-md mt-xl reveal">Smart Plugs</h3>
             <p class="mb-md reveal" style="color: var(--text-secondary);">
-              Control your printer's power with Tasmota-compatible smart plugs. This enables:
+              Control your printer's power with smart plugs. Bambuddy supports four plug types:
             </p>
             <ul class="reveal" style="color: var(--text-secondary); margin-left: 1.5rem;">
-              <li style="margin-bottom: 0.5rem; list-style: disc;">Automatic power-on before scheduled prints</li>
-              <li style="margin-bottom: 0.5rem; list-style: disc;">Safe shutdown after prints complete and cool down</li>
-              <li style="margin-bottom: 0.5rem; list-style: disc;">Remote power control from the dashboard</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;"><strong>Tasmota</strong> &mdash; Auto-discovered on your network</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;"><strong>Home Assistant</strong> &mdash; Select entities from your HA instance</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;"><strong>MQTT</strong> &mdash; Zigbee2MQTT, Shelly, or any MQTT-enabled device</li>
+              <li style="margin-bottom: 0.5rem; list-style: disc;"><strong>REST/Webhook</strong> &mdash; Any device with an HTTP API (openHAB, ioBroker, FHEM, Node-RED, etc.)</li>
             </ul>
+            <p class="mb-md reveal" style="color: var(--text-secondary);">
+              All plug types support automatic power-on before scheduled prints, safe shutdown after cooldown, remote power control from the dashboard, and energy monitoring.
+            </p>
             <div class="code-block reveal mt-md">
               <div class="code-header">
                 <span class="code-lang">configuration</span>
               </div>
               <pre><code># Per-printer Tasmota settings
 Tasmota IP: 192.168.1.xxx
-Cooldown Delay: 300  # seconds to wait after print</code></pre>
+Cooldown Delay: 300  # seconds to wait after print
+
+# REST/Webhook example (openHAB)
+ON URL:  POST http://openhab:8080/rest/items/Printer_Power
+ON Body: ON
+OFF URL: POST http://openhab:8080/rest/items/Printer_Power
+OFF Body: OFF
+Headers: {"Content-Type": "text/plain"}</code></pre>
             </div>
 
             <h3 class="mb-md mt-xl reveal">Bambu Cloud (Optional)</h3>
