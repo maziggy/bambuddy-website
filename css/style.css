@@ -1358,6 +1358,63 @@ tr:hover td {
   }
 }
 
+/* SpoolBuddy Announcement */
+.spoolbuddy-banner {
+  background: linear-gradient(135deg, rgba(255, 136, 0, 0.1), rgba(255, 68, 68, 0.1));
+  border: 1px solid rgba(255, 136, 0, 0.3);
+}
+
+.spoolbuddy-banner::before {
+  background: linear-gradient(90deg, #ff8800, #ff4444);
+}
+
+.spoolbuddy-badge {
+  background: linear-gradient(135deg, #ff8800, #ff4444);
+}
+
+.spoolbuddy-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.spoolbuddy-header h2 {
+  margin-bottom: 0;
+}
+
+.spoolbuddy-logo {
+  height: 48px;
+  width: auto;
+}
+
+.spoolbuddy-image-wrapper {
+  margin: var(--spacing-lg) auto;
+  max-width: 560px;
+}
+
+.spoolbuddy-preview-img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.spoolbuddy-banner .highlight-feature svg {
+  color: #ff8800;
+}
+
+@media (max-width: 640px) {
+  .spoolbuddy-logo {
+    height: 36px;
+  }
+
+  .spoolbuddy-image-wrapper {
+    max-width: 100%;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   :root {
