@@ -80,8 +80,45 @@
         <li>Approximate geographic location (based on anonymized IP)</li>
       </ul>
       <p><strong>Your IP address is anonymized</strong> before being stored. Matomo cookies are only set with your explicit consent via our cookie banner.</p>
-      <p>Legal basis: Art. 6(1)(a) GDPR (consent). You can withdraw your consent at any time by clearing your cookies or using the cookie settings on this page.</p>
-      <iframe id="matomo-optout" src="/t/index.php?module=CoreAdminHome&action=optOut&language=en" style="border:0;width:100%;max-width:600px;height:120px;margin:1rem 0;"></iframe>
+      <p>Legal basis: Art. 6(1)(a) GDPR (consent). You can withdraw your consent at any time using the button below.</p>
+      <div id="cookie-manage" style="margin:1rem 0;padding:1rem;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);max-width:600px;">
+        <p id="cookie-status" style="margin:0 0 0.75rem 0;font-size:0.9rem;"></p>
+        <button id="cookie-toggle-btn" class="cookie-btn cookie-btn-accept" style="padding:0.5rem 1.2rem;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;"></button>
+      </div>
+      <script>
+      (function() {
+        var KEY = 'bb_cookie_consent';
+        function update() {
+          var consent = localStorage.getItem(KEY);
+          var status = document.getElementById('cookie-status');
+          var btn = document.getElementById('cookie-toggle-btn');
+          if (consent === 'accepted') {
+            status.textContent = 'Analytics cookies are currently enabled.';
+            btn.textContent = 'Revoke Consent';
+            btn.style.background = '#dc2626';
+            btn.style.color = '#fff';
+          } else {
+            status.textContent = 'Analytics cookies are currently disabled.';
+            btn.textContent = 'Accept Cookies';
+            btn.style.background = '#00ae42';
+            btn.style.color = '#fff';
+          }
+        }
+        document.getElementById('cookie-toggle-btn').addEventListener('click', function() {
+          var consent = localStorage.getItem(KEY);
+          if (consent === 'accepted') {
+            localStorage.setItem(KEY, 'rejected');
+            var _paq = window._paq = window._paq || [];
+            _paq.push(['optUserOut']);
+          } else {
+            localStorage.setItem(KEY, 'accepted');
+            location.reload();
+          }
+          update();
+        });
+        update();
+      })();
+      </script>
 
       <h2>4. User Reviews</h2>
       <p>If you submit a review on our website, the following data is collected:</p>
