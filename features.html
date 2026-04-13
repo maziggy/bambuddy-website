@@ -1893,6 +1893,20 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Two-Factor Authentication (TOTP + Email OTP)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Per-user opt-in 2FA with TOTP (Google Authenticator, Authy, 2FAS, or any standard TOTP app) or a 6-digit code delivered by email. Each user gets 10 single-use backup codes, printable or savable in a password manager. Hardened against brute-force (per-user and per-IP rate limits), replay (a TOTP code cannot be accepted twice in the same 30-second window, including across setup, verify, disable, and backup-code regeneration), and token reuse (the pre-auth challenge is a single-use DB-backed token bound to the browser via an HttpOnly cookie).</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Single Sign-On (OIDC / SSO)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Log in to BamBuddy via any standards-compliant OIDC provider — PocketID, Authentik, Keycloak, Google Workspace, Azure AD — with PKCE (S256) for public clients. BamBuddy validates the issuer, <code>aud</code>, <code>nonce</code>, and <code>email_verified</code> claims on every callback, and the admin UI can opt-in to auto-provisioning of new BamBuddy users or auto-linking to existing accounts via their verified email address. Every URL pulled from the OIDC discovery document is validated against private/loopback/link-local IPs to prevent SSRF; non-HTTPS issuer URLs are rejected outright.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Email Templates</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Customizable notification templates for welcome emails and password resets. Advanced auth can be enabled or disabled independently at any time.</p>
             </div>
