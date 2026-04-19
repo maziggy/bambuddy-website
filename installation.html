@@ -567,7 +567,14 @@ docker compose up -d --build</code></pre>
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          Docker installations are updated via command line. When an update is available, Bambuddy shows these instructions in Settings → Updates:
+          The in-app <strong>Update</strong> button is unreliable for upgrades from older releases. Use one of the command-line paths below instead. Full guide: <a href="https://github.com/maziggy/bambuddy/blob/main/UPDATING.md" target="_blank">UPDATING.md</a>.
+        </p>
+      </div>
+
+      <div class="feature-detail reveal">
+        <h4 class="mb-md">Docker</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Check your <code>image:</code> line first — if it pins an old tag (e.g. <code>:0.2.2.2</code>), <code>docker compose pull</code> will just re-fetch that same tag. Change it to <code>:latest</code> or the target version.
         </p>
       </div>
 
@@ -582,11 +589,32 @@ docker compose up -d --build</code></pre>
             Copy
           </button>
         </div>
-        <pre><code># Pre-built image: just pull and restart
+        <pre><code># Pre-built image
 docker compose pull && docker compose up -d
 
-# From source: pull changes and rebuild
+# Built from source
 git pull && docker compose up -d --build</code></pre>
+      </div>
+
+      <div class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Native install (install.sh or manual git clone)</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          <code>update.sh</code> stops the service, snapshots the database, fast-forwards to the latest release, installs dependencies, rebuilds the frontend, and restarts — with automatic rollback on failure.
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>sudo /opt/bambuddy/install/update.sh</code></pre>
       </div>
     </div>
   </section>
