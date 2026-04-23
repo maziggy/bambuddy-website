@@ -1071,6 +1071,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Library Trash Bin &amp; Admin Bulk Purge</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Deleted library files move to a trash bin with a configurable retention window (default 30 days) before a background sweeper permanently removes them — an undo window for accidental deletions. Regular users see and manage their own trashed files; admins see everyone's, can restore or delete permanently, and tune retention inline on the Trash page. For libraries that have grown into gigabytes, admins also get a <em>Purge old</em> bulk action with a live preview (count + total size freed + sample filenames) that moves every file older than <em>N</em> days into the trash in one shot, with an opt-in checkbox for never-printed files. Gated by a new <em>library:purge</em> permission (admin-only by default, delegable to other roles). External (linked) files bypass trash since their bytes aren't under Bambuddy's control.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Spool Inventory</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Bulk spool addition (1–100 at once) with Quick Add mode for stock spools — material is required, brand and subtype are optional. Group similar spools toggle visually collapses identical unused/unassigned spools into expandable rows with a count badge. Automatic usage tracking via 3MF slicer data for all spools, with per-layer G-code accuracy for partial prints. Universal AMS mapping capture from any print source (BambuStudio, OrcaSlicer, Bambu Handy, or Bambuddy). AMS remain% delta as fallback. Mid-print spool reassignment support (uses live assignment if changed during print). Manual AMS weight sync for recovery from corrupted data. Per-spool cost tracking with automatic cost calculation at print completion, real-time cost preview in the print modal, and configurable default cost and currency.</p>
             </div>
