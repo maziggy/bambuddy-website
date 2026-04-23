@@ -1078,6 +1078,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Archive Auto-Purge</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print archives can grow into tens of gigabytes over time — Settings → Archives now has an auto-purge toggle that hard-deletes archives older than a configurable age (default 365 days, minimum 7). A manual <em>Purge archives now</em> button opens a modal with a live preview (count + size) before you confirm. Unlike the library trash, archives are hard-deleted — print history is a decaying timeline, so there is no trash intermediate; the delete goes through the same safety-checked path as the single-archive delete button, cleaning up the 3MF, thumbnail, timelapse, source 3MF, F3D, and photo folder together with the DB row. Off by default; admin-only (reuses the existing <em>archives:delete_all</em> permission).</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Spool Inventory</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Built-in spool tracking with AMS slot assignment, remaining weight editing, spool catalog, color catalog, and PA profile matching. Bulk spool addition (1–100 at once) with Quick Add mode for stock spools — material is required, brand and subtype are optional. Group similar spools toggle visually collapses identical unused/unassigned spools into expandable rows with a count badge. Automatic usage tracking via 3MF slicer data for all spools, with per-layer G-code accuracy for partial prints. Universal AMS mapping capture from any print source (BambuStudio, OrcaSlicer, Bambu Handy, or Bambuddy). AMS remain% delta as fallback. Mid-print spool reassignment support (uses live assignment if changed during print). Manual AMS weight sync for recovery from corrupted data. Per-spool cost tracking with automatic cost calculation at print completion, real-time cost preview in the print modal, and configurable default cost and currency.</p>
             </div>
