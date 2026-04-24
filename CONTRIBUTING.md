@@ -28,19 +28,11 @@ the pencil icon on github.com is fine.
 
 ## Preview before merging
 
-[Cloudflare Pages](https://pages.cloudflare.com/) builds every PR
-branch automatically. Because there's no build step, previews are
-fast — usually ready within ~10 seconds of pushing.
+The site is static HTML/CSS — open the changed file directly in your
+browser to check your edit, or serve the repo locally with something
+like `python -m http.server` if you need relative links to work.
 
-1. Within a few seconds of opening the PR, a GitHub check appears:
-   `Cloudflare Pages — Deploying...` (yellow dot).
-2. The check turns green and `cloudflare-pages[bot]` posts a comment
-   with a preview URL like
-   `https://<branch>.bambuddy-website.pages.dev/`.
-3. Click the URL — you'll see the entire site with your changes
-   applied, exactly as it will look in production.
-
-### What to check in the preview
+### What to check
 
 - Does your edit render correctly on the page you changed?
 - Is the responsive layout still working on **mobile** and **desktop**?
@@ -50,9 +42,7 @@ fast — usually ready within ~10 seconds of pushing.
 - Are images, fonts, and stylesheets loading (no 404s in the browser
   console)?
 
-If everything looks good on the preview, a maintainer will review and
-merge. If the preview is broken, push more commits to the same branch
-— the preview auto-rebuilds on each push.
+A maintainer will review and merge.
 
 ## What goes here vs. in the wiki
 
