@@ -1476,6 +1476,20 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Multi-Viewer Fan-Out</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Most Bambu printers only allow one upstream camera connection. Bambuddy fans out a single shared stream to N viewers — open the same printer in two tabs, two devices, OBS, and a kiosk all at once without one viewer kicking another off.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Long-Lived Camera Tokens for HA / Frigate / Kiosks</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Mint a camera-only token from Settings → API Keys, paste it into a Home Assistant card / Frigate config / kiosk URL once and forget. Hard 365-day cap, hashed at rest, scoped to the camera stream only, revocable at any time. No more refreshing 60-minute browser tokens on a cron just to keep your dashboard alive.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Multi-Printer View</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Open multiple embedded camera viewers simultaneously to monitor your entire print farm on a single screen. Each viewer remembers its own position and size, and cameras stay open when navigating between pages.</p>
             </div>
