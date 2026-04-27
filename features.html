@@ -1148,6 +1148,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Server-Side Slicing (optional sidecar)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Slice STL and 3MF files without a desktop slicer installed. Bring up the optional <code>slicer-api/</code> Compose stack (OrcaSlicer and/or Bambu Studio CLI behind an HTTP wrapper), turn on <em>Use Slicer API</em> in Settings &rarr; Workflow, and the <em>Slice</em> button in File Manager, Archives, and MakerWorld dispatches a background slice job whose result lands as a new <code>.gcode.3mf</code> with embedded thumbnail. Toast tracker follows the job from queued to completed across pages so a long slice never pins the modal. Falls back to embedded settings on 3MF inputs when the CLI's <code>--load-settings</code> path misbehaves (empirically required for OrcaSlicer + H2D). Stays opt-in &mdash; if you don't run the sidecar, the existing "open in desktop slicer" flow is unchanged.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Admin Default Menu Order</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Admins can set a default sidebar navigation order for all users. Users who haven't customized their sidebar automatically inherit the admin-set layout. Toggle on from Settings to apply your current menu order as the default.</p>
             </div>
