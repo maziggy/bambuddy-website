@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compare Bambuddy vs Bambu Handy vs OctoPrint. See how Bambuddy stacks up as a self-hosted print management solution for Bambu Lab 3D printers.">
-  <meta name="keywords" content="Bambuddy vs OctoPrint, Bambuddy vs Bambu Handy, Bambu Lab print management, self-hosted 3D printing, OctoPrint alternative">
+  <meta name="description" content="Compare Bambuddy vs Bambu Handy vs OctoPrint. Self-hosted print management with MakerWorld import, server-side slicing, AI failure detection, and remote access — without the cloud.">
+  <meta name="keywords" content="Bambuddy vs OctoPrint, Bambuddy vs Bambu Handy, Bambu Lab print management, self-hosted 3D printing, OctoPrint alternative, MakerWorld self-hosted, OrcaSlicer server-side slicing">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -84,7 +84,7 @@
             <span class="compare-tag">Self-Hosted</span>
           </div>
           <div class="compare-card-body">
-            <p>Full-featured, self-hosted print management with archiving, scheduling, automation, and remote access. Your data stays on your network.</p>
+            <p>Full-featured, self-hosted print management with MakerWorld browse-and-print, server-side slicing, AI failure detection, archiving, scheduling, and remote access. Your data stays on your network.</p>
             <ul class="compare-highlights">
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
@@ -92,19 +92,19 @@
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
-                Print archiving &amp; 3D viewer
+                MakerWorld browse, slice &amp; print
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
-                Multi-printer scheduling
+                Server-side slicing (Orca / Bambu Studio)
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
-                Smart plug automation
+                AI print-failure detection (self-hosted)
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
-                Proxy Mode (remote without VPN)
+                Proxy Mode + Tailscale (remote without VPN)
               </li>
             </ul>
           </div>
@@ -133,11 +133,11 @@
               </li>
               <li class="compare-con">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                No print archiving
+                No print archive or 3D preview
               </li>
               <li class="compare-con">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                No scheduling or automation
+                No scheduling, queue or automation
               </li>
             </ul>
           </div>
@@ -150,7 +150,7 @@
             <span class="compare-tag">Self-Hosted</span>
           </div>
           <div class="compare-card-body">
-            <p>The established open-source print server. Huge plugin ecosystem, but not natively compatible with Bambu Lab's closed protocol.</p>
+            <p>The established open-source print server. Huge plugin ecosystem, but not natively compatible with Bambu Lab's MQTT/FTPS protocol — needs a USB cable or community plugins to talk to a Bambu printer.</p>
             <ul class="compare-highlights">
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
@@ -236,6 +236,12 @@
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
               <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
+            <tr>
+              <td>Tailscale (WireGuard) integration</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per virtual printer</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Manual/host-level</td>
+            </tr>
 
             <!-- Monitoring -->
             <tr class="table-section-row"><td colspan="4">Monitoring &amp; Control</td></tr>
@@ -315,6 +321,39 @@
               <td><span class="cell-partial">~</span> Basic</td>
             </tr>
 
+            <!-- Slicing & Model Discovery -->
+            <tr class="table-section-row"><td colspan="4">Slicing &amp; Model Discovery</td></tr>
+            <tr>
+              <td>MakerWorld browse, import &amp; print</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> URL-paste, plate picker, lightbox</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Server-side slicing (no desktop slicer)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> OrcaSlicer / Bambu Studio CLI sidecar</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Multi-color slice with AMS pre-mapping</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-slot dropdowns, type+colour match</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Slicer-preset library (Cloud + imported + bundled)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> .orca_filament, .bbscfg, .bbsflmt, .json</td>
+              <td><span class="cell-partial">~</span> Cloud only</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>G-code / 3MF preview viewer</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Layer-by-layer + thumbnails</td>
+              <td><span class="cell-partial">~</span> Thumbnail only</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> Via plugins</td>
+            </tr>
+
             <!-- Scheduling -->
             <tr class="table-section-row"><td colspan="4">Scheduling &amp; Automation</td></tr>
             <tr>
@@ -352,6 +391,18 @@
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Batched queue items (qty &gt; 1)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>AI print-failure detection</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Self-hosted Obico ML</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> Cloud (X1/H2D)</td>
+              <td><span class="cell-partial">~</span> Via OctoEverywhere/Obico plugin</td>
             </tr>
 
             <!-- Notifications -->
@@ -408,6 +459,24 @@
               <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
             <tr>
+              <td>Multi-colour gradient + transparency swatches</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Up to 8 stops, effects, multicolor pie</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span> Solid hex only</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Bambu RFID auto-match</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>AMS drying control</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> AMS / AMS HT / AMS 2 Pro</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
               <td>Maintenance reminders</td>
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Hours &amp; calendar</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
@@ -448,9 +517,27 @@
             </tr>
             <tr>
               <td>Multi-language</td>
-              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> EN, DE, JA</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 8 locales (EN/DE/FR/IT/JA/PT-BR/ZH-CN/ZH-TW)</td>
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>Trash bin + admin bulk-purge / auto-purge</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Configurable retention</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Companion kiosk device</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> SpoolBuddy (Pi kiosk for AMS / queue / camera)</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Per-request trace IDs in logs</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> HTTP + app logs + response header</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
           </tbody>
         </table>
@@ -501,7 +588,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           </div>
           <h3>Built-In Automation</h3>
-          <p>Smart plug control, scheduled prints, power management, maintenance reminders, and notification routing to 6 platforms &mdash; all without installing a single plugin.</p>
+          <p>Smart plug control, scheduled prints, power management, AI failure detection (self-hosted Obico), maintenance reminders, and notification routing to 6 platforms &mdash; all without installing a single plugin.</p>
         </div>
 
         <div class="feature-card reveal stagger-5">
@@ -517,7 +604,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </div>
           <h3>Remote Without the Cloud</h3>
-          <p>Proxy Mode lets you send prints from anywhere using Bambu Studio or OrcaSlicer &mdash; no VPN, no port forwarding, no cloud account. True end-to-end TLS with your printer's own certificate.</p>
+          <p>Proxy Mode &mdash; or opt into per-printer Tailscale &mdash; lets you send prints from anywhere using Bambu Studio or OrcaSlicer. Browse and print MakerWorld models without leaving Bambuddy. No VPN, no port forwarding, no cloud account.</p>
         </div>
       </div>
     </div>
