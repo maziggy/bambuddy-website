@@ -166,6 +166,103 @@
     </div>
   </section>
 
+  <!-- Featured: Integrated Slicing -->
+  <section class="content-section" id="integrated-slicing" style="background: linear-gradient(135deg, rgba(0, 174, 66, 0.1) 0%, rgba(0, 174, 66, 0.02) 100%); border-top: 2px solid var(--accent-primary); border-bottom: 2px solid var(--accent-primary);">
+    <div class="container">
+      <div class="feature-detail reveal">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: var(--accent-primary); color: white; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">New &mdash; Top Feature</span>
+        </div>
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+          Integrated Slicing
+        </h3>
+        <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.25rem; max-width: 720px;">
+          <strong>Click Slice. Print.</strong> Slice STL and 3MF files server-side &mdash; no desktop slicer install needed. The optional sidecar runs OrcaSlicer or Bambu Studio headlessly inside Docker, and one Slice button in File Manager, Archives, MakerWorld, and the print queue produces a ready-to-print <code>.gcode.3mf</code> that drops into the existing dispatch flow.
+        </p>
+
+        <ul class="feature-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>One-click Slice button everywhere</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Slice from File Manager, Archives, MakerWorld imports, and the print queue. Result lands in the library with embedded thumbnail, ready for the plate picker, AMS mapper, and dispatch.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Bambu Studio Preset Bundles (.bbscfg)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Import a Printer Preset Bundle once, then pick its curated printer + process + filament triplet from a bundle dropdown for every slice. Repeat slicing skips the JSON profile re-upload entirely.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Per-AMS-slot filament dropdowns</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Multi-color plates render one filament dropdown per AMS slot the print actually uses, each labelled <code>Filament N (PLA)</code> with a colour swatch and auto-matched against your imported / cloud / standard presets by type and colour.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Multi-plate plate picker</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Multi-plate 3MFs open a plate picker first; the filament list and dropdown shape adapt to the picked plate's actual usage. Per-plate filament discovery is cached so opening the modal a second time on the same plate is instant.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Background jobs with toast tracker</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Long slices don't pin the modal &mdash; the job tracker follows the slice from queued to completed across pages. Library / archives lists refresh automatically when the result lands.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Headless-friendly</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Runs on a NAS, mini-PC, or RPi 5 without a desktop slicer install. Sidecar is a self-contained Docker Compose stack &mdash; <code>docker compose up -d</code> and the Slice button appears in Bambuddy.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>OrcaSlicer or Bambu Studio</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Pick your preferred slicer in Settings &rarr; Workflow. Both ship as drop-in services with the same API surface, so you can switch any time.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Stays opt-in</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">If you don't run the sidecar, all "Open in Slicer" flows continue to use the existing URI-scheme handoff to your desktop slicer, unchanged. Turning it on adds the Slice button without taking anything away.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 174, 66, 0.1); border-radius: 12px; border-left: 4px solid var(--accent-primary);">
+          <p style="margin: 0; color: var(--text-secondary);">
+            <strong style="color: var(--text-primary);">How it works:</strong> Bring up the optional <code>slicer-api/</code> Compose stack with <code>docker compose up -d</code>. In Bambuddy, go to Settings &rarr; Workflow &rarr; Slicer, toggle <em>Use Slicer API</em> on, and paste the sidecar URL. The Slice button now appears on file cards. Click it &mdash; the modal closes immediately and a toast tracker follows the job until the sliced <code>.gcode.3mf</code> lands in the library, ready for the plate picker, AMS mapper, and dispatch.
+          </p>
+        </div>
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="http://wiki.bambuddy.cool/features/slicer-api/" class="nav-cta" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+            Read the Full Guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Print Management -->
   <section class="content-section" id="print-management">
     <div class="container">
