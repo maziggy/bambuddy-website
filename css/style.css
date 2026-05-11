@@ -2151,3 +2151,390 @@ tr:hover td {
     justify-content: center;
   }
 }
+
+/* ============================================
+   Press / "As Featured In" — homepage strip
+   ============================================ */
+
+.homepage-press-strip {
+  padding: 2.5rem 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.homepage-press-strip .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.homepage-press-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.homepage-press-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem 2.5rem;
+}
+
+.homepage-press-logos a {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.homepage-press-logos a:hover {
+  opacity: 1;
+  color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+
+.homepage-press-quote {
+  margin: 0.5rem auto 0;
+  max-width: 720px;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.homepage-press-quote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 720px) {
+  .homepage-press-logos { gap: 1rem 1.5rem; }
+  .homepage-press-logos a { font-size: 0.85rem; }
+}
+
+/* ============================================
+   Press page (press.html)
+   ============================================ */
+
+.press-headline-quote {
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 2rem 2rem;
+  border: none;
+  text-align: center;
+}
+
+.press-headline-text {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.25rem 0;
+  position: relative;
+}
+
+.press-headline-text::before {
+  content: '"';
+  position: absolute;
+  left: -0.15em;
+  top: -0.4em;
+  font-size: 4rem;
+  color: var(--accent-cyan);
+  opacity: 0.35;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.press-headline-cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .press-headline-text { font-size: 1.4rem; }
+}
+
+.press-strip-section {
+  padding: 1.5rem 0 3rem 0;
+}
+
+.press-strip-label {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.press-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem 2.75rem;
+}
+
+.press-logo {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.press-logo:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Per-outlet hover accents (text-styled logos for now — drop in real logo files later) */
+.press-logo-xda:hover { color: #C8102E; }
+.press-logo-htg:hover { color: #33A6CA; }
+.press-logo-fabbaloo:hover { color: #F77B0F; }
+.press-logo-igorslab:hover { color: #E10000; }
+.press-logo-3druck:hover { color: #0080C0; }
+.press-logo-fastblinker:hover { color: var(--accent-cyan); }
+
+/* The "two outlets independently agreed" narrative section */
+.press-narrative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.press-narrative-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.press-narrative-outlet {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.press-narrative-quote {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.press-narrative-quote p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .press-narrative-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+
+/* Per-outlet coverage cards */
+.press-coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.press-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.press-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.press-card-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.press-card-outlet {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.press-card-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.press-card-author { font-weight: 500; }
+.press-card-date { color: var(--text-muted); }
+.press-card-author + .press-card-date::before { content: '·'; margin-right: 0.5rem; }
+
+.press-card-title {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.press-card-quote {
+  margin: 0 0 1.25rem 0;
+  padding: 0 0 0 1rem;
+  border-left: 3px solid var(--accent-cyan);
+  flex: 1;
+}
+
+.press-card-quote p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+.press-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: gap 0.2s;
+  margin-top: auto;
+}
+
+.press-card-link:hover { gap: 0.7rem; }
+
+.press-additional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.press-additional-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.press-additional-outlet {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.press-additional-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 1rem 0;
+}
+
+/* Press contact box */
+.press-contact-box {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.press-contact-box h2 {
+  margin-bottom: 1rem;
+}
+
+.press-contact-box > p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.press-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.press-contact-card {
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.press-contact-card:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.press-contact-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.press-contact-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  word-break: break-all;
+}
+
