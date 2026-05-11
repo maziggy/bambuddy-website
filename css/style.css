@@ -2157,24 +2157,90 @@ tr:hover td {
    ============================================ */
 
 .homepage-press-strip {
-  padding: 2.5rem 0;
+  padding: 4.5rem 0;
   background: var(--bg-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 212, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+  position: relative;
 }
+
+/* Subtle gradient accent lines top + bottom — gives the section a "this matters" frame */
+.homepage-press-strip::before,
+.homepage-press-strip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 80%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-green), transparent);
+  opacity: 0.5;
+}
+
+.homepage-press-strip::before { top: -1px; }
+.homepage-press-strip::after  { bottom: -1px; }
 
 .homepage-press-strip .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .homepage-press-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--accent-cyan);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Decorative side dashes — turn the label into a designed element, not a caption */
+.homepage-press-label::before,
+.homepage-press-label::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent-cyan);
+  opacity: 0.5;
+}
+
+.homepage-press-quote {
+  margin: 0 auto;
+  max-width: 920px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.45;
+  position: relative;
+  padding: 0 2rem;
+}
+
+/* Decorative oversized opening quote mark — makes the line read as a real pull-quote */
+.homepage-press-quote::before {
+  content: '"';
+  position: absolute;
+  left: -0.2rem;
+  top: -1.5rem;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--accent-cyan);
+  opacity: 0.35;
+  font-family: Georgia, serif;
+}
+
+.homepage-press-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -2183,17 +2249,17 @@ tr:hover td {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem 2.5rem;
+  gap: 1.5rem 2.5rem;
 }
 
 .homepage-press-logos a {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
-  opacity: 0.75;
+  opacity: 0.85;
   transition: opacity 0.2s, color 0.2s, transform 0.2s;
   white-space: nowrap;
 }
@@ -2204,28 +2270,14 @@ tr:hover td {
   transform: translateY(-1px);
 }
 
-.homepage-press-quote {
-  margin: 0.5rem auto 0;
-  max-width: 720px;
-  text-align: center;
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--text-secondary);
-  line-height: 1.55;
-}
-
-.homepage-press-quote cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-style: normal;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
 @media (max-width: 720px) {
+  .homepage-press-strip { padding: 3rem 0; }
+  .homepage-press-quote { font-size: 1.15rem; padding: 0 1rem; }
+  .homepage-press-quote::before { font-size: 3rem; top: -1rem; }
   .homepage-press-logos { gap: 1rem 1.5rem; }
-  .homepage-press-logos a { font-size: 0.85rem; }
+  .homepage-press-logos a { font-size: 0.9rem; }
+  .homepage-press-label::before,
+  .homepage-press-label::after { width: 20px; }
 }
 
 /* ============================================
