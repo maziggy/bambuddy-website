@@ -2218,20 +2218,30 @@ tr:hover td {
   color: var(--text-primary);
   line-height: 1.45;
   position: relative;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
-/* Decorative oversized opening quote mark — makes the line read as a real pull-quote */
-.homepage-press-quote::before {
-  content: '"';
+/* Decorative oversized quote marks — opening top-left, closing bottom-right */
+.homepage-press-quote::before,
+.homepage-press-quote::after {
   position: absolute;
-  left: -0.2rem;
-  top: -1.5rem;
   font-size: 4.5rem;
   line-height: 1;
   color: var(--accent-cyan);
   opacity: 0.35;
   font-family: Georgia, serif;
+}
+
+.homepage-press-quote::before {
+  content: '"';
+  left: -0.2rem;
+  top: -1.5rem;
+}
+
+.homepage-press-quote::after {
+  content: '"';
+  right: -0.2rem;
+  bottom: -2.2rem;
 }
 
 .homepage-press-quote cite {
@@ -2272,8 +2282,11 @@ tr:hover td {
 
 @media (max-width: 720px) {
   .homepage-press-strip { padding: 3rem 0; }
-  .homepage-press-quote { font-size: 1.15rem; padding: 0 1rem; }
-  .homepage-press-quote::before { font-size: 3rem; top: -1rem; }
+  .homepage-press-quote { font-size: 1.15rem; padding: 0 1.25rem; }
+  .homepage-press-quote::before,
+  .homepage-press-quote::after { font-size: 3rem; }
+  .homepage-press-quote::before { top: -1rem; }
+  .homepage-press-quote::after { bottom: -1.5rem; }
   .homepage-press-logos { gap: 1rem 1.5rem; }
   .homepage-press-logos a { font-size: 0.9rem; }
   .homepage-press-label::before,
@@ -2299,18 +2312,29 @@ tr:hover td {
   color: var(--text-primary);
   margin: 0 0 1.25rem 0;
   position: relative;
+  padding: 0 1.5rem;
 }
 
-.press-headline-text::before {
-  content: '"';
+.press-headline-text::before,
+.press-headline-text::after {
   position: absolute;
-  left: -0.15em;
-  top: -0.4em;
   font-size: 4rem;
   color: var(--accent-cyan);
   opacity: 0.35;
   font-family: Georgia, serif;
   line-height: 1;
+}
+
+.press-headline-text::before {
+  content: '"';
+  left: -0.15em;
+  top: -0.4em;
+}
+
+.press-headline-text::after {
+  content: '"';
+  right: -0.15em;
+  bottom: -0.7em;
 }
 
 .press-headline-cite {
@@ -2323,7 +2347,9 @@ tr:hover td {
 }
 
 @media (max-width: 720px) {
-  .press-headline-text { font-size: 1.4rem; }
+  .press-headline-text { font-size: 1.4rem; padding: 0 1rem; }
+  .press-headline-text::before,
+  .press-headline-text::after { font-size: 3rem; }
 }
 
 .press-strip-section {
