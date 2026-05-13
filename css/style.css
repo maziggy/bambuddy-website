@@ -2392,6 +2392,7 @@ tr:hover td {
 }
 
 /* Per-outlet hover accents (text-styled logos for now — drop in real logo files later) */
+.press-logo-tailscale:hover { color: #3B82F6; }
 .press-logo-xda:hover { color: #C8102E; }
 .press-logo-htg:hover { color: #33A6CA; }
 .press-logo-fabbaloo:hover { color: #F77B0F; }
