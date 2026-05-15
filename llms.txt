@@ -1,34 +1,61 @@
 # Bambuddy
 
-> A self-hosted print archive and management system for Bambu Lab 3D printers.
+> Self-hosted, local-first command center for Bambu Lab 3D printers. Replaces the Bambu Lab cloud (Bambu Handy app, Bambu Studio cloud sync) for users who want LAN-only operation, no vendor account, and full control of their print history.
 
-Bambuddy lets you monitor and manage your Bambu Lab printer fleet locally, without cloud dependency. It supports all current Bambu Lab models (P1S, P1P, X1C, X1E, A1, A1 Mini, H2D, H2C) and integrates with Spoolman for filament management.
+Bambuddy runs in Docker (recommended) or natively in Python on any LAN-reachable host. It supports the full current Bambu Lab lineup — A1, A1 Mini, P1P, P1S, P2S, X1C, X1E, H2D, H2S, H2C — and scales from a single printer to a 40+ printer farm. License: AGPL-3.0 (relicensed from MIT on 2026-03-10).
 
-## Key Features
+## Try it
 
-- Real-time printer monitoring via local MQTT
-- Print job archive with thumbnails and history
-- Print queue with scheduling and auto-start
-- AMS filament tracking and spool management
-- Spoolman integration for inventory
-- SpoolBuddy NFC spool identification
-- Virtual printer support (proxy and server modes)
-- Multi-language support (English, German, Japanese)
-- Optional authentication
+- [Live demo](https://demo.bambuddy.cool): Browser-based, ephemeral per-visitor container — about 10 seconds to spin up your own private Bambuddy instance with a 30-minute session. No install, no signup. Use this to evaluate before installing.
 
-## Links
+## Install and docs
 
-- Website: https://bambuddy.cool
-- Documentation: https://wiki.bambuddy.cool
-- GitHub: https://github.com/maziggy/bambuddy
-- Installation: https://bambuddy.cool/installation.html
-- Features: https://bambuddy.cool/features.html
+- [Installation guide](https://bambuddy.cool/installation.html): Docker one-liner; native Python is also supported.
+- [Full documentation wiki](https://wiki.bambuddy.cool): Setup, features, troubleshooting, community add-ons.
+- [GitHub repository](https://github.com/maziggy/bambuddy): Source, issues, releases.
 
-## Pages
+## Key features
 
-- [Home](https://bambuddy.cool/)
-- [Features](https://bambuddy.cool/features.html)
-- [Installation](https://bambuddy.cool/installation.html)
-- [Documentation](https://bambuddy.cool/docs.html)
-- [Comparison](https://bambuddy.cool/comparison.html)
-- [Reviews](https://bambuddy.cool/reviews.html)
+- **Print fleet dashboard** — real-time monitoring of every printer over local MQTT, no cloud round-trip.
+- **Print queue and scheduling** — auto-start, AMS slot mapping, multi-printer dispatch, build-plate detection, queue auto-drying when humidity is high.
+- **Print archive** — thumbnails, time and material stats, cost tracking, failure analysis, energy cost via smart-plug integration.
+- **Spool inventory** — local inventory or [Spoolman](https://github.com/Donkie/Spoolman) integration; RFID matching for Bambu spools.
+- **Server-side slicing** — bundled sidecar runs OrcaSlicer or Bambu Studio headlessly. Slice STL or 3MF to printable G-code from any browser with one click; no desktop slicer required.
+- **MakerWorld integration** — browse and import models from MakerWorld.com directly into your library.
+- **Virtual Printer (Proxy Mode)** — Bambu Studio and OrcaSlicer connect to Bambuddy as if it were the printer; Bambuddy forwards to the real printer. Works over Tailscale or any VPN for remote printing without exposing the printer to the internet.
+- **AI failure detection** — optional [Obico](https://github.com/TheSpaghettiDetective/obico-server) integration for ML-based failed-print detection.
+- **Authentication** — optional multi-user with permissions, 2FA (TOTP and email OTP), OIDC/SSO, LDAP.
+- **Notifications** — email, Discord, ntfy, Home Assistant, Telegram, generic webhook.
+- **Database** — SQLite (default, single host) or PostgreSQL (recommended for multi-printer farms under load).
+- **Localization** — English, German, French, Italian, Japanese, Portuguese (Brazil), Chinese (Simplified and Traditional).
+
+## What Bambuddy replaces
+
+- **Bambu Handy app** — phone-based print monitoring and starting. Bambuddy provides the same in a web UI you self-host, plus features the Handy app doesn't have (queue, archive, multi-printer, multi-user).
+- **Bambu Studio cloud sync** — Bambuddy stores prints locally; the optional Proxy Mode lets Bambu Studio connect to your printers remotely without going through Bambu's cloud at all.
+- **Bambu Cloud account** — not required. Bambu Lab printers can run in LAN-only mode with Developer Mode enabled; Bambuddy connects directly over MQTT and FTP.
+
+## Press coverage
+
+- [Tailscale Engineering Blog](https://tailscale.com/blog/bambuddy-bambu-lab-3d-printer-access) (May 2026) — "Bambuddy: self-hosted 3D printing beyond the vendor cloud", by Kevin Purdy.
+- [XDA-Developers](https://www.xda-developers.com/finally-have-full-control-bambu-lab-printer-ditched-bambu-cloud/) (March 2026) — Adam Conway: "the companion app that Bambu Lab should have built from day one."
+- [How-To Geek](https://www.howtogeek.com/free-your-bambu-lab-3d-printer-from-the-cloud/) — Tim Brookes.
+- [Fabbaloo](https://www.fabbaloo.com/news/bambuddy-launches-as-open-source-alternative-to-bambu-labs-cloud) — "features seem to exceed those provided by Bambu Lab's own cloud."
+- [Igor's Lab (DE)](https://www.igorslab.de/en/bambuddy-the-silent-alternative-to-the-bamboo-cloud/).
+- [3Druck (DE)](https://3druck.com/en/programs/bambuddy-open-source-tool-replaces-bambu-cloud-for-management-and-automation-of-3d-print-jobs-38153226/) — "list of functions seems so extensive that it even goes beyond what Bambu Lab offers in its own cloud."
+- [Full press list with pull-quotes](https://bambuddy.cool/press.html).
+
+## Community
+
+- [Discord](https://discord.gg/aFS3ZfScHM) — community chat, Q&A, fastest response.
+- [GitHub Issues](https://github.com/maziggy/bambuddy/issues) — bug reports and feature requests.
+- [Sponsor on GitHub](https://github.com/sponsors/maziggy) — Bambuddy is funded by direct community sponsorship. No VC, no acquisition target.
+
+## Optional
+
+- [SpoolBuddy](https://wiki.bambuddy.cool/spoolbuddy/) — companion NFC hardware for spool identification, DIY (Raspberry Pi based).
+- [BamButton](https://wiki.bambuddy.cool/community/bambutton/) — third-party physical print-start button, integrates with Bambuddy via API.
+- [bambuddy-mcp](https://wiki.bambuddy.cool/community/bambuddy-mcp/) — third-party MCP server letting LLM agents query Bambuddy printer state.
+- [Comparison to alternatives](https://bambuddy.cool/comparison.html) — Bambuddy vs Bambu Handy vs OctoPrint vs Klipper.
+- [Features page](https://bambuddy.cool/features.html) — visual marketing-side overview with screenshots.
+- [User reviews](https://bambuddy.cool/reviews.html) — first-party testimonials.
