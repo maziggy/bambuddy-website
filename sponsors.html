@@ -53,7 +53,28 @@
     }
     .tier-card.featured {
       border-color: var(--accent-color, #ea4aaa);
-      box-shadow: 0 0 0 2px rgba(234, 74, 170, 0.15);
+      border-width: 2px;
+      box-shadow: 0 0 0 3px rgba(234, 74, 170, 0.18), 0 16px 32px rgba(234, 74, 170, 0.15);
+      transform: translateY(-12px);
+      position: relative;
+    }
+    .tier-card.featured:hover {
+      transform: translateY(-16px);
+    }
+    .tier-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-color, #ea4aaa);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
     .tier-name {
       font-size: 1.25rem;
@@ -225,6 +246,7 @@
 
         <!-- Supporter — featured -->
         <div class="tier-card featured reveal">
+          <div class="tier-badge">Most Popular</div>
           <div class="tier-name">Supporter</div>
           <div class="tier-price">$15</div>
           <div class="tier-price-suffix">per month</div>
