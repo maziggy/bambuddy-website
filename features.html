@@ -374,8 +374,15 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Print Log</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Chronological table view of all print activity within the Archives page. Search and filter by printer, user, status, or date range. Colored status badges show completed, failed, stopped, cancelled, and skipped prints at a glance. Includes duration and filament info. Log data is separate from archives—clearing the log never deletes your archived files.</p>
+              <strong>Per-archive Print Log</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Each archive tracks every individual print of that file. An orange <code>N prints</code> badge appears on the card whenever a model has been printed more than once; click it for the full run-by-run history with date, status, duration, filament used, cost, and failure reason. Reprints add new rows instead of overwriting the source archive's data — a 100 g successful print stays visible alongside a 10 g failed reprint, and Quick Stats correctly sum to 110 g across both events.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Global Print Log</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Chronological table view of all print activity across every printer. Search and filter by printer, user, status, or date range. Colored status badges show completed, failed, stopped, cancelled, and skipped prints at a glance. Includes duration and filament info. Log data is separate from archives — clearing the log never deletes your archived files.</p>
             </div>
           </li>
           <li>
