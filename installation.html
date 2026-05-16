@@ -104,7 +104,7 @@
       <div class="feature-detail reveal">
         <h4 class="mb-md">Docker Installation</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          The easiest way to get started. Works on any system with Docker installed.
+          The easiest way to get started on Linux or macOS with Docker installed. Windows users should jump to the <a href="#docker">Docker Compose setup</a> below — it runs on PowerShell without any extra tooling.
         </p>
       </div>
 
@@ -149,7 +149,7 @@
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
         <div>
-          <strong>When it's done:</strong> Open <code>http://localhost:8000</code> in your browser. That's it — you're running Bambuddy.
+          <strong>When it's done:</strong> Open <code>http://&lt;your-host&gt;:8000</code> in your browser, replacing <code>&lt;your-host&gt;</code> with the IP or hostname of the machine running Bambuddy. On Linux with host networking <code>localhost</code> works too — but <strong>not</strong> on Docker Desktop (macOS/Windows), because the container is on the Docker VM's network, not the host's loopback.
         </div>
       </div>
 
@@ -487,9 +487,9 @@ source venv/bin/activate</code></pre>
       </div>
 
       <div class="feature-detail reveal">
-        <h4 class="mb-md">Option A: Interactive Install Script (Recommended)</h4>
+        <h4 class="mb-md">Option A: Interactive Install Script (Recommended for Linux / macOS)</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          Prompts for configuration options and sets everything up for you:
+          Prompts for configuration options and sets everything up for you. Requires a bash-compatible shell (Linux, macOS, or WSL on Windows). For native Windows, use Option B below.
         </p>
       </div>
 
@@ -508,15 +508,15 @@ source venv/bin/activate</code></pre>
       </div>
 
       <div class="feature-detail reveal mt-xl">
-        <h4 class="mb-md">Option B: Pre-built Image (Manual)</h4>
+        <h4 class="mb-md">Option B: Pre-built Image (Manual — works on Windows / PowerShell too)</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          No building required - just download the compose file and run:
+          No building required — just download the compose file and run. Works on any OS with Docker installed.
         </p>
       </div>
 
       <div class="code-block reveal">
         <div class="code-header">
-          <span class="code-lang">bash</span>
+          <span class="code-lang">Linux / macOS / WSL (bash)</span>
           <button class="code-copy">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
@@ -527,6 +527,23 @@ source venv/bin/activate</code></pre>
         </div>
         <pre><code>mkdir bambuddy && cd bambuddy
 curl -O https://raw.githubusercontent.com/maziggy/bambuddy/main/docker-compose.yml
+docker compose up -d</code></pre>
+      </div>
+
+      <div class="code-block reveal mt-md">
+        <div class="code-header">
+          <span class="code-lang">Windows (PowerShell)</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>mkdir bambuddy
+cd bambuddy
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/maziggy/bambuddy/main/docker-compose.yml -OutFile docker-compose.yml
 docker compose up -d</code></pre>
       </div>
 
