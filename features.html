@@ -238,8 +238,15 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Re-slice for any printer</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">A 3MF authored for one printer model can be re-sliced for another &mdash; pick the target printer in the Slice modal and the slicer regenerates G-code for its bed, kinematics, and nozzle count. MakerWorld imports just work, whatever printer the creator used.</p>
+              <strong>Re-slice for any printer &mdash; including across nozzle classes</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">A 3MF authored for one printer model can be re-sliced for another &mdash; pick the target in the Slice modal and the slicer regenerates G-code for its bed, kinematics, and nozzle count. Cross-class re-slices (single-nozzle X1C / P1S / A1 / P2S onto a dual-nozzle H2D / H2D Pro and vice versa) just work too: Bambuddy detects the class change and auto-arranges objects so they land safely on the target's bed and clear the H2D's per-nozzle dead zones. MakerWorld imports authored for any printer slice cleanly on yours.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Slice all plates at once</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Multi-plate projects &mdash; parted statues, multi-part kits, calibration test stacks &mdash; get a &ldquo;Slice all N plates&rdquo; toggle in the Slice modal. One click produces a single <code>.gcode.3mf</code> with every plate's G-code inside, ready to send to the printer. The toast shows &ldquo;Plate 2 of 5 &mdash; Generating G-code (47%)&rdquo; as it works through them, and Bambuddy handles the per-plate-then-merge dance for cross-class slice-all transparently.</p>
             </div>
           </li>
           <li>
