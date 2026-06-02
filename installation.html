@@ -129,7 +129,7 @@
       <div class="feature-detail reveal">
         <h4 class="mb-md">Docker Installation</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          The easiest way to get started on Linux or macOS with Docker installed. Windows users should jump to the <a href="#docker">Docker Compose setup</a> below — it runs on PowerShell without any extra tooling.
+          The easiest way to get started on Linux or macOS with Docker installed. On Windows you can either run native PowerShell (see <a href="#windows-native">Windows Native</a> below) or use the <a href="#docker">Docker Compose setup</a>.
         </p>
       </div>
 
@@ -148,7 +148,7 @@
       </div>
 
       <div class="feature-detail reveal mt-xl">
-        <h4 class="mb-md">Native Installation</h4>
+        <h4 class="mb-md">Native Installation (Linux / macOS)</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
           Installs with Python virtual environment and systemd/launchd service.
         </p>
@@ -166,6 +166,27 @@
           </button>
         </div>
         <pre><code>curl -fsSL https://raw.githubusercontent.com/maziggy/bambuddy/main/install/install.sh -o install.sh && chmod +x install.sh && ./install.sh</code></pre>
+      </div>
+
+      <div id="windows-native" class="feature-detail reveal mt-xl">
+        <h4 class="mb-md">Native Installation (Windows)</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Runs in PowerShell as Administrator — the installer self-elevates via UAC if not. Installs Git and Python via <code>winget</code> when missing, creates a Python virtual environment, writes user data and logs to sibling directories outside the Git checkout, and optionally registers Bambuddy as a Windows Service via NSSM. Pass <code>-Yes</code> for an unattended install. Full reference in the <a href="https://wiki.bambuddy.cool/getting-started/windows-installer/" target="_blank" rel="noopener">Windows Installer Guide</a>.
+        </p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="code-lang">Windows (PowerShell, Administrator)</span>
+          <button class="code-copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code>powershell -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/maziggy/bambuddy/main/install/windows-installer.ps1 -OutFile windows-installer.ps1; .\windows-installer.ps1"</code></pre>
       </div>
 
       <div class="alert alert-success mt-xl reveal">
@@ -195,7 +216,7 @@
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
         <div>
-          <strong>Supported systems:</strong> Debian/Ubuntu, RHEL/Fedora/CentOS, Arch Linux, openSUSE, and macOS (Homebrew).
+          <strong>Supported systems:</strong> Debian/Ubuntu, RHEL/Fedora/CentOS, Arch Linux, openSUSE, macOS (Homebrew), and Windows 10/11 (PowerShell 5.1+, winget for Git/Python).
         </div>
       </div>
     </div>
