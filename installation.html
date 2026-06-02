@@ -628,6 +628,17 @@ docker compose up -d --build</code></pre>
         </div>
       </div>
 
+      <div class="alert alert-info mt-md reveal">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <div>
+          <strong>External library folders (v0.2.5b1+):</strong> The <em>"Add external folder"</em> feature is opt-in for operators. Set <code>BAMBUDDY_EXTERNAL_ROOTS</code> to a colon-separated list of host paths users are permitted to mount (e.g. <code>BAMBUDDY_EXTERNAL_ROOTS=/external/nas:/external/projects</code>), and bind-mount the matching host directories. Empty default disables the feature. See <a href="https://wiki.bambuddy.cool/getting-started/docker/#external-library-folders-bambuddy_external_roots" target="_blank">the wiki</a> for the full configuration recipe and the security rationale.
+        </div>
+      </div>
+
       <div class="feature-detail reveal mt-xl">
         <h4 class="mb-md">Updating</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
