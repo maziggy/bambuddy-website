@@ -353,15 +353,15 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Re-print with AMS Mapping & Print Options</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send any archived print to any printer. For multi-plate 3MF files, select which plate to print with thumbnail previews. Auto-matches filaments by type and color, or manually select AMS slots from dropdown. On dual-nozzle printers (H2D/H2D Pro), filament matching is nozzle-aware — only AMS trays connected to the correct nozzle (L/R) are considered. Color names decoded from Bambu filament codes. Re-read button refreshes AMS status. Configure print options (bed leveling, flow calibration, vibration calibration, first layer inspection, timelapse) before starting.</p>
+              <strong>Print with AMS Mapping & Print Options</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Send any archived print to any printer from the unified Print dialog. For multi-plate 3MF files, select which plate to print with thumbnail previews. Auto-matches filaments by type and color, or manually select AMS slots from dropdown. On dual-nozzle printers (H2D/H2D Pro), filament matching is nozzle-aware — only AMS trays connected to the correct nozzle (L/R) are considered. Color names decoded from Bambu filament codes. Re-read button refreshes AMS status. Configure print options (bed leveling, flow calibration, vibration calibration, first layer inspection, timelapse) before dispatch.</p>
             </div>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Quick Schedule Button</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Schedule button on archive cards for quick access to print queue. Add prints to the queue without right-clicking—respects user permissions.</p>
+              <strong>Unified Print Button</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print button on archive cards opens the shared Print dialog for ASAP, Queue, or Schedule dispatch. Add prints to the scheduler-backed queue without right-clicking—respects user permissions.</p>
             </div>
           </li>
           <li>
@@ -409,7 +409,7 @@
         </ul>
         <div class="feature-screenshot reveal" style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <img src="assets/screenshots/archives.png" alt="Bambuddy Archives - Print management interface with 3D preview" loading="lazy" style="flex: 1; min-width: 300px;">
-          <img src="assets/screenshots/reprint_ams_mapping.png" alt="Bambuddy Re-print - Filament mapping and print options" loading="lazy" style="flex: 1; min-width: 300px;">
+          <img src="assets/screenshots/reprint_ams_mapping.png" alt="Bambuddy Print - Filament mapping and print options" loading="lazy" style="flex: 1; min-width: 300px;">
         </div>
       </div>
     </div>
@@ -633,14 +633,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Time-Based Scheduling</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Schedule prints to start at specific times, like overnight or off-peak hours.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Schedule prints with a "do not start before" time, like overnight or off-peak hours. If the printer is busy at the scheduled time, the job stays queued until it can be dispatched.</p>
             </div>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Queue Only Mode</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Stage prints without auto-start. Prepare batches and release them manually when ready.</p>
+              <strong>Queue Mode</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Append prints to the back of the queue, or require manual start when you want to stage batches and release them yourself.</p>
             </div>
           </li>
           <li>
@@ -668,7 +668,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Batch Print Quantity</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set a quantity in the Print or Schedule dialog to create multiple queue items at once. In direct print mode, the first copy prints immediately and the rest are queued. Items are grouped into a batch for easy tracking.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set a quantity in the Print dialog to create multiple queue items at once. ASAP batches are inserted at the top of the queue, while Queue batches append to the back unless manual start is required. Items are grouped into a batch for easy tracking.</p>
             </div>
           </li>
           <li>
@@ -730,7 +730,7 @@
         </ul>
         <div class="feature-screenshot reveal" style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <img src="assets/screenshots/print-queue.png" alt="Bambuddy Queue - Drag-and-drop print queue management" loading="lazy" style="flex: 2; min-width: 300px;">
-          <img src="assets/screenshots/schedule-print.png" alt="Bambuddy Schedule Print - Filament mapping and print options" loading="lazy" style="flex: 1; min-width: 250px; max-width: 400px;">
+          <img src="assets/screenshots/schedule-print.png" alt="Bambuddy Print - Queue and schedule options" loading="lazy" style="flex: 1; min-width: 250px; max-width: 400px;">
         </div>
       </div>
     </div>
@@ -924,7 +924,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Print Files from Project View</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Printable files from linked library folders appear directly on the project detail page with Print Now and Add to Queue buttons. The resulting archive is automatically linked to the project — no manual assignment needed.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Printable files from linked library folders appear directly on the project detail page with a Print button. The resulting queue item and archive are automatically linked to the project — no manual assignment needed.</p>
             </div>
           </li>
           <li>
@@ -2214,15 +2214,15 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Print Directly</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print library files with full options: plate selection for multi-plate 3MF, AMS mapping, and all print settings.</p>
+              <strong>Unified Print Action</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print library files through the shared Print dialog with full options: plate selection for multi-plate 3MF, AMS mapping, scheduler timing, and all print settings.</p>
             </div>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Add to Queue</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Queue files without creating archives upfront—archives are created automatically when prints start.</p>
+              <strong>Queue-Backed Dispatch</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">All file prints go through the scheduler-backed queue. Archives are created automatically when prints start, so library files do not need archive copies upfront.</p>
             </div>
           </li>
           <li>
