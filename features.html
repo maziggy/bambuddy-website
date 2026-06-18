@@ -1843,7 +1843,7 @@
           Printer Control
         </h3>
         <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
-          Fine-tune your prints with real-time control over printer settings.
+          Fine-tune your prints with real-time control over printer settings. The printer card was redesigned in <strong>0.2.5b2</strong> with a tighter layout and popovers for all controls (temperature setpoints, fan speeds, jog).
         </p>
         <ul class="feature-list">
           <li>
@@ -1863,8 +1863,22 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Real-Time Fan Status</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor part cooling, auxiliary, and chamber fan speeds with live updates via WebSocket. Compact badges show current fan speeds (0-100%).</p>
+              <strong>Fan Status &amp; Speed Control</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor part cooling, auxiliary, and chamber fan speeds with live WebSocket updates — and click any fan badge to set the speed directly (0-100%, with Off + three user-configurable quick presets and a custom value input).</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Temperature Setpoints (Nozzle / Bed / Chamber)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Click any temperature card on the printer card to set the target — nozzle (0-320 &deg;C, per-extruder on dual-nozzle H2D), bed (0-140 &deg;C), and chamber (0-60 &deg;C, only on H2C / H2D / H2D Pro / H2S / X2D with an active chamber heater; sensor-only models keep the card read-only). Quick-select buttons plus a custom value input; the Off button is always present.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Customizable Temperature &amp; Fan Presets</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Three quick-select values per category (nozzle / bed / chamber / fan speed) are user-configurable under <strong>Settings &rarr; Workflow &rarr; Temperature &amp; Fan Presets</strong>. The fixed Off button is always shown. Empty stored value falls back to the built-in defaults.</p>
             </div>
           </li>
           <li>
@@ -1912,8 +1926,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Move Build Plate (Z-Jog)</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Move the build plate up or down from the printer card to inspect the plate via camera or reposition manually. Popover offers 1 / 10 / 50 mm step sizes. When the printer is not homed after a print, a Bambu Studio-style warning lets you Home Z, Move anyway (bypasses soft endstops), or Cancel.</p>
+              <strong>Jog Controls (Z / XY / Extruder)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">One popover, three axes. <strong>Z-Jog</strong> moves the build plate (1 / 10 / 50 mm steps) with a Bambu Studio-style not-homed warning offering Home Z, Move anyway (bypasses soft endstops), or Cancel. <strong>XY-Jog</strong> moves the toolhead by a relative X/Y distance (&plusmn;200 mm per axis). <strong>Extruder Jog</strong> manually extrudes or retracts filament (&plusmn;100 mm) for purging or load verification &mdash; Bambu firmware enforces cold-extrude refusal client-side guards aren't needed.</p>
             </div>
           </li>
           <li>
