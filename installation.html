@@ -215,6 +215,23 @@
     </div>
   </section>
 
+  <!-- Post-install nudge -->
+  <section class="content-section" style="padding-top: 1rem; padding-bottom: 1rem; background: var(--bg-secondary);">
+    <div class="container" style="max-width: 760px;">
+      <div class="reveal" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(0,170,90,0.08), rgba(0,170,90,0.02)); border: 1px solid rgba(0,170,90,0.25); border-radius: 12px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="color: var(--bambu-green); flex-shrink: 0;">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <div style="flex: 1; min-width: 0;">
+          <p style="margin: 0; font-weight: 600;">Bambuddy is free &mdash; and stays that way because people choose to support it.</p>
+          <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--text-muted);">
+            No VC, no acquisition target, no cloud lock-in. <a href="sponsors.html?from=install-top" style="color: var(--bambu-green); font-weight: 500;">See who keeps it independent &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- System Requirements -->
   <section class="content-section" id="requirements">
     <div class="container">
@@ -770,7 +787,7 @@ git pull && docker compose up -d --build</code></pre>
         <h2>Find Bambuddy useful?</h2>
         <p>Bambuddy is free and will stay free. It's developed in the open and funded by people who choose to support it directly &mdash; no VC, no acquisition target. If it's earning a place on your home network, consider keeping it independent.</p>
         <div class="hero-buttons mt-xl">
-          <a href="sponsors.html" class="btn btn-primary">
+          <a href="sponsors.html?from=install-bottom" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="margin-right: 4px;">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
