@@ -1784,6 +1784,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>AMS Filament Backup Status &amp; Toggle</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Mirrors BambuStudio's per-printer AMS Filament Backup setting — when a spool runs out, the printer auto-switches to a matching spool in another slot so a long print can roll across multiple spools of the same material. A small badge in the Filaments section header on each printer card shows the live state (blue circular-arrow icon = ON, dim = OFF, "?" = A1 family with no <code>cfg</code> field); click to toggle. State syncs in real time whether the change came from Bambuddy, BambuStudio, or the printer's touchscreen. The companion <strong>Prefer Lowest Remaining Filament</strong> setting now respects this state — when Backup is OFF, Bambuddy automatically suppresses the prefer-lowest sort so the dispatcher won't reach for a near-empty spool the printer can't roll off of (closes #1766).</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Configure AMS Slots</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Configure individual AMS slots with filament presets, colors, and K-profiles. Presets are filtered by printer model so only compatible filaments are shown. Re-configuring an already-configured slot pre-populates all fields (preset, color, K-profile) for quick edits.</p>
             </div>
@@ -1872,6 +1879,13 @@
             <div>
               <strong>Temperature Setpoints (Nozzle / Bed / Chamber)</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Click any temperature card on the printer card to set the target — nozzle (0-320 &deg;C, per-extruder on dual-nozzle H2D), bed (0-140 &deg;C), and chamber (0-60 &deg;C, only on H2C / H2D / H2D Pro / H2S / X2D with an active chamber heater; sensor-only models keep the card read-only). Quick-select buttons plus a custom value input; the Off button is always present.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Heater History Charts</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Each heater tile (nozzle, bed, chamber) carries a small chart icon in the top-right corner. Single-click the tile body to open the existing temperature setpoint popover; click the icon to open a per-heater history modal with current / average / min / max stats, a target overlay, and a 6h / 24h / 48h / 7d time range selector. Bambuddy records readings every 60 seconds (retention configurable, default 30 days), so the read-only X1C and P2S chamber sensors finally have a useful click action too. Mirrors the existing AMS humidity / temperature history surface.</p>
             </div>
           </li>
           <li>
