@@ -245,6 +245,30 @@
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
               <td><span class="cell-partial">~</span> Manual/host-level</td>
             </tr>
+            <tr>
+              <td>Multiple Virtual Printer instances</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-printer VP with own bind IP &amp; modes (proxy / bridge / queue / archive / review)</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Guided first-printer setup wizard</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Auto-discovery, access-code paste, validation step</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Self-service connection diagnostic</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Layer-by-layer triage (MQTT / FTPS / TLS / cloud)</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Database choice</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> SQLite (default) or PostgreSQL (multi-printer farms)</td>
+              <td><span class="cell-na">N/A</span></td>
+              <td><span class="cell-partial">~</span> SQLite only</td>
+            </tr>
 
             <!-- Monitoring -->
             <tr class="table-section-row"><td colspan="4">Monitoring &amp; Control</td></tr>
@@ -277,6 +301,42 @@
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> LAN upload</td>
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span> OTA</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Heater history charts (nozzle / bed / chamber)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-tile chart icon, 6h / 24h / 48h / 7d ranges</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Via plugins</td>
+            </tr>
+            <tr>
+              <td>AMS humidity / temperature history charts</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-AMS modal, configurable retention</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>AMS Filament Backup status &amp; toggle</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Live state badge + one-click toggle from Bambuddy</td>
+              <td><span class="cell-partial">~</span> Slicer / printer touchscreen only</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Per-printer Maintenance Mode</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Out-of-service flag &mdash; drops from queue / scheduler / notifications, card stays visible</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Bed-jog &amp; manual calibration (bed level / flow / vibration / nozzle offset)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Bed-slinger aware</td>
+              <td><span class="cell-partial">~</span> Calibration only</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>Camera streaming (Bambu + external)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Chamber + RTSP / MJPEG / go2rtc relay</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> Chamber only</td>
+              <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
 
             <!-- Archiving -->
@@ -378,6 +438,24 @@
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
             </tr>
             <tr>
+              <td>Staggered fleet start (avoid power spikes)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Configurable group size &amp; interval</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Shortest-job-first queue ordering</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Optional per-fleet, with jumped-item starvation guard</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Per-model start / end G-code snippets</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Auto-injected on queue, opt-in per-VP for slicer uploads</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+            </tr>
+            <tr>
               <td>Smart plug control</td>
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Tasmota, HA, MQTT, REST</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
@@ -411,14 +489,14 @@
             <!-- Notifications -->
             <tr class="table-section-row"><td colspan="4">Notifications &amp; Integrations</td></tr>
             <tr>
-              <td>Push notifications</td>
-              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 6 platforms</td>
-              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> Mobile push</td>
+              <td>Notification channels</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Email, Discord, Telegram, ntfy, Home Assistant, generic webhook</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> Mobile push only</td>
               <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
             <tr>
-              <td>WhatsApp / Telegram / Discord</td>
-              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+              <td>Customizable notification templates</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-event Jinja templates with placeholders</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
               <td><span class="cell-partial">~</span> Via plugins</td>
             </tr>
@@ -480,6 +558,30 @@
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
             </tr>
             <tr>
+              <td>Queue + ambient auto-drying (humidity-triggered)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Between scheduled prints OR on any idle printer; optional blocking mode</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Per-filament humidity threshold</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> e.g. Nylon 20% / PLA 60% / ASA 30%; most-restrictive wins for mixed AMS</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span> Single global value</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Spool storage locations catalog</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Shelves / drawers / dryboxes, deep-linkable filter, Spoolman sync</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Spool inventory with low-stock alerts</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Internal mode or Spoolman; forecast lead-time</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Via Spoolman plugin</td>
+            </tr>
+            <tr>
               <td>Maintenance reminders</td>
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Hours &amp; calendar</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
@@ -520,13 +622,79 @@
             </tr>
             <tr>
               <td>Multi-language</td>
-              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 8 locales (EN/DE/FR/IT/JA/PT-BR/ZH-CN/ZH-TW)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 11 locales (EN/DE/ES/FR/IT/JA/KO/PT-BR/TR/ZH-CN/ZH-TW)</td>
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
               <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
             </tr>
             <tr>
               <td>Trash bin + admin bulk-purge / auto-purge</td>
               <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Configurable retention</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Multi-user with role-based permissions</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Admins / Operators / Viewers + custom groups, granular per-feature permissions</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span> Single cloud account</td>
+              <td><span class="cell-partial">~</span> Via plugins</td>
+            </tr>
+            <tr>
+              <td>Two-factor authentication (2FA)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> TOTP + email OTP, backup codes</td>
+              <td><span class="cell-partial">~</span> Bambu account level</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>SSO (OIDC) and LDAP</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Auto-provision groups, custom icon, opt-in admin sync</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Via plugins</td>
+            </tr>
+            <tr>
+              <td>API keys with granular scopes</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> QR-code share, energy-cost-update-only opt-in, expiry</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>Configurable session lifetime</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 24h / 7d / 30d / custom; 720h hard ceiling</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>In-app updates (one-click)</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Docker / HA addon / git / Windows installer paths</td>
+              <td><span class="cell-yes" aria-label="Yes">&#10003;</span> App store</td>
+              <td><span class="cell-partial">~</span> pip update</td>
+            </tr>
+            <tr>
+              <td>Scheduled local + GitHub backups</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Hourly / daily / weekly, retention policy, encryption optional</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Support bundle + in-app bug reporter</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> One-click ZIP with logs + diag snapshot, secrets redacted</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-partial">~</span> Manual log copy</td>
+            </tr>
+            <tr>
+              <td>Passive log scanner for known issues</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Matches errors against catalog, links to fixes</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Guided onboarding tour</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> 25-step in-app walkthrough across all major features</td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+              <td><span class="cell-no" aria-label="No">&#10007;</span></td>
+            </tr>
+            <tr>
+              <td>Customizable printer cards + sidebar</td>
+              <td class="col-highlight"><span class="cell-yes" aria-label="Yes">&#10003;</span> Per-user tile layout, hide-toggle, admin-pushed default order</td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
               <td><span class="cell-no" aria-label="No">&#10007;</span></td>
             </tr>
