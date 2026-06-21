@@ -17,7 +17,7 @@ Bambuddy runs in Docker (recommended) or natively in Python on any LAN-reachable
 ## Key features
 
 - **Print fleet dashboard** — real-time monitoring of every printer over local MQTT, no cloud round-trip.
-- **Print queue and scheduling** — auto-start, AMS slot mapping, multi-printer dispatch, build-plate detection, queue auto-drying when humidity is high.
+- **Print queue and scheduling** — auto-start, AMS slot mapping, multi-printer dispatch, build-plate detection, queue auto-drying when humidity is high (per-filament humidity threshold, e.g. Nylon at 20% vs PLA at 60%; most-restrictive wins for mixed AMS units).
 - **Print archive** — thumbnails, time and material stats, cost tracking, failure analysis, energy cost via smart-plug integration.
 - **Spool inventory** — local inventory or [Spoolman](https://github.com/Donkie/Spoolman) integration; RFID matching for Bambu spools.
 - **Server-side slicing** — bundled sidecar runs OrcaSlicer or Bambu Studio headlessly. Slice STL or 3MF to printable G-code from any browser with one click; no desktop slicer required.
