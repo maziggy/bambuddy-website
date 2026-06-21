@@ -1950,7 +1950,10 @@ tr:hover td {
 }
 
 .compare-table thead th {
-  background: rgba(255, 255, 255, 0.03);
+  /* Opaque background — sticky header sits over body rows on scroll,
+     so a transparent tint let "CONNECTION & SETUP" section rows bleed
+     through the pinned header. Match the page background. */
+  background: var(--bg-primary);
   font-weight: 600;
   font-size: 1rem;
   color: var(--text-primary);
@@ -1964,7 +1967,10 @@ tr:hover td {
 }
 
 .compare-table thead .col-highlight {
-  background: rgba(0, 212, 255, 0.08);
+  /* Opaque base + cyan tint overlay via box-shadow so the highlight stays
+     visible on the sticky row without letting body rows show through. */
+  background: var(--bg-primary);
+  box-shadow: inset 0 0 0 9999px rgba(0, 212, 255, 0.08);
   color: var(--accent-cyan);
 }
 
@@ -1974,7 +1980,10 @@ tr:hover td {
 }
 
 .table-section-row td {
-  background: rgba(255, 255, 255, 0.02) !important;
+  /* Opaque base + subtle white tint overlay so the section row is
+     readable on its own and can't be visually confused with the sticky
+     header above it (both sit at z-index 0/10 respectively). */
+  background: var(--bg-secondary) !important;
   font-weight: 700 !important;
   font-size: 0.8125rem !important;
   text-transform: uppercase;
