@@ -571,6 +571,13 @@
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Live search bar and filter dropdowns (status + location) make large print farms easy to navigate, especially on mobile. Search matches printer name, model, location, and serial number. The status filter is reactive to WebSocket updates — when a print finishes, the card immediately drops out of the "Printing" view.</p>
             </div>
           </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Maintenance Mode</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Put a printer "out of service" without removing it. Toggle from the card's three-dot menu, the in-card amber banner, or the Edit Printer dialog; Bambuddy disconnects MQTT, drops the printer out of queue dispatch, the scheduler, model-based filament lookups, metrics, and notifications until you take it out again. The card stays visible on the dashboard with an amber wrench banner and an Exit button, so the printer never disappears from your mental map. Useful for parallel Bambuddy installs sharing the same hardware, printers under repair or awaiting parts, and temporary suspension.</p>
+            </div>
+          </li>
         </ul>
         <div class="feature-screenshot reveal">
           <img src="assets/screenshots/printers.png" alt="Bambuddy Printers Dashboard - Real-time monitoring of multiple printers" loading="lazy">
