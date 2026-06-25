@@ -1750,7 +1750,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Remote AMS Drying</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Start, monitor, and stop drying sessions for AMS 2 Pro and AMS-HT directly from the Printers page. Select filament type for automatic temperature/duration presets, or set manually. Optional spool rotation for even heat distribution. Real-time countdown shows drying progress. Requires supported printer firmware and external PSU. Bambuddy automatically detects power constraints from firmware — the drying button is disabled with a tooltip when no PSU is connected. AMS power-related HMS errors (fan failures, voltage issues) are shown in the HMS error panel.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Start, monitor, and stop drying sessions for AMS 2 Pro and AMS-HT directly from the Printers page. Select filament type for automatic temperature/duration presets, or set manually. Optional spool rotation for even heat distribution &mdash; the toggle is disabled per-AMS when any tray has filament threaded into the feed tube (the AMS mechanism is locked there; rotating would jam the filament). Real-time countdown shows drying progress. Requires supported printer firmware and external PSU. Bambuddy automatically detects power constraints from firmware &mdash; the drying button is disabled with a tooltip when no PSU is connected. AMS power-related HMS errors (fan failures, voltage issues) are shown in the HMS error panel.</p>
             </div>
           </li>
           <li>
@@ -1765,6 +1765,13 @@
             <div>
               <strong>Ambient Drying</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Keep filament dry on idle printers even without any queued prints. When enabled, Bambuddy monitors humidity and automatically starts a drying session whenever the threshold is exceeded, regardless of queue state. A separate toggle in Settings &rarr; Print Queue, independent from queue auto-drying.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Continue Drying While Printing</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">On capable Bambu hardware (H2D 01.03.00.00+, H2C / H2S / P2S / H2D Pro 01.02.00.00+, X2D / A2L 01.01.00.00+, X1C 01.11.02.00+), auto-drying can keep running during a print &mdash; rather than stopping the moment a print starts. Off by default; opt-in toggle in Settings &rarr; Print Queue. The drying temperature is automatically capped 5&deg;C below the idle preset (floor 40&deg;C) to protect spools from the hot enclosure during a print, matching Bambu's own "lower drying temperature during printing" guidance. P1 series, A1, A1 Mini, X1 (non-C), and X1E are excluded &mdash; their firmware does not support concurrent drying during a print.</p>
             </div>
           </li>
           <li>
