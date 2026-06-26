@@ -360,8 +360,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Unified Print Button</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print button on archive cards opens the shared Print dialog for ASAP, Queue, or Schedule dispatch. Add prints to the scheduler-backed queue without right-clicking—respects user permissions.</p>
+              <strong>Unified Print Button & Queue-Backed Dispatch</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Print button on archive cards opens the shared Print dialog for ASAP, Queue, or Schedule dispatch. <strong>Every print Bambuddy starts now flows through the queue scheduler</strong> &mdash; File Manager prints, archive reprints, printer-card upload-and-print, and scheduled queue items all share the same code path, so each print is visible on the queue page, attributable to the user that started it, deficit-checked, and cancellable from one place. No more "stealth prints" that bypass the queue.</p>
             </div>
           </li>
           <li>
@@ -504,8 +504,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>HMS Error Tracking & Notifications</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor Health Management System errors with human-readable descriptions (853 error codes translated). Clear stale errors directly from the UI after print cancellation or transient events. A red "Problem" counter in the status bar highlights printers with active HMS errors. Compact-mode status pips turn red for fatal/serious errors or amber for warnings. Progress bars turn amber when paused. Status sorting prioritizes printers with HMS errors at the top. Get instant push notifications for printer errors including AMS issues, nozzle problems, and more.</p>
+              <strong>HMS Error Tracking, Actions & Notifications</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor Health Management System errors with human-readable descriptions (853 error codes translated). <strong>One-click actions:</strong> the same Resume, Stop, Continue, Retry, Check Assistant, and Don't Remind Me buttons BambuStudio shows are rendered under each error &mdash; click and the matching MQTT command goes back to the printer, so you can clear a paused-print dialog from your phone instead of walking to the device. Action labels translated in all 11 supported locales. Clear stale errors directly from the UI after print cancellation or transient events. A red "Problem" counter in the status bar highlights printers with active HMS errors. Compact-mode status pips turn red for fatal/serious errors or amber for warnings. Progress bars turn amber when paused. Status sorting prioritizes printers with HMS errors at the top. Get instant push notifications for printer errors including AMS issues, nozzle problems, and more.</p>
             </div>
           </li>
           <li>
@@ -1694,7 +1694,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Cam Wall View</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Toggle the Printers page from cards into a responsive grid of camera tiles for at-a-glance monitoring across the whole farm. On-screen tiles stream live up to a configurable cap (default 4) so Raspberry Pi installs stay sustainable; the rest fall back to periodic snapshot polling, and off-screen tiles pause entirely. Click any tile to open the floating viewer or a dedicated window — Cam Wall respects your existing camera view preference.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Toggle the Printers page from cards into a responsive grid of camera tiles for at-a-glance monitoring across the whole farm. On-screen tiles stream live up to a configurable cap (default 4) so Raspberry Pi installs stay sustainable; the rest fall back to periodic snapshot polling, and off-screen tiles pause entirely. An optional status overlay paints the printer state (Printing / Paused / Finished / Error) on each tile, plus progress, layer, and time-left on whichever tiles are actively printing. Click any tile to open the floating viewer or a dedicated window — Cam Wall respects your existing camera view preference.</p>
             </div>
           </li>
           <li>
