@@ -571,6 +571,13 @@
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Live search bar and filter dropdowns (status + location) make large print farms easy to navigate, especially on mobile. Search matches printer name, model, location, and serial number. The status filter is reactive to WebSocket updates — when a print finishes, the card immediately drops out of the "Printing" view.</p>
             </div>
           </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Maintenance Mode</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Put a printer "out of service" without removing it. Toggle from the card's three-dot menu, the in-card amber banner, or the Edit Printer dialog; Bambuddy disconnects MQTT, drops the printer out of queue dispatch, the scheduler, model-based filament lookups, metrics, and notifications until you take it out again. The card stays visible on the dashboard with an amber wrench banner and an Exit button, so the printer never disappears from your mental map. Useful for parallel Bambuddy installs sharing the same hardware, printers under repair or awaiting parts, and temporary suspension.</p>
+            </div>
+          </li>
         </ul>
         <div class="feature-screenshot reveal">
           <img src="assets/screenshots/printers.png" alt="Bambuddy Printers Dashboard - Real-time monitoring of multiple printers" loading="lazy">
@@ -604,8 +611,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Drag-and-Drop Queue with Timeline View</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Easily reorder print jobs with intuitive drag-and-drop. Switch to the timeline view for a production schedule showing estimated completion times, grouped by hour with filter tabs and day navigation.</p>
+              <strong>Tabbed Queue with Multi-Drag and Gantt Timeline</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Three tabs in one page: <strong>Queue</strong> for the live order (flat list or per-printer cards with aggregate count / time / weight), <strong>History</strong> for a responsive grid of past prints with filament swatch, weight, type, user, inline failure reason, and hover-to-enlarge thumbnails, and <strong>Timeline</strong> as a true Gantt swimlane — one row per printer with bars positioned by start time and sized by duration, a live NOW marker, and a rolling 24-hour window. Drag-and-drop supports multi-select: pick N items and the whole block moves together with a +N ghost.</p>
             </div>
           </li>
           <li>
@@ -669,6 +676,8 @@
             <div>
               <strong>Batch Print Quantity</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set a quantity in the Print dialog to create multiple queue items at once. ASAP batches are inserted at the top of the queue, while Queue batches append to the back unless manual start is required. Items are grouped into a batch for easy tracking.</p>
+              <strong>Batch Grouping</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Multi-plate prints from one source 3MF auto-group into a single collapsible row with aggregate count, total time, and total filament weight. Any 2+ selected items can be grouped manually via "Group as batch"; ungroup lives on the batch parent. History batches collapse into one row with status-rollup chips (e.g. 3 OK / 1 failed). Per-batch collapse state persists across reloads.</p>
             </div>
           </li>
           <li>
@@ -1323,7 +1332,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Admin Default Menu Order</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Admins can set a default sidebar navigation order for all users. Users who haven't customized their sidebar automatically inherit the admin-set layout. Toggle on from Settings to apply your current menu order as the default.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Admins can set a default sidebar navigation order and visibility for all users. Users who haven't customized their sidebar automatically inherit the admin-set layout. Toggle on from Settings to apply your current menu order as the default.</p>
             </div>
           </li>
           <li>
@@ -1512,7 +1521,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Configurable Printer Model</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Choose which Bambu printer model to emulate: X1C, P1S, P2S, X2D, A1, H2D, H2C, and more.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Choose which Bambu printer model to emulate: X1C, P1S, P2S, X2D, A1, A2L, H2D, H2C, and more.</p>
             </div>
           </li>
           <li>
@@ -1684,6 +1693,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Cam Wall View</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Toggle the Printers page from cards into a responsive grid of camera tiles for at-a-glance monitoring across the whole farm. On-screen tiles stream live up to a configurable cap (default 4) so Raspberry Pi installs stay sustainable; the rest fall back to periodic snapshot polling, and off-screen tiles pause entirely. Click any tile to open the floating viewer or a dedicated window — Cam Wall respects your existing camera view preference.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Local Network Only</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Streams stay on your local network - no cloud exposure.</p>
             </div>
@@ -1743,7 +1759,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <strong>Remote AMS Drying</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Start, monitor, and stop drying sessions for AMS 2 Pro and AMS-HT directly from the Printers page. Select filament type for automatic temperature/duration presets, or set manually. Optional spool rotation for even heat distribution. Real-time countdown shows drying progress. Requires supported printer firmware and external PSU. Bambuddy automatically detects power constraints from firmware — the drying button is disabled with a tooltip when no PSU is connected. AMS power-related HMS errors (fan failures, voltage issues) are shown in the HMS error panel.</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Start, monitor, and stop drying sessions for AMS 2 Pro and AMS-HT directly from the Printers page. Select filament type for automatic temperature/duration presets, or set manually. Optional spool rotation for even heat distribution &mdash; the toggle is disabled per-AMS when any tray has filament threaded into the feed tube (the AMS mechanism is locked there; rotating would jam the filament). Real-time countdown shows drying progress. Requires supported printer firmware and external PSU. Bambuddy automatically detects power constraints from firmware &mdash; the drying button is disabled with a tooltip when no PSU is connected. AMS power-related HMS errors (fan failures, voltage issues) are shown in the HMS error panel.</p>
             </div>
           </li>
           <li>
@@ -1763,8 +1779,22 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Continue Drying While Printing</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">On capable Bambu hardware (H2D 01.03.00.00+, H2C / H2S / P2S / H2D Pro 01.02.00.00+, X2D / A2L 01.01.00.00+, X1C 01.11.02.00+), auto-drying can keep running during a print &mdash; rather than stopping the moment a print starts. Off by default; opt-in toggle in Settings &rarr; Print Queue. The drying temperature is automatically capped 5&deg;C below the idle preset (floor 40&deg;C) to protect spools from the hot enclosure during a print, matching Bambu's own "lower drying temperature during printing" guidance. P1 series, A1, A1 Mini, X1 (non-C), and X1E are excluded &mdash; their firmware does not support concurrent drying during a print.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Configurable Drying Presets</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Customize drying temperature and duration for each filament type (PLA, PETG, TPU, ABS, ASA, PA, PC, PVA) with separate values for AMS 2 Pro and AMS-HT. Presets are used by manual drying, queue auto-drying, and ambient drying. Defaults based on BambuStudio's official filament profiles.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Per-Filament Humidity Threshold</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set a different humidity trigger per filament type instead of one global value &mdash; e.g. Nylon at 20%, PLA at 60%, ASA at 30%. Mixed-material AMS units use the most-restrictive threshold across the loaded spools, so a single PLA + Nylon unit triggers at Nylon's level. Drives both the auto-drying scheduler and the hourly humidity alarm in lockstep. Configured in Settings &rarr; Workflow &rarr; Auto-Drying, alongside the drying presets.</p>
             </div>
           </li>
           <li>
@@ -1779,6 +1809,13 @@
             <div>
               <strong>Load &amp; Unload from the Printer Card</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Hover any AMS slot or external spool, click the menu button, and load that tray or unload the currently-loaded one — no walk to the touchscreen. On dual-extruder H2D, Ext-L and Ext-R drive their respective nozzles independently. Hidden while the printer is running. Requires the same control permission as start/stop/pause.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>AMS Filament Backup Modal &amp; Backup-Aware Deficit Check</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Mirrors BambuStudio's per-printer AMS Filament Backup setting — when a spool runs out, the printer auto-switches to a same-preset, same-colour spool in another slot so a long print can roll across multiple spools. A small badge in the Filaments section header on each printer card shows the live state (blue circular-arrow icon = ON, dim = OFF, "?" = A1 family with no <code>cfg</code> field); click to open a BambuStudio Auto Refill-style modal with one filament-coloured ring per backup pair — slot labels distributed around the colour band, material name and rotation count in the centre. Dual-extruder printers (H2D / H2C / X2D) carry an <em>R</em> / <em>L</em> badge per ring because the firmware can't cross extruders. Bambuddy's "insufficient filament" check is <strong>backup-aware</strong>: when Backup is ON, the deficit check pools remaining grams across same-<code>(preset, colour)</code> spools on the printer, so the warning doesn't fire spuriously when the firmware will swap to a peer mid-print. State syncs in real time whether the change came from Bambuddy, BambuStudio, or the printer's touchscreen. The companion <strong>Prefer Lowest Remaining Filament</strong> setting respects the backup toggle — when Backup is OFF, Bambuddy suppresses the prefer-lowest sort so the dispatcher won't reach for a near-empty spool the printer can't roll off of (#1762, #1766).</p>
             </div>
           </li>
           <li>
@@ -1843,7 +1880,7 @@
           Printer Control
         </h3>
         <p class="mb-lg" style="color: var(--text-secondary); font-size: 1.1rem;">
-          Fine-tune your prints with real-time control over printer settings.
+          Fine-tune your prints with real-time control over printer settings. The printer card was redesigned in <strong>0.2.5b2</strong> with a tighter layout and popovers for all controls (temperature setpoints, fan speeds, jog).
         </p>
         <ul class="feature-list">
           <li>
@@ -1863,8 +1900,29 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Real-Time Fan Status</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor part cooling, auxiliary, and chamber fan speeds with live updates via WebSocket. Compact badges show current fan speeds (0-100%).</p>
+              <strong>Fan Status &amp; Speed Control</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Monitor part cooling, auxiliary, and chamber fan speeds with live WebSocket updates — and click any fan badge to set the speed directly (0-100%, with Off + three user-configurable quick presets and a custom value input).</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Temperature Setpoints (Nozzle / Bed / Chamber)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Click any temperature card on the printer card to set the target — nozzle (0-320 &deg;C, per-extruder on dual-nozzle H2D), bed (0-140 &deg;C), and chamber (0-60 &deg;C, only on H2C / H2D / H2D Pro / H2S / X2D with an active chamber heater; sensor-only models keep the card read-only). Quick-select buttons plus a custom value input; the Off button is always present.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Heater History Charts</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Each heater tile (nozzle, bed, chamber) carries a small chart icon in the top-right corner. Single-click the tile body to open the existing temperature setpoint popover; click the icon to open a per-heater history modal with current / average / min / max stats, a target overlay, and a 6h / 24h / 48h / 7d time range selector. Bambuddy records readings every 60 seconds (retention configurable, default 30 days), so the read-only X1C and P2S chamber sensors finally have a useful click action too. Mirrors the existing AMS humidity / temperature history surface.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Customizable Temperature &amp; Fan Presets</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Three quick-select values per category (nozzle / bed / chamber / fan speed) are user-configurable under <strong>Settings &rarr; Workflow &rarr; Temperature &amp; Fan Presets</strong>. The fixed Off button is always shown. Empty stored value falls back to the built-in defaults.</p>
             </div>
           </li>
           <li>
@@ -1912,8 +1970,8 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>Move Build Plate (Z-Jog)</strong>
-              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Move the build plate up or down from the printer card to inspect the plate via camera or reposition manually. Popover offers 1 / 10 / 50 mm step sizes. When the printer is not homed after a print, a Bambu Studio-style warning lets you Home Z, Move anyway (bypasses soft endstops), or Cancel.</p>
+              <strong>Jog Controls (Z / XY / Extruder)</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">One popover, three axes. <strong>Z-Jog</strong> moves the build plate (1 / 10 / 50 mm steps) with a Bambu Studio-style not-homed warning offering Home Z, Move anyway (bypasses soft endstops), or Cancel. <strong>XY-Jog</strong> moves the toolhead by a relative X/Y distance (&plusmn;200 mm per axis). <strong>Extruder Jog</strong> manually extrudes or retracts filament (&plusmn;100 mm) for purging or load verification &mdash; Bambu firmware enforces cold-extrude refusal client-side guards aren't needed.</p>
             </div>
           </li>
           <li>
@@ -2403,6 +2461,15 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
+      <div class="footer-corporate">
+        <div class="footer-corporate-label">Backed by our Corporate Sponsors</div>
+        <div class="footer-corporate-logos">
+          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener" aria-label="North Pole 3D Printing">
+            <img src="img/sponsors/northpole-3d-printing.jpg" alt="North Pole 3D Printing" loading="lazy">
+          </a>
+        </div>
+      </div>
+
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo">

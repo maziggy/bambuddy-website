@@ -129,7 +129,7 @@
       <div class="feature-detail reveal">
         <h4 class="mb-md">Docker Installation</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          The easiest way to get started on Linux or macOS with Docker installed. On Windows you can either run native PowerShell (see <a href="#windows-native">Windows Native</a> below) or use the <a href="#docker">Docker Compose setup</a>.
+          The easiest way to get started on Linux or macOS with Docker installed. On Windows, use the dedicated <a href="#windows-native">Windows Installer</a> below — a self-contained <code>.exe</code> that needs no Docker, Python, or other runtime on the host.
         </p>
       </div>
 
@@ -169,24 +169,17 @@
       </div>
 
       <div id="windows-native" class="feature-detail reveal mt-xl">
-        <h4 class="mb-md">Native Installation (Windows)</h4>
+        <h4 class="mb-md">Windows Installer</h4>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          Runs in PowerShell as Administrator — the installer self-elevates via UAC if not. Installs Git and Python via <code>winget</code> when missing, creates a Python virtual environment, writes user data and logs to sibling directories outside the Git checkout, and optionally registers Bambuddy as a Windows Service via NSSM. Pass <code>-Yes</code> for an unattended install. Full reference in the <a href="https://wiki.bambuddy.cool/getting-started/windows-installer/" target="_blank" rel="noopener">Windows Installer Guide</a>.
+          Self-contained <code>.exe</code> for Windows 10 / 11 (x64). Bundles an embedded Python 3.13, the pre-built dashboard, ffmpeg, and the NSSM service supervisor — no Python, Node, Docker, or Git required on the target machine. Installs Bambuddy as a Windows service that starts automatically at boot. Full reference in the <a href="https://wiki.bambuddy.cool/getting-started/windows-installer/" target="_blank" rel="noopener">Windows Installer Guide</a>.
         </p>
       </div>
 
       <div class="code-block reveal">
         <div class="code-header">
-          <span class="code-lang">Windows (PowerShell, Administrator)</span>
-          <button class="code-copy">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-            </svg>
-            Copy
-          </button>
+          <span class="code-lang">Direct download</span>
         </div>
-        <pre><code>powershell -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/maziggy/bambuddy/main/install/windows-installer.ps1 -OutFile windows-installer.ps1; .\windows-installer.ps1"</code></pre>
+        <pre><code><a href="https://github.com/maziggy/bambuddy/releases/latest/download/bambuddy-windows-x64-setup.exe" style="color: var(--accent);">bambuddy-windows-x64-setup.exe</a> &nbsp;·&nbsp; <a href="https://github.com/maziggy/bambuddy/releases" style="color: var(--text-secondary);">all releases</a></code></pre>
       </div>
 
       <div class="alert alert-success mt-xl reveal">
@@ -195,7 +188,7 @@
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
         <div>
-          <strong>When it's done:</strong> Open <code>http://&lt;your-host&gt;:8000</code> in your browser, replacing <code>&lt;your-host&gt;</code> with the IP or hostname of the machine running Bambuddy. On Linux with host networking <code>localhost</code> works too — but <strong>not</strong> on Docker Desktop (macOS/Windows), because the container is on the Docker VM's network, not the host's loopback.
+          <strong>When it's done:</strong> Bambuddy runs as a Windows service and the installer opens <code>http://localhost:8000</code> in your default browser automatically. To reach the dashboard from other devices on your LAN, open <code>http://&lt;windows-host-ip&gt;:8000</code>.
         </div>
       </div>
 
@@ -206,7 +199,7 @@
           <line x1="12" y1="8" x2="12.01" y2="8"/>
         </svg>
         <div>
-          <strong>What the scripts do:</strong> Prompts for install path, port, bind address, timezone, and more. Automatically installs dependencies, sets up the service, and starts Bambuddy. Use <code>--yes</code> for unattended mode.
+          <strong>SmartScreen warning on first run:</strong> until our SignPath OSS code-signing approval lands, the installer is unsigned. Windows will show <em>"Windows protected your PC"</em> — click <strong>More info → Run anyway</strong> to proceed. The installer is built in public on GitHub Actions so the build provenance is verifiable.
         </div>
       </div>
 
@@ -216,7 +209,24 @@
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
         <div>
-          <strong>Supported systems:</strong> Debian/Ubuntu, RHEL/Fedora/CentOS, Arch Linux, openSUSE, macOS (Homebrew), and Windows 10/11 (PowerShell 5.1+, winget for Git/Python).
+          <strong>Supported systems:</strong> Linux + macOS via the install scripts above (Debian/Ubuntu, RHEL/Fedora/CentOS, Arch Linux, openSUSE, macOS Homebrew). Windows 10 / 11 x64 via the native installer. ARM64 Windows (Surface Pro X, Snapdragon) is not currently supported — most Bambuddy deps don't ship ARM64 Windows wheels.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post-install nudge -->
+  <section class="content-section" style="padding-top: 1rem; padding-bottom: 1rem; background: var(--bg-secondary);">
+    <div class="container" style="max-width: 760px;">
+      <div class="reveal" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(0,170,90,0.08), rgba(0,170,90,0.02)); border: 1px solid rgba(0,170,90,0.25); border-radius: 12px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="color: var(--bambu-green); flex-shrink: 0;">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <div style="flex: 1; min-width: 0;">
+          <p style="margin: 0; font-weight: 600;">Bambuddy is free &mdash; and stays that way because people choose to support it.</p>
+          <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--text-muted);">
+            No VC, no acquisition target, no cloud lock-in. <a href="sponsors.html?from=install-top" style="color: var(--bambu-green); font-weight: 500;">See who keeps it independent &rarr;</a>
+          </p>
         </div>
       </div>
     </div>
@@ -777,7 +787,7 @@ git pull && docker compose up -d --build</code></pre>
         <h2>Find Bambuddy useful?</h2>
         <p>Bambuddy is free and will stay free. It's developed in the open and funded by people who choose to support it directly &mdash; no VC, no acquisition target. If it's earning a place on your home network, consider keeping it independent.</p>
         <div class="hero-buttons mt-xl">
-          <a href="sponsors.html" class="btn btn-primary">
+          <a href="sponsors.html?from=install-bottom" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="margin-right: 4px;">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
@@ -797,6 +807,15 @@ git pull && docker compose up -d --build</code></pre>
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
+      <div class="footer-corporate">
+        <div class="footer-corporate-label">Backed by our Corporate Sponsors</div>
+        <div class="footer-corporate-logos">
+          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener" aria-label="North Pole 3D Printing">
+            <img src="img/sponsors/northpole-3d-printing.jpg" alt="North Pole 3D Printing" loading="lazy">
+          </a>
+        </div>
+      </div>
+
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo">
