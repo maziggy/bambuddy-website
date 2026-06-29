@@ -739,6 +739,13 @@
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
+              <strong>Preheat &amp; Heat Soak</strong>
+              <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Heat the bed (and the chamber, on supported printers) and hold at temperature before each queued print starts &mdash; the heat-soak engineering filaments need for adhesion and warp control. Bambuddy waits between FTP upload and print start, so the soak runs while the printer is otherwise idle. Per-print Inherit / On / Off override in the Print Options panel; per-filament chamber-target map under Settings &rarr; Workflow so PA wants 50&deg;C, ABS 45&deg;C, PETG-CF 40&deg;C, and PLA derives 0&deg;C and skips the chamber phase automatically. Hardware-aware: H-series / X2D / X1E actively heat the chamber via M141; X1C / P2S use bed radiation with a chamber-sensor wait; P1S / P1P / A1 fall back to a soak timer. On H-series / X2D / P2S the cooling/heating airduct flap auto-switches to match the resolved chamber target &mdash; ABS prints get the closed-flap recirculation they need, PLA prints get the open exhaust they need. M191 (wait-for-chamber-temp) isn't honoured by Bambu firmware, so doing this at the orchestration layer is the only place it works.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
               <strong>Maintenance Reminders</strong>
               <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 4px;">Set up interval-based maintenance schedules for each printer.</p>
             </div>
