@@ -152,6 +152,9 @@
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
           Installs with Python virtual environment and systemd/launchd service.
         </p>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          <strong>macOS:</strong> run the script as your normal user — not with <code>sudo</code>. Homebrew refuses to run as root, and a venv created by root can't be managed by the launchd agent. The installer elevates on its own only where it's genuinely needed, and installs to <code>~/bambuddy</code> by default.
+        </p>
       </div>
 
       <div class="code-block reveal">

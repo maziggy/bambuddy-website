@@ -5,9 +5,11 @@ submissions from Bambuddy instances to the GitHub Issues API.
 """
 
 import base64
+import hashlib
 import logging
 import os
 import smtplib
+import threading
 import time
 import uuid
 from email.mime.text import MIMEText
@@ -33,23 +35,82 @@ MAINTAINER_EMAIL = os.environ.get("MAINTAINER_EMAIL", "mz@v8w.de")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Rate limiting: 5 requests per hour per IP
+# --- Abuse controls -------------------------------------------------------
+# The per-IP limit is necessary but NOT sufficient. The Jul 2026 flood rotated
+# across 350+ Tor/VPN exit IPs, each staying under the per-IP cap, and still got
+# ~560 spam issues created (all with the literal description "X2C"). A per-IP
+# limit is structurally defenseless against IP rotation.
+#
+# Two controls bound the blast radius regardless of source IP:
+#   * GLOBAL cap  — hard ceiling on issues created per hour across ALL IPs. This
+#                   is the real circuit breaker: even 10k IPs can't exceed it.
+#   * DEDUP       — an identical description creates at most one issue per window,
+#                   which kills the "same payload repeated" pattern outright.
+#
+# NOTE: these counters live in process memory, so they are authoritative only
+# with a single worker. Run gunicorn with --workers 1 (traffic is a handful of
+# reports/day); with N workers the effective caps are multiplied by N.
 RATE_LIMIT_WINDOW = 3600
-RATE_LIMIT_MAX = 5
+RATE_LIMIT_MAX = int(os.environ.get("BUG_REPORT_RATE_LIMIT_MAX", "3"))      # per IP / hour
+GLOBAL_WINDOW = 3600
+GLOBAL_MAX = int(os.environ.get("BUG_REPORT_GLOBAL_MAX", "15"))             # total issues / hour
+DEDUP_WINDOW = int(os.environ.get("BUG_REPORT_DEDUP_WINDOW", "3600"))       # identical desc / window
+
+_lock = threading.Lock()
 _rate_limits: dict[str, list[float]] = {}
+_global_creates: list[float] = []
+_recent_desc: dict[str, float] = {}
+
+
+def _within_window(seq: list[float], now: float, window: int) -> list[float]:
+    """Return only the timestamps still inside the sliding window."""
+    return [t for t in seq if now - t < window]
 
 
 def _check_rate_limit(ip: str) -> bool:
-    """Return True if the IP is within rate limits."""
+    """Per-IP sliding window. Return True if the IP is within limits."""
     now = time.time()
-    timestamps = _rate_limits.get(ip, [])
-    timestamps = [t for t in timestamps if now - t < RATE_LIMIT_WINDOW]
-    if len(timestamps) >= RATE_LIMIT_MAX:
+    with _lock:
+        timestamps = _within_window(_rate_limits.get(ip, []), now, RATE_LIMIT_WINDOW)
+        if len(timestamps) >= RATE_LIMIT_MAX:
+            _rate_limits[ip] = timestamps
+            return False
+        timestamps.append(now)
         _rate_limits[ip] = timestamps
-        return False
-    timestamps.append(now)
-    _rate_limits[ip] = timestamps
-    return True
+        return True
+
+
+def _check_global_and_dedup(description: str) -> str | None:
+    """Pre-creation gate. Return None if allowed, else a rejection reason.
+
+    Read-only: does not consume a slot. The slot is committed in _record_create()
+    only after GitHub actually accepts the issue, so a GitHub outage never burns
+    the global budget or marks a description as seen (which would block a retry).
+    """
+    now = time.time()
+    digest = hashlib.sha256(description.encode("utf-8")).hexdigest()
+    with _lock:
+        last = _recent_desc.get(digest)
+        if last is not None and now - last < DEDUP_WINDOW:
+            return "duplicate"
+        if len(_within_window(_global_creates, now, GLOBAL_WINDOW)) >= GLOBAL_MAX:
+            return "global"
+    return None
+
+
+def _record_create(description: str) -> None:
+    """Commit a successful issue creation to the global + dedup counters."""
+    now = time.time()
+    digest = hashlib.sha256(description.encode("utf-8")).hexdigest()
+    with _lock:
+        _global_creates[:] = _within_window(_global_creates, now, GLOBAL_WINDOW)
+        _global_creates.append(now)
+        _recent_desc[digest] = now
+        # Opportunistically evict expired dedup entries so the map can't grow
+        # without bound under a rotating-payload flood.
+        for key, ts in list(_recent_desc.items()):
+            if now - ts >= DEDUP_WINDOW:
+                del _recent_desc[key]
 
 
 def _github_headers() -> dict[str, str]:
@@ -271,6 +332,22 @@ def bug_report():
     if not GITHUB_TOKEN:
         return jsonify({"success": False, "message": "Relay not configured."}), 503
 
+    # Global circuit breaker + dedup — catches distributed floods that slip past
+    # the per-IP limit via IP rotation. Checked before any GitHub API work so a
+    # flood costs nothing but the check itself.
+    reason = _check_global_and_dedup(description)
+    if reason == "duplicate":
+        return jsonify({
+            "success": False,
+            "message": "An identical report was submitted recently. Thanks — no need to send it again.",
+        }), 429
+    if reason == "global":
+        logger.warning("Bug report global rate limit hit (ip=%s)", client_ip)
+        return jsonify({
+            "success": False,
+            "message": "Too many reports are being submitted right now. Please try again later.",
+        }), 429
+
     # Upload screenshot if provided
     screenshot_url = None
     screenshot_b64 = data.get("screenshot_base64")
@@ -284,15 +361,26 @@ def bug_report():
     labels = ["bug", "user-report"]
 
     issue_url = f"{GITHUB_API_BASE}/repos/{GITHUB_REPO}/issues"
-    resp = requests.post(
-        issue_url,
-        headers=_github_headers(),
-        json={"title": title, "body": body, "labels": labels},
-        timeout=15,
-    )
+    try:
+        resp = requests.post(
+            issue_url,
+            headers=_github_headers(),
+            json={"title": title, "body": body, "labels": labels},
+            timeout=15,
+        )
+    except requests.RequestException:
+        # Network error / timeout reaching GitHub — return a clean 502 instead of
+        # letting the exception surface as a 500 stacktrace (the flood produced
+        # ~2600 such 500/502 responses when GitHub's secondary limits kicked in).
+        logger.exception("Bug report: request to GitHub failed")
+        return jsonify({"success": False, "message": "Bug report service temporarily unavailable."}), 502
 
     if resp.status_code != 201:
+        logger.error("Bug report: GitHub returned %s: %s", resp.status_code, resp.text[:300])
         return jsonify({"success": False, "message": "Failed to create GitHub issue."}), 502
+
+    # Only now — after GitHub accepted the issue — commit the global/dedup counters.
+    _record_create(description)
 
     issue_data = resp.json()
     issue_html_url = issue_data["html_url"]

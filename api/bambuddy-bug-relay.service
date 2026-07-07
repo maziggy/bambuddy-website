@@ -24,7 +24,10 @@ User=www-data
 Group=www-data
 WorkingDirectory=/opt/bambuddy-relay/api
 EnvironmentFile=/etc/bambuddy-relay/env
-ExecStart=/opt/bambuddy-relay/venv/bin/gunicorn --bind 127.0.0.1:5050 --workers 2 wsgi:app
+# Single worker on purpose: the abuse counters (per-IP / global / dedup) live in
+# process memory, so they are only authoritative with one worker. Traffic is a
+# handful of reports/day — one worker is plenty. Adding workers multiplies the caps.
+ExecStart=/opt/bambuddy-relay/venv/bin/gunicorn --bind 127.0.0.1:5050 --workers 1 wsgi:app
 Restart=on-failure
 RestartSec=5
 
