@@ -286,7 +286,11 @@ p {
   transition: all var(--transition-fast);
 }
 
-@media (max-width: 768px) {
+/* Nav collapses to the hamburger below 1200px. It used to be 768px, but the bar
+   carries 10 links plus the GitHub button and was already clipping GitHub at
+   1024px before "Business" was added — this block is nav-only, so raising it
+   affects nothing else. */
+@media (max-width: 1200px) {
   .nav-toggle {
     display: flex;
   }

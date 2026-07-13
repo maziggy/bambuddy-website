@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bambuddy for print farms and teams — priority support, commercial licensing and deployment help. Bambuddy is AGPL-3.0 and free to run commercially; these are services, not a licence fee.">
+  <meta name="description" content="Bambuddy for print farms and teams — priority support, commercial licensing, deployment and custom development. Bambuddy is AGPL-3.0 and free to run commercially; these are services, not a licence fee.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bambuddy.cool/business.html">
   <meta property="og:title" content="Bambuddy for business">
-  <meta property="og:description" content="Priority support, commercial licensing and deployment help for print farms and teams. The software stays free — you're paying for people, not permission.">
+  <meta property="og:description" content="Priority support, commercial licensing, deployment and custom development for print farms and teams. The software stays free — you're paying for people, not permission.">
   <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
   <meta property="og:site_name" content="Bambuddy">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bambuddy for business">
-  <meta name="twitter:description" content="Priority support, commercial licensing and deployment help for print farms and teams. The software stays free — you're paying for people, not permission.">
+  <meta name="twitter:description" content="Priority support, commercial licensing, deployment and custom development for print farms and teams. The software stays free — you're paying for people, not permission.">
   <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
 
   <title>For Business - Bambuddy</title>
@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css?v=20260511c">
+  <link rel="stylesheet" href="css/style.css?v=20260713a">
   <link rel="stylesheet" href="css/animations.css">
   <script>window.__matomoSiteId = '1';</script>
   <script src="js/cookie-consent.js" defer></script>
@@ -36,7 +36,7 @@
       max-width: 760px;
       margin: 0 auto 3.5rem;
       padding: 1.75rem 2rem;
-      border-left: 4px solid var(--bambu-green, #2dd4bf);
+      border-left: 4px solid var(--accent-green);
       background: var(--bg-secondary);
       border-radius: 0 12px 12px 0;
     }
@@ -79,9 +79,13 @@
     }
     .svc-card ul {
       margin: 0;
-      padding-left: 1.1rem;
+      padding-left: 1.25rem;
       color: var(--text-secondary);
       line-height: 1.75;
+      list-style: disc; /* global reset strips ul markers site-wide */
+    }
+    .svc-card li::marker {
+      color: var(--accent-green);
     }
     .svc-card .svc-note {
       display: block;
@@ -114,12 +118,18 @@
       margin-bottom: 1.25rem;
       word-break: break-all;
     }
+    /* The global reset sets `list-style: none` on every ul, so the markers have
+       to be asked for explicitly or these read as four floating lines. */
     .who-list {
-      max-width: 760px;
+      max-width: 640px;
       margin: 0 auto;
       color: var(--text-secondary);
-      line-height: 1.8;
-      padding-left: 1.1rem;
+      line-height: 1.9;
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .who-list li::marker {
+      color: var(--accent-green);
     }
   </style>
 </head>
@@ -166,8 +176,8 @@
   <section class="page-header">
     <div class="container">
       <h1>Bambuddy for <span class="text-gradient">business</span></h1>
-      <p class="page-subtitle">
-        Priority support, commercial licensing and deployment help for print farms and teams.
+      <p>
+        Priority support, commercial licensing, deployment and custom development for print farms and teams.
       </p>
     </div>
   </section>
@@ -190,7 +200,10 @@
         </p>
       </div>
 
-      <h2 class="section-title">What is actually on offer</h2>
+      <div class="section-header reveal">
+        <h2>What is actually <span class="text-gradient">on offer</span></h2>
+        <p>Three things the licence cannot give you. Everything else stays free.</p>
+      </div>
 
       <div class="svc-grid">
         <div class="svc-card">
@@ -239,7 +252,9 @@
         </div>
       </div>
 
-      <h2 class="section-title" style="margin-top: 4rem;">Who this is for</h2>
+      <div class="section-header reveal" style="margin-top: 4rem;">
+        <h2>Who this is <span class="text-gradient">for</span></h2>
+      </div>
       <ul class="who-list">
         <li>Print farms and production shops running Bambuddy as part of the line</li>
         <li>Makerspaces and universities with shared fleets and many operators</li>
