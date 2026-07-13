@@ -1199,6 +1199,12 @@ tr:hover td {
   word-break: break-all;
 }
 
+/* Breathing room under the CTA button, so it doesn't sit flush against the
+   panel edge (business) or crowd the secondary links (appliance). */
+.contact-actions {
+  margin-bottom: 1.5rem;
+}
+
 .contact-secondary {
   margin-top: 1.75rem;
   font-size: 0.9rem;
