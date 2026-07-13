@@ -189,9 +189,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: var(--container-max);
+  /* Wider than --container-max (1200px), which the body content still uses. The
+     bar carries a logo, 10 links and a CTA — roughly 1300px — so capping it at
+     1200 made the links overrun the logo no matter how wide the viewport was. */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  gap: var(--spacing-lg);
 }
 
 .nav-logo {
@@ -223,7 +227,7 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xl);
+  gap: 1.25rem; /* was --spacing-xl (2rem); 10 links needed the ~120px back */
 }
 
 .nav-link {
@@ -309,11 +313,11 @@ p {
   transition: all var(--transition-fast);
 }
 
-/* Nav collapses to the hamburger below 1200px. It used to be 768px, but the bar
-   carries 10 links plus the GitHub button and was already clipping GitHub at
-   1024px before "Business" was added — this block is nav-only, so raising it
-   affects nothing else. */
-@media (max-width: 1200px) {
+/* Nav collapses to the hamburger below 1280px. It used to be 768px, but the bar
+   carries a logo, 10 links and the GitHub button — about 1300px — and was
+   already clipping GitHub at 1024px before "Business" was added. This block is
+   nav-only, so raising it affects nothing else. */
+@media (max-width: 1280px) {
   .nav-toggle {
     display: flex;
   }
