@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bambuddy for print farms and teams — priority support, commercial licensing, deployment help and training. Bambuddy is AGPL-3.0 and free to run commercially; these are services, not a licence fee.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bambuddy.cool/business.html">
+  <meta property="og:title" content="Bambuddy for business">
+  <meta property="og:description" content="Priority support, commercial licensing and training for print farms and teams. The software stays free — you're paying for people, not permission.">
+  <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
+  <meta property="og:site_name" content="Bambuddy">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bambuddy for business">
+  <meta name="twitter:description" content="Priority support, commercial licensing and training for print farms and teams. The software stays free — you're paying for people, not permission.">
+  <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
+
+  <title>For Business - Bambuddy</title>
+  <link rel="canonical" href="https://bambuddy.cool/business.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css?v=20260511c">
+  <link rel="stylesheet" href="css/animations.css">
+  <script>window.__matomoSiteId = '1';</script>
+  <script src="js/cookie-consent.js" defer></script>
+
+  <style>
+    /* business.html — inline until reused elsewhere */
+    .honesty-box {
+      max-width: 760px;
+      margin: 0 auto 3.5rem;
+      padding: 1.75rem 2rem;
+      border-left: 4px solid var(--bambu-green, #2dd4bf);
+      background: var(--bg-secondary);
+      border-radius: 0 12px 12px 0;
+    }
+    .honesty-box h2 {
+      font-size: 1.15rem;
+      margin: 0 0 .75rem;
+    }
+    .honesty-box p {
+      margin: 0 0 .75rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .honesty-box p:last-child { margin-bottom: 0; }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .svc-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .svc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .12);
+    }
+    .svc-card h3 {
+      margin: 0 0 .75rem;
+      font-size: 1.2rem;
+    }
+    .svc-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 1rem;
+    }
+    .svc-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .svc-card .svc-note {
+      display: block;
+      margin-top: 1rem;
+      font-size: .875rem;
+      color: var(--text-secondary);
+      opacity: .8;
+    }
+
+    .contact-panel {
+      max-width: 680px;
+      margin: 3.5rem auto 0;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    .contact-panel h2 { margin-top: 0; }
+    .contact-panel p {
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 52ch;
+      margin: 0 auto 1.5rem;
+    }
+    .contact-mail {
+      display: inline-block;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      word-break: break-all;
+    }
+    .who-list {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding-left: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo_transparent.png" alt="Bambuddy" class="logo-img">
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="appliance.html" class="nav-link">Appliance</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener" class="nav-link">Docs</a>
+        <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" class="nav-link">Discord</a>
+        <a href="comparison.html" class="nav-link">Compare</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="press.html" class="nav-link">Press</a>
+        <a href="sponsors.html" class="nav-link">Sponsor</a>
+        <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Bambuddy for <span class="text-gradient">business</span></h1>
+      <p class="page-subtitle">
+        Priority support, commercial licensing and training for print farms, workshops and teams.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- The concession comes first. It is what makes the rest credible. -->
+      <div class="honesty-box">
+        <h2>First, the part most vendors leave out</h2>
+        <p>
+          Bambuddy is licensed under the AGPL-3.0. If you run it inside your own business — one printer or
+          forty — you owe us nothing. No seat count, no per-printer fee, no licence to buy. That is not a
+          trial or a loophole; it is the licence, and it is not going to change.
+        </p>
+        <p>
+          So this page is not asking you to pay for permission. It is offering the things an open-source
+          licence cannot give you: someone accountable when a print farm stops printing, a licence that
+          covers redistribution if you need one, and time from the person who wrote the software.
+        </p>
+      </div>
+
+      <h2 class="section-title">What is actually on offer</h2>
+
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>Priority support</h3>
+          <p>
+            A named contact and an agreed response time, instead of a queue position behind everyone
+            else's GitHub issue.
+          </p>
+          <ul>
+            <li>Direct line to the maintainer</li>
+            <li>Agreed response targets</li>
+            <li>Your bugs triaged first</li>
+            <li>Help with upgrades before you run them in production</li>
+          </ul>
+          <span class="svc-note">Invoiced, with VAT. Annual or per-incident.</span>
+        </div>
+
+        <div class="svc-card">
+          <h3>Commercial licensing</h3>
+          <p>
+            Only relevant if you intend to <em>redistribute</em> Bambuddy — ship it on an appliance, resell
+            it, or build it into a product you hand to customers. The AGPL's copyleft terms would otherwise
+            apply to what you ship.
+          </p>
+          <ul>
+            <li>Alternative licence for redistribution and OEM</li>
+            <li>Appliance and reseller arrangements</li>
+            <li>Terms that fit your product, not ours</li>
+          </ul>
+          <span class="svc-note">If you only run it internally, you do not need this.</span>
+        </div>
+
+        <div class="svc-card">
+          <h3>Deployment &amp; custom work</h3>
+          <p>
+            Getting a large fleet onto Bambuddy cleanly, or building the part of it that your operation
+            needs and the community version does not have.
+          </p>
+          <ul>
+            <li>Fleet migration and rollout</li>
+            <li>Integration with your MES / ERP / stock system</li>
+            <li>Sponsored feature development</li>
+            <li>PostgreSQL and multi-site setups</li>
+          </ul>
+          <span class="svc-note">Scoped and quoted per project.</span>
+        </div>
+
+        <div class="svc-card">
+          <h3>Training</h3>
+          <p>
+            Get your operators productive on the software instead of learning it from the wiki at 2am
+            during a failed batch.
+          </p>
+          <ul>
+            <li>Workshops for operators and admins</li>
+            <li>Farm workflow and queue design</li>
+            <li>Remote or on-site</li>
+          </ul>
+          <span class="svc-note">Half-day and full-day formats.</span>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="margin-top: 4rem;">Who this is for</h2>
+      <ul class="who-list">
+        <li>Print farms and production shops running Bambuddy as part of the line</li>
+        <li>Makerspaces and universities with shared fleets and many operators</li>
+        <li>Resellers and integrators who want to ship Bambuddy on hardware</li>
+        <li>Any team where an outage costs more than a support contract</li>
+      </ul>
+
+      <div class="contact-panel">
+        <h2>Talk to us</h2>
+        <p>
+          Tell us how many printers you run and what you need. You will get a reply from the person who
+          maintains the software, not a sales team — because there isn't one.
+        </p>
+        <a class="contact-mail" href="mailto:business@bambuddy.cool?subject=Bambuddy%20for%20business">business@bambuddy.cool</a>
+        <div>
+          <a href="mailto:business@bambuddy.cool?subject=Bambuddy%20for%20business" class="btn btn-primary">
+            Start a conversation
+          </a>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:2.5rem; color:var(--text-secondary);">
+        Just want to support the project instead? <a href="sponsors.html?from=business-page">See the sponsor tiers</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-corporate">
+        <div class="footer-corporate-label">Backed by our Corporate Sponsors</div>
+        <div class="footer-corporate-logos">
+          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener" aria-label="North Pole 3D Printing">
+            <img src="img/sponsors/northpole-3d-printing.jpg" alt="North Pole 3D Printing" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h5>Bambuddy</h5>
+          <p>Self-hosted command center for Bambu Lab. From one A1 to a 40-printer farm.</p>
+        </div>
+
+        <div class="footer-column">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="appliance.html">Appliance</a></li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="comparison.html">Comparison</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="press.html">Press</a></li>
+            <li><a href="business.html">For Business</a></li>
+            <li><a href="sponsors.html">Sponsor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Documentation</h5>
+          <ul>
+            <li><a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener">Wiki</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="http://wiki.bambuddy.cool/community/" target="_blank" rel="noopener">Community Add-ons</a></li>
+            <li><a href="https://github.com/maziggy/bambuddy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+            <li><a href="https://github.com/sponsors/maziggy" target="_blank" rel="noopener">GitHub Sponsors</a></li>
+            <li><a href="https://sponsors.bambuddy.cool" target="_blank" rel="noopener">Sponsors Portal</a></li>
+            <li><a href="https://ko-fi.com/maziggy" target="_blank" rel="noopener">Support (Ko-fi)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="legal-notice.html">Legal Notice</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Released under the AGPL-3.0 License. Made with care for the 3D printing community.</p>
+        <div class="footer-social">
+          <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" aria-label="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/sponsors/maziggy" target="_blank" rel="noopener" aria-label="GitHub Sponsors">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </a>
+          <a href="https://ko-fi.com/maziggy" target="_blank" rel="noopener" aria-label="Ko-fi">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.235.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
