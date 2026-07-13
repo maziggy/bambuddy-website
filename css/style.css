@@ -201,6 +201,9 @@ p {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
+  /* Never let the flex row steal space from the logo: without this the nav
+     links shrink it to nothing before they wrap or collapse. */
+  flex-shrink: 0;
 }
 
 .nav-logo svg {
@@ -250,6 +253,26 @@ p {
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
+}
+
+/* "Business" sits between a plain nav link and the primary CTA: an outlined
+   accent pill, so it reads as an offer without competing with the GitHub
+   button. The underline sweep is suppressed — it would cut across the border. */
+.nav-link-featured {
+  padding: 0.35rem var(--spacing-md);
+  border: 1px solid var(--accent-green);
+  border-radius: var(--radius-full);
+  color: var(--accent-green);
+}
+
+.nav-link-featured:hover,
+.nav-link-featured.active {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+}
+
+.nav-link-featured::after {
+  display: none;
 }
 
 .nav-cta {
