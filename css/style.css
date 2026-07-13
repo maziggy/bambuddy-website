@@ -189,13 +189,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Wider than --container-max (1200px), which the body content still uses. The
-     bar carries a logo, 10 links and a CTA — roughly 1300px — so capping it at
-     1200 made the links overrun the logo no matter how wide the viewport was. */
-  max-width: 1400px;
+  /* Stays on --container-max so the logo lines up with the page content below.
+     The bar earns its space back through a tighter gap and a smaller link size
+     (below) rather than by growing wider than the content column. */
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .nav-logo {
@@ -227,13 +227,15 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.25rem; /* was --spacing-xl (2rem); 10 links needed the ~120px back */
+  gap: 0.9rem; /* was --spacing-xl (2rem); the extra links need the space back */
 }
 
 .nav-link {
   position: relative;
   color: var(--text-secondary);
   font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
   padding: var(--spacing-sm) 0;
   transition: color var(--transition-fast);
 }
@@ -259,11 +261,13 @@ p {
   width: 100%;
 }
 
-/* "Business" sits between a plain nav link and the primary CTA: an outlined
-   accent pill, so it reads as an offer without competing with the GitHub
-   button. The underline sweep is suppressed — it would cut across the border. */
+/* Appliance and Business are the two commercial destinations, so they sit
+   together as outlined pills — a step above a plain link, a step below the
+   solid GitHub CTA. Different hues (cyan / green) so they read as a pair
+   rather than as two competing buttons. The underline sweep is suppressed on
+   both; it would cut across the border. */
 .nav-link-featured {
-  padding: 0.35rem var(--spacing-md);
+  padding: 0.3rem 0.85rem;
   border: 1px solid var(--accent-green);
   border-radius: var(--radius-full);
   color: var(--accent-green);
@@ -275,15 +279,30 @@ p {
   color: var(--bg-primary);
 }
 
-.nav-link-featured::after {
+.nav-link-appliance {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--accent-cyan);
+  border-radius: var(--radius-full);
+  color: var(--accent-cyan);
+}
+
+.nav-link-appliance:hover,
+.nav-link-appliance.active {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+}
+
+.nav-link-featured::after,
+.nav-link-appliance::after {
   display: none;
 }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: 0.4rem;
+  padding: 0.4rem var(--spacing-md);
+  font-size: 0.95rem;
   background: var(--gradient-accent);
   color: var(--bg-primary);
   font-weight: 600;
