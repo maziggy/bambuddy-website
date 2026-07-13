@@ -1167,6 +1167,44 @@ tr:hover td {
   margin: 0 auto;
 }
 
+/* Contact panel — the "talk to a human" block. Shared by business.html and
+   appliance.html; both put a real address on the page rather than hiding
+   behind a form. */
+.contact-panel {
+  max-width: 680px;
+  margin: 3.5rem auto 0;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.contact-panel h2 {
+  margin-top: 0;
+}
+
+.contact-panel p {
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 52ch;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-mail {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  word-break: break-all;
+}
+
+.contact-secondary {
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
 /* Content Sections */
 .content-section {
   padding: var(--spacing-3xl) 0;
