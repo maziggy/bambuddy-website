@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css?v=20260713c">
+  <link rel="stylesheet" href="css/style.css?v=20260721a">
   <link rel="stylesheet" href="css/animations.css">
   <script>window.__matomoSiteId = '1';</script>
   <script src="js/cookie-consent.js" defer></script>
@@ -240,12 +240,41 @@
             you will get a reply from the person who builds it, not a sales team, because there
             isn't one.
           </p>
-          <a class="contact-mail" href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance%20-%20where%20can%20I%20buy%20one">appliance@bambuddy.cool</a>
-          <div class="contact-actions">
-            <a href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance%20-%20where%20can%20I%20buy%20one" class="btn btn-primary">
-              Find a reseller
-            </a>
-          </div>
+
+          <form class="lead-form" data-context="appliance" novalidate>
+            <input type="hidden" name="interest" value="buy_appliance">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="buy-region">Where are you?</label>
+                <input class="form-input" id="buy-region" name="region" type="text" required autocomplete="country-name" placeholder="Country / region">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="buy-printers">How many printers? <span class="form-hint">(optional)</span></label>
+                <select class="form-input" id="buy-printers" name="printers">
+                  <option value="" disabled selected>Select…</option>
+                  <option value="1-5">1–5</option>
+                  <option value="6-15">6–15</option>
+                  <option value="16-40">16–40</option>
+                  <option value="40+">40+</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="buy-email">Your email</label>
+              <input class="form-input" id="buy-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="buy-message">Anything else? <span class="form-hint">(optional)</span></label>
+              <textarea class="form-textarea" id="buy-message" name="message" placeholder="Questions about the appliance, or what you'd use it for."></textarea>
+            </div>
+            <div class="lead-hp" aria-hidden="true">
+              <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <button type="submit" class="btn btn-primary lead-submit-btn" data-label="Find a reseller">
+              <span class="lead-btn-label">Find a reseller</span>
+            </button>
+            <p class="lead-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
 
         <!-- For resellers -->
@@ -256,12 +285,29 @@
             wizard and the update channel current behind it. Tell us a little about your shop and we
             will explain how it works.
           </p>
-          <a class="contact-mail" href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance%20-%20becoming%20a%20reseller">appliance@bambuddy.cool</a>
-          <div class="contact-actions">
-            <a href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance%20-%20becoming%20a%20reseller" class="btn btn-secondary">
-              Become a reseller
-            </a>
-          </div>
+
+          <form class="lead-form" data-context="appliance" novalidate>
+            <input type="hidden" name="interest" value="reseller">
+            <div class="form-group">
+              <label class="form-label" for="res-region">Where is your shop?</label>
+              <input class="form-input" id="res-region" name="region" type="text" required autocomplete="country-name" placeholder="Country / region">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="res-email">Your email</label>
+              <input class="form-input" id="res-email" name="email" type="email" required autocomplete="email" placeholder="you@yourshop.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="res-message">Tell us about your shop <span class="form-hint">(optional)</span></label>
+              <textarea class="form-textarea" id="res-message" name="message" placeholder="What you sell, roughly how many boxes a month you'd expect, and anything else useful."></textarea>
+            </div>
+            <div class="lead-hp" aria-hidden="true">
+              <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <button type="submit" class="btn btn-secondary lead-submit-btn" data-label="Become a reseller">
+              <span class="lead-btn-label">Become a reseller</span>
+            </button>
+            <p class="lead-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
 
@@ -269,6 +315,7 @@
         Just want to read up first?
         <a href="http://wiki.bambuddy.cool/appliance/" target="_blank" rel="noopener">Read the documentation</a>
         or <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">ask on Discord</a>.
+        Prefer email? <a href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance">appliance@bambuddy.cool</a>.
       </p>
     </div>
   </section>
@@ -364,5 +411,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/lead-form.js" defer></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css?v=20260713c">
+  <link rel="stylesheet" href="css/style.css?v=20260721a">
   <link rel="stylesheet" href="css/animations.css">
   <script>window.__matomoSiteId = '1';</script>
   <script src="js/cookie-consent.js" defer></script>
@@ -247,12 +247,71 @@
           Tell us how many printers you run and what you need. You will get a reply from the person who
           maintains the software, not a sales team — because there isn't one.
         </p>
-        <a class="contact-mail" href="mailto:business@bambuddy.cool?subject=Bambuddy%20for%20business">business@bambuddy.cool</a>
-        <div class="contact-actions">
-          <a href="mailto:business@bambuddy.cool?subject=Bambuddy%20for%20business" class="btn btn-primary">
-            Start a conversation
-          </a>
-        </div>
+
+        <form class="lead-form" data-context="business" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="biz-interest">What do you need?</label>
+              <select class="form-input" id="biz-interest" name="interest" required>
+                <option value="" disabled selected>Select one…</option>
+                <option value="support">Priority support / SLA</option>
+                <option value="licensing">Commercial / redistribution licence</option>
+                <option value="custom_dev">Deployment / custom development</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="biz-printers">How many printers?</label>
+              <select class="form-input" id="biz-printers" name="printers">
+                <option value="" disabled selected>Select a range…</option>
+                <option value="1-5">1–5</option>
+                <option value="6-15">6–15</option>
+                <option value="16-40">16–40</option>
+                <option value="40+">40+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="biz-timeframe">Timeframe</label>
+              <select class="form-input" id="biz-timeframe" name="timeframe">
+                <option value="" disabled selected>Select…</option>
+                <option value="now">Ready now</option>
+                <option value="quarter">This quarter</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="biz-region">Country / region <span class="form-hint">(optional)</span></label>
+              <input class="form-input" id="biz-region" name="region" type="text" autocomplete="country-name" placeholder="e.g. Germany">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="biz-email">Your email</label>
+            <input class="form-input" id="biz-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="biz-message">Anything else? <span class="form-hint">(optional)</span></label>
+            <textarea class="form-textarea" id="biz-message" name="message" placeholder="A line or two about your setup and what you're after."></textarea>
+          </div>
+
+          <!-- honeypot: leave empty; bots won't -->
+          <div class="lead-hp" aria-hidden="true">
+            <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <button type="submit" class="btn btn-primary lead-submit-btn" data-label="Start a conversation">
+            <span class="lead-btn-label">Start a conversation</span>
+          </button>
+
+          <p class="lead-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="contact-secondary" style="margin-top:1.5rem;">
+          Prefer email? <a href="mailto:business@bambuddy.cool?subject=Bambuddy%20for%20business">business@bambuddy.cool</a>
+        </p>
       </div>
 
       <p style="text-align:center; margin-top:2.5rem; color:var(--text-secondary);">
@@ -352,5 +411,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/lead-form.js" defer></script>
 </body>
 </html>

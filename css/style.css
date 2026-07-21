@@ -2795,3 +2795,91 @@ tr:hover td {
   word-break: break-all;
 }
 
+/* --- Lead capture form (appliance / business pages) --------------------- */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.lead-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* selects share the input look; add the native-arrow reset the inputs skip */
+.lead-form select.form-input {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 15px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.lead-form .form-hint {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Honeypot: kept in the DOM for bots, removed from the visual + a11y tree. */
+.lead-form .lead-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.lead-submit-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lead-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lead-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lead-spin 0.7s linear infinite;
+}
+
+@keyframes lead-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lead-status {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md);
+  display: none;
+}
+
+.lead-status.is-visible { display: block; }
+
+.lead-status.is-success {
+  color: var(--accent-green);
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.lead-status.is-error {
+  color: #fca5a5;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
