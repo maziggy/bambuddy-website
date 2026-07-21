@@ -2883,3 +2883,40 @@ tr:hover td {
   border: 1px solid rgba(248, 113, 113, 0.3);
 }
 
+/* --- "For business" routing strip (installation page) ------------------- */
+.biz-strip {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-green);
+  border-radius: 0 12px 12px 0;
+}
+
+.biz-strip-text {
+  flex: 1 1 320px;
+}
+
+.biz-strip-text h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+}
+
+.biz-strip-text p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.biz-strip .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
