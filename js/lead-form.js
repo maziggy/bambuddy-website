@@ -75,6 +75,9 @@
           var msg = (r.body && r.body.message) || '';
           if (r.ok && r.body && r.body.success) {
             track('submit_success', payload.interest);
+            // Matomo goal id 1 ("Commercial lead"), manual trigger — fires on a
+            // confirmed send only, never on attempt/error.
+            if (window._paq) window._paq.push(['trackGoal', 1]);
             form.reset();
             setStatus(status, 'success', msg || "Thanks — we'll be in touch shortly.");
             // Leave the button disabled (prevents an accidental resubmit) but
