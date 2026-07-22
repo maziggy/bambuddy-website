@@ -106,6 +106,7 @@ _lock = threading.Lock()
 _rate_limits: dict[str, list[float]] = {}
 _global_sends: list[float] = []
 _recent: dict[str, float] = {}
+_warned_tracking_disabled = False
 
 _EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 _MAX_MESSAGE = 4000
@@ -199,6 +200,15 @@ def _track_conversion(page_url: str) -> None:
     within one visit window would silently collapse into one conversion.
     """
     if not MATOMO_TRACK_URL:
+        # Say so once, on the first lead that would have converted. Silence here
+        # is indistinguishable from "not deployed", which cost a debugging round.
+        global _warned_tracking_disabled
+        if not _warned_tracking_disabled:
+            _warned_tracking_disabled = True
+            logger.warning(
+                "Lead converted but MATOMO_TRACK_URL is unset — no conversion recorded. "
+                "The browser no longer tracks the goal, so it is counted nowhere."
+            )
         return
 
     params = {
