@@ -6,9 +6,11 @@
  * conversion tracking. If JS is off, the form still POSTs to /api/lead and the
  * endpoint returns JSON — not pretty, but not a dead end.
  *
- * Matomo: fires events under the "Lead" category. Create ONE goal in the Matomo
- * UI triggered by "Event Category is Lead / Action is submit_success" to record
- * conversions — no goal id needs to live in this file.
+ * Matomo: fires events under the "Lead" category so the funnel steps
+ * (attempt -> success/error) are visible. It does NOT record the goal — the
+ * relay does that server-side, because a browser with Do Not Track, a tracker
+ * blocker or JS disabled still submits a lead but reports nothing. Firing the
+ * goal in both places would double-count every lead from a tracked browser.
  */
 (function () {
   'use strict';
@@ -74,10 +76,9 @@
         .then(function (r) {
           var msg = (r.body && r.body.message) || '';
           if (r.ok && r.body && r.body.success) {
+            // Funnel step only. The "Commercial lead" goal is recorded by the
+            // relay on a confirmed send — see the note at the top of this file.
             track('submit_success', payload.interest);
-            // Matomo goal id 1 ("Commercial lead"), manual trigger — fires on a
-            // confirmed send only, never on attempt/error.
-            if (window._paq) window._paq.push(['trackGoal', 1]);
             form.reset();
             setStatus(status, 'success', msg || "Thanks — we'll be in touch shortly.");
             // Leave the button disabled (prevents an accidental resubmit) but

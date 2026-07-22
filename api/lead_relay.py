@@ -19,17 +19,20 @@ Design notes:
     sends nothing, so the bot has no signal to adapt.
   * No PII in logs. The prospect's email and message never hit the log — only
     the interest bucket, the outcome, and the client IP.
+  * Conversions are counted here, not in the browser. See _track_conversion().
 """
 
 import logging
 import os
 import re
+import secrets
 import smtplib
 import threading
 import time
 from email.mime.text import MIMEText
 from email.utils import formataddr, parseaddr
 
+import requests
 from flask import Blueprint, jsonify, request
 
 logger = logging.getLogger(__name__)
@@ -47,6 +50,28 @@ SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "starttls").lower()  # "starttls",
 # Where each interest routes. Overridable via env; defaults to the role mailboxes.
 LEAD_TO_APPLIANCE = os.environ.get("LEAD_TO_APPLIANCE", "appliance@bambuddy.cool")
 LEAD_TO_BUSINESS = os.environ.get("LEAD_TO_BUSINESS", "business@bambuddy.cool")
+
+# --- Matomo conversion tracking (see _track_conversion) -------------------
+# Unset MATOMO_TRACK_URL disables it entirely; the lead still relays as before.
+MATOMO_TRACK_URL = os.environ.get("MATOMO_TRACK_URL", "")
+MATOMO_SITE_ID = os.environ.get("MATOMO_SITE_ID", "1")
+MATOMO_GOAL_ID = os.environ.get("MATOMO_GOAL_ID", "1")
+
+# The page a lead came from, resolved from an allow-list rather than echoing the
+# submitted "context" into an outbound URL.
+CONTEXT_PAGE_URLS = {
+    "appliance": "https://bambuddy.cool/appliance.html",
+    "business": "https://bambuddy.cool/business.html",
+}
+DEFAULT_PAGE_URL = "https://bambuddy.cool/"
+
+# RFC 5737 TEST-NET-3 — reserved for documentation, never routable, and never a
+# real visitor. Matomo is configured to take the client IP from X-Forwarded-For,
+# and site 1 excludes the private ranges this relay would otherwise present
+# (192.168/16, 172.16/12, 10/8, 127.0.0.1), which would silently drop every
+# server-side hit. Sending an explicit non-excluded placeholder both dodges that
+# and keeps the conversion unattributable to the person who submitted the form.
+MATOMO_ANON_IP = "203.0.113.1"
 
 # --- Field vocabularies (server-side allow-lists; anything else is coerced) ---
 # appliance-page interests route to the appliance mailbox; business-page
@@ -155,6 +180,52 @@ def _send_lead_email(to_addr: str, subject: str, body: str, reply_to: str) -> bo
         return False
 
 
+def _track_conversion(page_url: str) -> None:
+    """Record a confirmed lead as a Matomo goal conversion, server-side.
+
+    Tracking the conversion in the browser misses every visitor who sends Do Not
+    Track (which the site honours by design), runs a tracker blocker, or has JS
+    disabled — all of whom still reach this endpoint and still get emailed. The
+    first real lead was invisible in Matomo for exactly that reason. Firing here
+    makes "conversions counted" equal "leads emailed", by construction.
+
+    Deliberately anonymous: the prospect's IP, user agent and Matomo visitor id
+    are NOT forwarded. This records THAT a lead converted, never who converted —
+    so it stays consistent with the DNT promise on the page. The cost is that a
+    converted lead carries no channel attribution.
+
+    Each call presents a fresh random visitor id and forces a new visit. The goal
+    is configured single-conversion-per-visit, so without this two leads landing
+    within one visit window would silently collapse into one conversion.
+    """
+    if not MATOMO_TRACK_URL:
+        return
+
+    params = {
+        "idsite": MATOMO_SITE_ID,
+        "rec": "1",
+        "apiv": "1",
+        "idgoal": MATOMO_GOAL_ID,
+        "url": page_url,
+        "_id": secrets.token_hex(8),  # 16 hex chars, random per lead
+        "new_visit": "1",
+        "send_image": "0",
+    }
+    # An explicit UA is required, not cosmetic: Matomo drops hits whose agent is
+    # detected as a bot, and the default "python-requests/x.y" is.
+    headers = {
+        "User-Agent": "Bambuddy Lead Relay (server-side conversion)",
+        "X-Forwarded-For": MATOMO_ANON_IP,
+    }
+    try:
+        resp = requests.post(MATOMO_TRACK_URL, data=params, headers=headers, timeout=5)
+        if resp.status_code >= 400:
+            logger.warning("Matomo conversion rejected (status=%s)", resp.status_code)
+    except Exception:
+        # Never let analytics affect the lead itself — the mail is already sent.
+        logger.warning("Matomo conversion not recorded", exc_info=True)
+
+
 def _clean(value, limit: int = _MAX_FIELD) -> str:
     return str(value or "").strip()[:limit]
 
@@ -235,4 +306,13 @@ def lead():
 
     _record_send(fingerprint)
     logger.info("Lead relayed (interest=%s, ip=%s)", interest, client_ip)
+
+    # Off-thread: the prospect waits on SMTP already, and a slow or unreachable
+    # Matomo must not add to that or fail a lead that is already delivered.
+    threading.Thread(
+        target=_track_conversion,
+        args=(CONTEXT_PAGE_URLS.get(context, DEFAULT_PAGE_URL),),
+        daemon=True,
+    ).start()
+
     return jsonify({"success": True, "message": "Thanks — we'll be in touch shortly."})
