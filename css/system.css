@@ -1,0 +1,2887 @@
+/* =============================================================
+   Bambuddy — design system
+   Precision-instrument dark. One accent, used once per screen.
+   Replaces style.css + animations.css for pages on the new system.
+   ============================================================= */
+
+/* --- Display face: Archivo variable (wght 400-800, wdth 75-125) ---
+   Self-hosted, same GDPR posture as fonts.css. Inter + JetBrains Mono
+   come from css/fonts.css and are unchanged. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url(../fonts/archivo-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url(../fonts/archivo-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------------------------------------------------------------
+   Tokens
+   --------------------------------------------------------------- */
+:root {
+  /* Ground — warm near-black. The green bias is deliberate: a blue-black
+     ground is what every dark dev-tool template ships with. */
+  --ground: #0f1110;
+  --raised: #161916;
+  --raised-2: #1e221e;
+  --rule: #2b302b;
+  --rule-bright: #3a413a;
+
+  --text: #eceee8;
+  --dim: #99a096;
+  /* Carries the labels, press logos and the whole footer, all of which are
+     small text. Set at the lightest of the three tiers that still clears
+     4.5:1 against --ground, --raised and --raised-2. */
+  --faint: #828a80;
+
+  /* The one accent. Sodium/hot-end amber. Once per screen, never a
+     gradient, never on a heading. */
+  --signal: #ff8a3d;
+  --signal-deep: #b04f0c;
+  --signal-wash: rgba(255, 138, 61, 0.1);
+
+  /* Semantic machine state — separate from the accent by design, so a
+     "printing" pill never competes with the page's one emphasis. */
+  --ok: #5fbe8a;
+  --warn: #d8a63a;
+  --crit: #dc6b60;
+
+  --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Type scale */
+  --t-hero: clamp(2.6rem, 1.1rem + 6.2vw, 6rem);
+  --t-d1: clamp(2rem, 1.15rem + 3.5vw, 3.85rem);
+  --t-d2: clamp(1.45rem, 1.05rem + 1.9vw, 2.3rem);
+  --t-d3: clamp(1.15rem, 1rem + 0.7vw, 1.4rem);
+  --t-lead: clamp(1.05rem, 0.97rem + 0.5vw, 1.3rem);
+  --t-body: 1.0125rem;
+  --t-sm: 0.875rem;
+  --t-label: 0.7rem;
+
+  /* Space */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 0.75rem;
+  --s4: 1rem;
+  --s5: 1.5rem;
+  --s6: 2rem;
+  --s7: 3rem;
+  --s8: 4.5rem;
+  --s9: 7rem;
+
+  --shell: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --nav-h: 64px;
+
+  --r-sm: 3px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-full: 99px;
+}
+
+/* ---------------------------------------------------------------
+   Reset + base
+   --------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.62;
+  color: var(--text);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+::selection {
+  background: var(--signal-deep);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------
+   Typography primitives
+   --------------------------------------------------------------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 780;
+  font-stretch: 112%;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 760;
+  font-stretch: 108%;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+/* Uppercase tracked label — the instrument-panel device. Mono, because
+   these are machine labels, not prose. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.label-signal {
+  color: var(--signal);
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  color: var(--dim);
+  max-width: 60ch;
+}
+
+/* Runs the full content width. Set at the lead size rather than body size:
+   the container is fixed, so larger type is what keeps the line from
+   running to ~140 characters. */
+.prose {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------
+   Shell + section rhythm
+   --------------------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.shell-wide {
+  max-width: 1600px;
+}
+
+section {
+  position: relative;
+}
+
+.band {
+  padding-block: clamp(3.5rem, 8vw, var(--s9));
+}
+
+.band-tight {
+  padding-block: clamp(2.5rem, 5vw, var(--s8));
+}
+
+.band-ruled {
+  border-top: 1px solid var(--rule);
+}
+
+.band-raised {
+  background: var(--raised);
+}
+
+/* Section masthead — label + heading, left-aligned. Nothing centered. */
+.masthead {
+  display: grid;
+  gap: var(--s4);
+  margin-bottom: var(--s7);
+}
+
+/* Headings run the full content width; only the running prose under them
+   is held to a readable measure. */
+.masthead h2 {
+  font-size: var(--t-d1);
+}
+
+/* Sub-section masthead: a page's h1 is the display size, so section headings
+   below it step down. Exists so the pages stop repeating
+   style="font-size: var(--t-d2)" on every section. */
+.masthead-sub {
+  margin-bottom: var(--s6);
+}
+
+.masthead-sub h2 {
+  font-size: var(--t-d2);
+}
+
+.masthead > p {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.72em 1.25em;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  white-space: nowrap;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.btn-primary {
+  background: var(--signal);
+  color: #1a0d03;
+  border-color: var(--signal);
+}
+
+.btn-primary:hover {
+  background: #ffa062;
+  border-color: #ffa062;
+}
+
+.btn-ghost {
+  border-color: var(--rule-bright);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--dim);
+  background: var(--raised-2);
+}
+
+.btn-quiet {
+  color: var(--dim);
+  padding-inline: 0;
+}
+
+.btn-quiet:hover {
+  color: var(--signal);
+}
+
+/* Inline text link inside prose */
+.link {
+  color: var(--text);
+  border-bottom: 1px solid var(--rule-bright);
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.link:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* ---------------------------------------------------------------
+   Navigation — five primary links, not twelve. Everything else lives
+   in the footer or is reached contextually.
+   --------------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: rgba(15, 17, 16, 0.82);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--s6);
+}
+
+/* The wordmark carries an outline and a drop shadow, so it turns to mud
+   below roughly 30px. Sized to stay readable rather than to look tidy. */
+.nav-logo img {
+  height: 34px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--s5);
+  margin-right: auto;
+}
+
+.nav-link {
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--dim);
+  transition: color 140ms ease;
+}
+
+.nav-link:hover,
+.nav-link[aria-current='page'] {
+  color: var(--text);
+}
+
+/* Hairline separating the product path from the commercial pages. */
+.nav-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--rule);
+  flex: none;
+}
+
+/* Appliance and Business. Their traffic is low precisely because they are
+   the pages that need growing, so they get a pill rather than a plain link.
+   Two weights, one accent: Business carries it, Appliance stays neutral. */
+.nav-pill {
+  padding: 0.32rem 0.8rem;
+  font-size: var(--t-sm);
+  font-weight: 550;
+  border: 1px solid var(--rule-bright);
+  border-radius: var(--r-full, 99px);
+  color: var(--text);
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+  white-space: nowrap;
+}
+
+.nav-pill:hover {
+  border-color: var(--dim);
+  background: var(--raised-2);
+}
+
+.nav-pill-signal {
+  border-color: var(--signal-deep);
+  color: var(--signal);
+}
+
+.nav-pill-signal:hover {
+  border-color: var(--signal);
+  background: var(--signal-wash);
+  color: var(--signal);
+}
+
+/* "More" disclosure — keeps Press, Reviews, Sponsor and Discord reachable
+   without presenting them as equal in weight to Install. */
+.nav-more {
+  position: relative;
+}
+
+.nav-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--dim);
+  transition: color 140ms ease;
+}
+
+.nav-more-btn:hover,
+.nav-more-btn[aria-expanded='true'] {
+  color: var(--text);
+}
+
+.nav-more-btn svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 160ms ease;
+}
+
+.nav-more-btn[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
+.nav-more-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  padding: var(--s2);
+  background: var(--raised);
+  border: 1px solid var(--rule-bright);
+  border-radius: var(--r-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.nav-more-panel.is-open {
+  display: block;
+}
+
+.nav-more-panel a {
+  display: block;
+  padding: 0.5rem 0.7rem;
+  font-size: var(--t-sm);
+  color: var(--dim);
+  border-radius: var(--r-sm);
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.nav-more-panel a:hover {
+  color: var(--text);
+  background: var(--raised-2);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.nav-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--dim);
+  border-radius: var(--r-md);
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.nav-icon:hover {
+  color: var(--text);
+  background: var(--raised-2);
+}
+
+.nav-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.nav-toggle {
+  display: none;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------
+   Hero — one claim, one legible screenshot.
+   --------------------------------------------------------------- */
+.hero {
+  padding-top: clamp(3.5rem, 9vw, 7rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Flow, not gap: each pair wants a different interval, which a single
+   gap cannot express. Only margin-bottom is set, so nothing collapses. */
+.hero-grid {
+  max-width: 100%;
+}
+
+.hero-grid > .label {
+  margin-bottom: var(--s4);
+}
+
+/* Bounded by the shell, not by a character count — text-wrap: balance
+   evens the lines out. */
+.hero-grid > h1 {
+  margin-bottom: var(--s5);
+}
+
+.hero-grid > .hero-lead {
+  margin-bottom: var(--s6);
+}
+
+.hero-grid > .hero-actions {
+  margin-bottom: var(--s5);
+}
+
+.hero h1 {
+  font-size: var(--t-hero);
+  font-weight: 800;
+  font-stretch: 114%;
+  letter-spacing: -0.032em;
+  line-height: 0.99;
+}
+
+.hero-lead {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  color: var(--dim);
+  max-width: 52ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+}
+
+/* Machine-readable strip under the CTAs: the facts a technical reader
+   wants before clicking anything. */
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.hero-facts span {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.hero-facts span::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--rule-bright);
+}
+
+/* The screenshot. One, large, legible — cropped at the bottom so it
+   reads as a window into the app rather than a floating card. */
+.hero-shot {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  overflow: hidden;
+  background: var(--raised);
+  max-height: min(76vh, 780px);
+}
+
+.hero-shot img {
+  width: 100%;
+  display: block;
+}
+
+.hero-shot::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 28%;
+  background: linear-gradient(to bottom, transparent, var(--ground));
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------
+   Press strip — moved above the fold. This is the most credible
+   thing on the site; it was buried.
+   --------------------------------------------------------------- */
+.press {
+  border-block: 1px solid var(--rule);
+  padding-block: var(--s6);
+}
+
+.press-inner {
+  display: grid;
+  gap: var(--s5);
+  align-items: center;
+}
+
+.press-quote {
+  font-family: var(--font-display);
+  font-size: var(--t-d3);
+  font-weight: 500;
+  font-stretch: 100%;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  max-width: 46ch;
+}
+
+/* A byline is a person's name, not machine output — set in the body face
+   rather than mono. Mono stays for the eyebrow labels only. */
+.press-quote cite {
+  display: block;
+  margin-top: var(--s3);
+  font-family: var(--font-body);
+  font-size: var(--t-sm);
+  font-style: normal;
+  color: var(--dim);
+}
+
+.press-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  align-items: center;
+}
+
+/* These are mastheads, and they are links. Both were failing: mono read as
+   sci-fi rather than editorial, and --faint with no underline gave no
+   signal that they were clickable at all. */
+.press-logos a {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 550;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-bright);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color 140ms ease, text-decoration-color 140ms ease;
+}
+
+.press-logos a:hover {
+  color: var(--signal);
+  text-decoration-color: var(--signal);
+}
+
+.press-more {
+  margin-top: var(--s4);
+}
+
+/* ---------------------------------------------------------------
+   SECTION TYPE 1 — full-bleed statement.
+   One claim. Nothing else competing.
+   --------------------------------------------------------------- */
+.stmt {
+  padding-block: clamp(5rem, 13vw, 11rem);
+  border-top: 1px solid var(--rule);
+}
+
+.stmt-claim {
+  font-size: var(--t-d1);
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.028em;
+  line-height: 1.03;
+}
+
+.stmt-body {
+  margin-top: var(--s6);
+  display: grid;
+  gap: var(--s5);
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+/* Hairlines are drawn by the items, not by a 1px gap over a coloured
+   container: with auto-fit, the last row is often short, and a gap-based
+   rule paints those empty cells solid grey. */
+.stmt-detail {
+  margin-top: var(--s7);
+  display: grid;
+  /* Explicit counts rather than auto-fit: four items cannot fill both a
+     4-track and a 3-track row, and auto-fit picks 3 at mid widths. 1 / 2 / 4
+     always divides exactly. */
+  grid-template-columns: 1fr;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.stmt-detail div {
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  /* Pulls the first row/column rule under the container border so the
+     perimeter is not drawn twice. */
+  margin: -1px 0 0 -1px;
+}
+
+.stmt-detail dt {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.stmt-detail dd {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------
+   SECTION TYPE 2 — sticky-media walkthrough.
+   Media pins; copy advances beside it. Base styles are the stacked
+   fallback: no JS, narrow viewport, or reduced motion all land here.
+   --------------------------------------------------------------- */
+.walk {
+  border-top: 1px solid var(--rule);
+}
+
+.walk-step {
+  padding-block: var(--s6);
+  display: grid;
+  gap: var(--s4);
+  align-content: start;
+}
+
+.walk-step h3 {
+  font-size: var(--t-d2);
+  /* Only bites in the stacked fallback; on desktop the column bounds it. */
+  max-width: 34ch;
+}
+
+.walk-step p {
+  color: var(--dim);
+}
+
+.walk-num {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.16em;
+  color: var(--faint);
+}
+
+/* Inline image — shown in the stacked fallback, hidden once the
+   sticky two-column layout takes over. */
+.walk-inline {
+  margin-top: var(--s3);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--raised);
+}
+
+/* The pinned media column — only exists in the enhanced layout. */
+.walk-media {
+  display: none;
+}
+
+.walk-frame {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--raised);
+  /* Matches the three walkthrough captures (1.451/1.452/1.454), so the
+     pinned frame swaps between them without cropping anything. */
+  aspect-ratio: 1.45;
+}
+
+.walk-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.walk-frame img.is-active {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------
+   Framed screenshot + asymmetric split, for a tall capture beside copy.
+   --------------------------------------------------------------- */
+.shot {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--raised);
+}
+
+/* 16:9 video embed. aspect-ratio rather than the padding-top hack, so the
+   iframe can simply fill it. */
+.embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 900px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--raised);
+}
+
+.embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.split {
+  display: grid;
+  gap: var(--s6);
+  align-items: center;
+}
+
+.split-copy {
+  display: grid;
+  gap: var(--s4);
+  align-content: center;
+}
+
+.split-copy h3 {
+  font-size: var(--t-d2);
+}
+
+.split-copy p {
+  color: var(--dim);
+}
+
+/* The print dialog is a tall portrait capture (roughly 1:2), so it is held
+   to a narrow column rather than stretched across the content width. */
+.split-shot {
+  max-width: 380px;
+  justify-self: center;
+}
+
+/* ---------------------------------------------------------------
+   SECTION TYPE 3 — wrapping card grid.
+   This was a horizontal snap rail. Seven printer families is a small
+   enough set to show at once, and hiding the three newest behind a
+   scroll meant most visitors never saw H2/X2/A2 support at all —
+   exactly the hardware worth advertising. A rail is right for an
+   open-ended list; this list is closed and short.
+   --------------------------------------------------------------- */
+.rail-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--s6);
+}
+
+.rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--s4);
+}
+
+.rail-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+  transition: border-color 160ms ease;
+}
+
+.rail-card:hover {
+  border-color: var(--rule-bright);
+}
+
+.rail-card img {
+  height: 96px;
+  width: auto;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.rail-card h3 {
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+.rail-models {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--dim);
+}
+
+.rail-note {
+  font-size: var(--t-sm);
+  color: var(--faint);
+  line-height: 1.45;
+}
+
+/* ---------------------------------------------------------------
+   SECTION TYPE 4 — dense spec block. Skimmable, no cards, hairlines
+   doing the separation.
+   --------------------------------------------------------------- */
+.spec {
+  display: grid;
+  /* Six items: 1 / 2 / 3 tracks all divide exactly, so no row is ever short. */
+  grid-template-columns: 1fr;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.spec-item {
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: -1px 0 0 -1px;
+}
+
+.spec-item h3 {
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.spec-item h3 svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  color: var(--faint);
+}
+
+.spec-item p {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------
+   Status pill — semantic colour, not the accent.
+   --------------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28em 0.6em;
+  border-radius: var(--r-sm);
+  border: 1px solid currentColor;
+}
+
+.pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pill-ok {
+  color: var(--ok);
+}
+
+/* ---------------------------------------------------------------
+   Long-form article body (installation, docs, legal)
+   --------------------------------------------------------------- */
+.article {
+  display: grid;
+  /* minmax(0, 1fr), not the implicit `auto`: a grid item's min-width defaults
+     to min-content, so one long `curl` line would hold the column open wider
+     than the viewport and the pre's own overflow-x would never engage. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s5);
+}
+
+.article h2 {
+  font-size: var(--t-d2);
+  margin-top: var(--s5);
+}
+
+.article h3 {
+  font-size: var(--t-d3);
+  margin-top: var(--s4);
+}
+
+.article h2:first-child,
+.article h3:first-child {
+  margin-top: 0;
+}
+
+.article p,
+.article li {
+  color: var(--dim);
+  /* Inline <code> spans here are URLs and flags that have no break opportunity;
+     without this they push past the column on narrow screens. */
+  overflow-wrap: anywhere;
+}
+
+/* :not(.ticks) — component lists bring their own markers and padding. Without
+   this the generic disc renders on top of the .ticks ::before dot, and it wins
+   on specificity (0,1,2 vs 0,1,1). */
+.article > ul:not(.ticks),
+.article > ol {
+  display: grid;
+  gap: var(--s3);
+  padding-left: 1.15rem;
+}
+
+.article > ul:not(.ticks) li {
+  list-style: disc;
+}
+
+.article > ol li {
+  list-style: decimal;
+}
+
+.article a:not(.btn) {
+  color: var(--text);
+  border-bottom: 1px solid var(--rule-bright);
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.article a:not(.btn):hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+.article strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  color: var(--text);
+  background: var(--raised-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+}
+
+/* ---------------------------------------------------------------
+   Code block with copy button
+   --------------------------------------------------------------- */
+.code-block {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: #0b0d0c;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: 0.5rem 0.5rem 0.5rem 0.9rem;
+  background: var(--raised);
+  border-bottom: 1px solid var(--rule);
+}
+
+.code-lang {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.code-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.35rem 0.6rem;
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: 1px solid var(--rule-bright);
+  border-radius: var(--r-sm);
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.code-copy:hover {
+  color: var(--text);
+  border-color: var(--dim);
+}
+
+.code-copy.copied {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+
+.code-copy svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* The one place the page is allowed to scroll sideways — inside its own
+   container, never the body. */
+.code-block pre {
+  margin: 0;
+  padding: var(--s4) 0.9rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #d6dcd4;
+  white-space: pre;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------
+   Callouts
+   --------------------------------------------------------------- */
+.alert {
+  display: flex;
+  gap: var(--s3);
+  padding: var(--s4);
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--dim);
+  border: 1px solid var(--rule);
+  border-left-width: 2px;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--raised);
+}
+
+.alert-icon {
+  flex: none;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Defensive: an <svg> with no width/height attributes defaults to 300x150 and
+   crushes the text beside it. Any icon that arrives as SVG gets bounded. */
+svg.alert-icon,
+.alert > svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin-top: 0.15em;
+}
+
+/* Same min-content trap as .article, but on a flex item: these bodies carry
+   inline <code> with unbreakable URLs, which otherwise hold the box open
+   past the viewport. */
+.alert > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.alert strong {
+  color: var(--text);
+}
+
+.alert-info {
+  border-left-color: var(--dim);
+}
+
+.alert-success {
+  border-left-color: var(--ok);
+}
+
+.alert-warning {
+  border-left-color: var(--warn);
+}
+
+.alert-danger {
+  border-left-color: var(--crit);
+}
+
+/* ---------------------------------------------------------------
+   Numbered steps. The number is kept because these are genuine
+   sequences — you cannot enable developer mode before finding the
+   network settings — not because numbering looks tidy.
+   --------------------------------------------------------------- */
+.steps {
+  display: grid;
+  gap: 0;
+  counter-reset: step;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s4);
+  padding-block: var(--s5);
+  border-top: 1px solid var(--rule);
+}
+
+.step:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.step::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  color: var(--signal);
+  padding-top: 0.35em;
+}
+
+.step-body {
+  display: grid;
+  gap: var(--s3);
+  min-width: 0;
+}
+
+.step-body h3 {
+  font-size: var(--t-d3);
+}
+
+.step-body p {
+  font-size: var(--t-sm);
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------
+   Requirement columns
+   --------------------------------------------------------------- */
+.reqs {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.req {
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: -1px 0 0 -1px;
+}
+
+.req h3 {
+  font-size: 1.0625rem;
+}
+
+/* ---------------------------------------------------------------
+   Comparison table. 82 data rows across 4 columns, so it scrolls
+   inside its own wrapper and the header row stays pinned — the page
+   body itself never moves sideways.
+   --------------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-bright) transparent;
+}
+
+.table-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrap::-webkit-scrollbar-thumb {
+  background: var(--rule-bright);
+  border-radius: var(--r-full);
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: var(--t-sm);
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+
+.compare-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  font-stretch: 105%;
+  color: var(--text);
+  background: var(--raised-2);
+  border-bottom: 1px solid var(--rule-bright);
+  white-space: nowrap;
+}
+
+/* Our column, carrying the page's single accent. */
+.compare-table .col-highlight {
+  color: var(--signal);
+}
+
+.compare-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.compare-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.compare-table td {
+  color: var(--dim);
+}
+
+/* Category divider rows. */
+.compare-table .row-group td {
+  padding-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--raised);
+  border-bottom: 1px solid var(--rule-bright);
+}
+
+.compare-table tr:first-child .row-group td {
+  padding-top: 0.7rem;
+}
+
+/* Verdict glyphs — semantic colour, deliberately not the accent. */
+.cell-yes {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.cell-no {
+  color: var(--crit);
+  font-weight: 700;
+}
+
+.cell-partial {
+  color: var(--warn);
+  font-weight: 700;
+}
+
+.cell-na {
+  color: var(--faint);
+  font-weight: 500;
+}
+
+.compare-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  margin-top: var(--s4);
+  font-size: var(--t-sm);
+  color: var(--dim);
+}
+
+.compare-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+/* Head-to-head cards above the table. */
+.compare-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s5);
+}
+
+.compare-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+  overflow: hidden;
+}
+
+.compare-card-highlight {
+  border-color: var(--signal-deep);
+}
+
+.compare-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5);
+  border-bottom: 1px solid var(--rule);
+}
+
+.compare-card-header h3 {
+  font-size: var(--t-d3);
+}
+
+.compare-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: none;
+}
+
+.compare-card-body {
+  padding: var(--s5);
+}
+
+.compare-card-body > p {
+  font-size: var(--t-sm);
+  color: var(--dim);
+}
+
+/* The tick/cross is an inline SVG, and the global reset makes svg a block —
+   without flex here each glyph lands on its own line above its label. */
+.compare-highlights {
+  display: grid;
+  gap: 0;
+  margin-top: var(--s4);
+}
+
+.compare-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  padding-block: 0.5rem;
+  font-size: var(--t-sm);
+  color: var(--dim);
+  border-top: 1px solid var(--rule);
+}
+
+.compare-highlights li:first-child {
+  border-top: 0;
+}
+
+.compare-highlights li svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin-top: 0.2em;
+  color: var(--ok);
+}
+
+/* Negatives are already marked .compare-con in the source markup. */
+.compare-highlights li.compare-con svg {
+  color: var(--crit);
+}
+
+/* ---------------------------------------------------------------
+   Press coverage
+   --------------------------------------------------------------- */
+.press-coverage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s5);
+}
+
+.press-card {
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+  /* Anchor targets (#tailscale, #xda, ...) linked from the homepage strip. */
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+.press-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.press-card-outlet {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 105%;
+  color: var(--text);
+}
+
+.press-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.press-card-title {
+  font-size: var(--t-d3);
+  line-height: 1.3;
+}
+
+/* The pull-quote is the point of the card, so it gets the accent rule. */
+.press-card-quote {
+  padding-left: var(--s4);
+  border-left: 2px solid var(--signal-deep);
+  color: var(--dim);
+}
+
+.press-card-quote p {
+  font-size: var(--t-sm);
+  line-height: 1.6;
+}
+
+.press-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--signal);
+  transition: gap 160ms ease;
+}
+
+.press-card-link:hover {
+  gap: 0.85em;
+}
+
+.press-card-link svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+/* Two outlets reaching the same conclusion independently — the strongest
+   claim on the page, so it is set as a statement rather than a card. */
+.press-narrative-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s5);
+}
+
+.press-narrative-quote {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--signal);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--raised);
+  color: var(--dim);
+}
+
+.press-narrative-outlet {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* The single strongest external quote on the site — set as a statement and
+   allowed to run the full content width. No `ch` cap on the blockquote: the
+   unit resolves against its own inherited 16px font, not the display size of
+   the text inside, which collapsed this to a narrow ribbon. */
+.press-headline-quote .press-headline-text {
+  font-size: var(--t-d1);
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.028em;
+  line-height: 1.05;
+}
+
+.press-headline-text {
+  font-family: var(--font-display);
+  font-size: var(--t-d3);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.press-headline-cite {
+  display: block;
+  margin-top: var(--s3);
+  font-size: var(--t-sm);
+  font-style: normal;
+  color: var(--faint);
+}
+
+/* Secondary mentions — denser, no pull-quote. */
+.press-additional-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.press-additional-card {
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  padding: var(--s5);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: -1px 0 0 -1px;
+}
+
+.press-additional-outlet {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  font-stretch: 105%;
+  color: var(--text);
+}
+
+.press-additional-desc {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+.press-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+/* These are anchors, not static cells — give them a hover state. */
+.press-contact-card {
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: -1px 0 0 -1px;
+  transition: background-color 140ms ease;
+}
+
+.press-contact-card:hover {
+  background: var(--raised-2);
+}
+
+.press-contact-card:hover .press-contact-value {
+  color: var(--text);
+}
+
+.press-contact-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.press-contact-value {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------
+   Sponsorship tiers and funding goals
+   --------------------------------------------------------------- */
+.tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s4);
+}
+
+/* Flex column so the CTA can be pushed to the bottom with margin-top:auto —
+   with align-content:start each button landed wherever its perk list happened
+   to end, leaving them ragged across the row. */
+.tier-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+}
+
+/* One tier is recommended; it carries the accent, the others stay quiet. */
+.tier-card.featured {
+  border-color: var(--signal-deep);
+}
+
+.tier-badge {
+  position: absolute;
+  top: 0;
+  right: var(--s4);
+  transform: translateY(-50%);
+  padding: 0.25rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a0d03;
+  background: var(--signal);
+  border-radius: var(--r-full);
+}
+
+/* Reserved for two lines so "Sustaining Sponsor" and "Corporate Sponsor"
+   do not shove their prices out of line with the three single-word tiers.
+   The prices are what people scan, so they share a baseline. */
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-stretch: 105%;
+  line-height: 1.25;
+  min-height: 2.5em;
+  color: var(--text);
+}
+
+.tier-price {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  font-stretch: 110%;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.tier-price-suffix {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.tier-perks {
+  display: grid;
+  gap: 0;
+  margin-top: var(--s3);
+}
+
+.tier-perks li {
+  padding-block: 0.5rem;
+  font-size: var(--t-sm);
+  color: var(--dim);
+  border-top: 1px solid var(--rule);
+  /* break-word, not anywhere: a bare URL still has to break in a column this
+     narrow, but the converter inserts <wbr> after each dot so it breaks at
+     "sponsors." / "bambuddy." rather than mid-syllable. */
+  overflow-wrap: break-word;
+}
+
+.tier-perks a {
+  color: var(--text);
+  border-bottom: 1px solid var(--rule-bright);
+}
+
+.tier-perks a:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+.tier-perks li:first-child {
+  border-top: 0;
+}
+
+/* Full card width and allowed to wrap: "Become a Sustaining Sponsor" cannot
+   fit one line in a fifth of the shell, and .btn is nowrap by default. */
+.tier-cta {
+  margin-top: auto;
+  padding-top: 0.72em;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+}
+
+.tier-perks {
+  margin-bottom: var(--s4);
+}
+
+/* Funding goals — amounts read as data, so tabular figures. */
+.goals-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.goal-card {
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin: -1px 0 0 -1px;
+}
+
+.goal-amount {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-stretch: 108%;
+  letter-spacing: -0.02em;
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.goal-description {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+.goal-description a {
+  color: var(--text);
+  border-bottom: 1px solid var(--rule-bright);
+}
+
+.goal-description a:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* ---------------------------------------------------------------
+   Disclosure list (FAQ). Native <details>, so it works without JS.
+   --------------------------------------------------------------- */
+.faq {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--ground);
+}
+
+.faq details {
+  border-top: 1px solid var(--rule);
+}
+
+.faq details:first-child {
+  border-top: 0;
+}
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s4) var(--s5);
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 140ms ease;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Own marker, so the disclosure state is legible on every platform. */
+.faq summary::after {
+  content: '+';
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--signal);
+  transition: transform 160ms ease;
+}
+
+.faq details[open] summary::after {
+  content: '\2212';
+}
+
+.faq summary:hover {
+  background: var(--raised);
+}
+
+.faq details > p {
+  padding: 0 var(--s5) var(--s5);
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--dim);
+  max-width: 78ch;
+}
+
+.faq details > p a {
+  color: var(--text);
+  border-bottom: 1px solid var(--rule-bright);
+}
+
+.faq details > p a:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* ---------------------------------------------------------------
+   User reviews. Every class below is emitted by js/reviews.js at
+   runtime, so the names are its contract — do not rename them.
+   --------------------------------------------------------------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s4);
+}
+
+.review-card {
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+}
+
+.review-stars {
+  display: flex;
+  gap: 0.15em;
+}
+
+.review-star {
+  width: 15px;
+  height: 15px;
+}
+
+.star-filled {
+  color: var(--warn);
+}
+
+.star-empty {
+  color: var(--rule-bright);
+}
+
+.review-text {
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--dim);
+  overflow-wrap: anywhere;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.review-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--signal);
+  background: var(--signal-wash);
+  border: 1px solid var(--signal-deep);
+}
+
+.review-name {
+  display: block;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.review-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+
+/* Aggregate rating — figures, so tabular. */
+.review-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s6);
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+}
+
+.review-stat-item {
+  display: grid;
+  gap: var(--s2);
+  justify-items: start;
+}
+
+.review-stat-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-stretch: 110%;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.review-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.reviews-empty-state {
+  grid-column: 1 / -1;
+  padding: var(--s7) var(--s5);
+  text-align: center;
+  border: 1px dashed var(--rule-bright);
+  border-radius: var(--r-md);
+  color: var(--dim);
+}
+
+.reviews-empty-state h3 {
+  font-size: var(--t-d3);
+  margin-bottom: var(--s2);
+}
+
+/* Loading skeletons */
+.review-card-skeleton {
+  pointer-events: none;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--raised-2) 25%, var(--rule-bright) 50%, var(--raised-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Star rating input */
+.star-selector {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.star-select-btn {
+  display: grid;
+  place-items: center;
+  padding: 0.2rem;
+  color: var(--rule-bright);
+  transition: color 120ms ease, transform 120ms ease;
+}
+
+.star-select-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.star-select-btn.hovered,
+.star-select-btn.selected {
+  color: var(--warn);
+}
+
+.star-select-btn:hover {
+  transform: translateY(-1px);
+}
+
+.review-form {
+  display: grid;
+  gap: var(--s4);
+  max-width: 640px;
+}
+
+.review-submit-btn {
+  justify-self: start;
+}
+
+.review-form-disclaimer {
+  font-size: var(--t-sm);
+  color: var(--faint);
+}
+
+/* Inline spinner injected into the submit button while posting. */
+.spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  vertical-align: -1px;
+  margin-right: 0.4em;
+  border: 2px solid rgba(26, 13, 3, 0.35);
+  border-top-color: #1a0d03;
+  border-radius: 50%;
+  animation: lead-spin 0.7s linear infinite;
+}
+
+/* Toasts — the container is created by reviews.js if absent. */
+.review-toast-container {
+  position: fixed;
+  right: var(--s5);
+  bottom: var(--s5);
+  z-index: 200;
+  display: grid;
+  gap: var(--s3);
+  max-width: min(92vw, 380px);
+}
+
+.review-toast {
+  padding: 0.85rem 1.1rem;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  border-radius: var(--r-md);
+  border: 1px solid var(--rule-bright);
+  background: var(--raised);
+  color: var(--text);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.review-toast-success {
+  border-color: rgba(95, 190, 138, 0.4);
+  color: var(--ok);
+}
+
+.review-toast-error {
+  border-color: rgba(220, 107, 96, 0.4);
+  color: var(--crit);
+}
+
+/* ---------------------------------------------------------------
+   In-page section navigation (long documents)
+   --------------------------------------------------------------- */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  padding-block: var(--s4);
+  border-block: 1px solid var(--rule);
+}
+
+.toc a {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  transition: color 140ms ease;
+}
+
+.toc a:hover {
+  color: var(--signal);
+}
+
+/* ---------------------------------------------------------------
+   Panels + forms (business / appliance lead capture)
+   --------------------------------------------------------------- */
+
+/* The concession panel. Carries the accent on its leading edge because it
+   is the one thing on the page that earns the rest its credibility. */
+.panel {
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--signal);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--raised);
+  padding: var(--s6);
+  display: grid;
+  gap: var(--s4);
+}
+
+.panel h2 {
+  font-size: var(--t-d2);
+}
+
+.panel p {
+  color: var(--dim);
+}
+
+/* Dense checklist — hairline separated, no bullets, no cards. */
+/* list-style/padding reset explicitly: inside .article the generic
+   `.article > ul li { list-style: disc }` rule would draw a native marker on
+   top of the ::before dot below, giving every item two bullets. */
+.ticks {
+  display: grid;
+  gap: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.ticks li {
+  list-style: none;
+}
+
+/* Not flex. These items are "<strong>Label</strong> then prose", and under
+   flex the <strong> and the text node become two separate flex items — the
+   label gets its own narrow column and breaks mid-word ("Trac king,").
+   An absolutely positioned bullet keeps the whole item in one inline flow. */
+.ticks li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.1em;
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--dim);
+  border-top: 1px solid var(--rule);
+}
+
+.ticks li:first-child {
+  border-top: 0;
+}
+
+.ticks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.15em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal-deep);
+}
+
+/* The label reads as a label rather than as emphasis mid-sentence. */
+.ticks li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.svc-note {
+  margin-top: var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Three offers: one column, then three. Never two, which would leave the
+   last cell short. */
+.svc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s5);
+}
+
+.svc-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--raised);
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+}
+
+.svc-card h3 {
+  font-size: var(--t-d3);
+}
+
+.svc-card > p {
+  font-size: var(--t-sm);
+  color: var(--dim);
+}
+
+/* Compact page header — this page is scanned by someone deciding whether to
+   contact you, not read like a landing page. */
+.page-head {
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.page-head h1 {
+  font-size: var(--t-d1);
+  font-weight: 800;
+  font-stretch: 112%;
+  margin-block: var(--s4) var(--s5);
+}
+
+.page-head h1:last-child {
+  margin-bottom: 0;
+}
+
+/* The header already carries its own bottom padding; without this the two
+   pad against each other and leave a hole under the h1. */
+.page-head + .band-tight,
+.page-head + .band {
+  padding-top: 0;
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--s4);
+}
+
+.form-row {
+  display: grid;
+  gap: var(--s4);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--s2);
+}
+
+.form-label {
+  font-size: var(--t-sm);
+  font-weight: 550;
+  color: var(--text);
+}
+
+.form-hint {
+  font-weight: 400;
+  color: var(--faint);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: var(--t-sm);
+  color: var(--text);
+  background: var(--ground);
+  border: 1px solid var(--rule-bright);
+  border-radius: var(--r-md);
+  transition: border-color 140ms ease;
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--dim);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--signal);
+}
+
+.form-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Native select arrow is drawn by the platform in its own colours; a custom
+   caret keeps it consistent with the inputs beside it. */
+select.form-input {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--dim) 50%),
+    linear-gradient(135deg, var(--dim) 50%, transparent 50%);
+  background-position: right 1rem center, right 0.7rem center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+
+select.form-input option {
+  background: var(--raised);
+  color: var(--text);
+}
+
+.lead-form .lead-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.lead-submit-btn {
+  justify-self: start;
+}
+
+.lead-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(26, 13, 3, 0.35);
+  border-top-color: #1a0d03;
+  border-radius: 50%;
+  animation: lead-spin 0.7s linear infinite;
+}
+
+@keyframes lead-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lead-status {
+  display: none;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  padding: 0.8rem 1rem;
+  border-radius: var(--r-md);
+}
+
+.lead-status.is-visible {
+  display: block;
+}
+
+.lead-status.is-success {
+  color: var(--ok);
+  background: rgba(95, 190, 138, 0.08);
+  border: 1px solid rgba(95, 190, 138, 0.3);
+}
+
+.lead-status.is-error {
+  color: var(--crit);
+  background: rgba(220, 107, 96, 0.08);
+  border: 1px solid rgba(220, 107, 96, 0.3);
+}
+
+.noscript-note {
+  margin-bottom: var(--s5);
+  padding: 0.8rem 1rem;
+  font-size: var(--t-sm);
+  color: var(--warn);
+  background: rgba(216, 166, 58, 0.08);
+  border: 1px solid rgba(216, 166, 58, 0.3);
+  border-radius: var(--r-md);
+}
+
+/* ---------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--s8) var(--s6);
+  background: var(--raised);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: var(--s6);
+}
+
+.footer-brand {
+  display: grid;
+  gap: var(--s4);
+  align-content: start;
+}
+
+.footer-brand img {
+  height: 32px;
+  width: auto;
+}
+
+.footer-brand p {
+  font-size: var(--t-sm);
+  color: var(--faint);
+  max-width: 30ch;
+}
+
+.footer-col {
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.footer-col a {
+  font-size: var(--t-sm);
+  color: var(--dim);
+  transition: color 140ms ease;
+}
+
+.footer-col a:hover {
+  color: var(--signal);
+}
+
+.footer-bottom {
+  margin-top: var(--s7);
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--t-sm);
+  color: var(--faint);
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s4);
+}
+
+.footer-legal a:hover {
+  color: var(--text);
+}
+
+.footer-sponsor {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  margin-bottom: var(--s7);
+  padding-bottom: var(--s6);
+  border-bottom: 1px solid var(--rule);
+}
+
+.footer-sponsor img {
+  height: 40px;
+  width: auto;
+  border-radius: var(--r-sm);
+}
+
+/* ---------------------------------------------------------------
+   Reveal-on-enter. Opt-in via .js so nothing is hidden without it.
+   --------------------------------------------------------------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 620ms ease, transform 620ms ease;
+}
+
+/* `.visible` is the alias reviews.js uses — it ships its own IntersectionObserver
+   for the cards it injects and marks them with .visible, not .is-in. Without
+   this every dynamically loaded review would sit at opacity 0 forever. */
+.js .reveal.is-in,
+.js .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------
+   Breakpoints — three, not eleven.
+   --------------------------------------------------------------- */
+
+/* Grids that must divide exactly — see the notes on .spec / .stmt-detail. */
+@media (min-width: 640px) {
+  .spec,
+  .stmt-detail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .spec {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stmt-detail {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Tablet and up: sticky walkthrough becomes available, press strip
+   splits into two columns. */
+@media (min-width: 900px) {
+  .press-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--s7);
+  }
+
+  .js .walk-track {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--s8);
+    align-items: start;
+  }
+
+  .js .walk-media {
+    display: block;
+    position: sticky;
+    top: calc(var(--nav-h) + clamp(2rem, 6vh, 5rem));
+  }
+
+  .js .walk-inline {
+    display: none;
+  }
+
+  /* Each step gets height so there is scroll distance to advance
+     through while the media stays pinned. */
+  .js .walk-step {
+    min-height: 78vh;
+    align-content: center;
+    padding-block: var(--s7);
+    opacity: 0.42;
+    transition: opacity 380ms ease;
+  }
+
+  .js .walk-step.is-active {
+    opacity: 1;
+  }
+
+  .rail-card img {
+    height: 112px;
+  }
+
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+    gap: var(--s8);
+  }
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .press-additional-grid,
+  .press-contact-grid,
+  .press-narrative-grid,
+  .tiers,
+  .goals-list,
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .press-coverage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* 5 tiers across, 3 goals across — both divide exactly. */
+  .tiers {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .goals-list,
+  .reviews-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* 8 secondary mentions and 3 contact cards both divide by these. */
+  .press-additional-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .press-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .svc-grid,
+  .reqs,
+  .compare-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: collapse the nav to a disclosure panel. */
+@media (max-width: 899px) {
+  .nav-toggle {
+    display: grid;
+    order: 3;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--s3) var(--gutter) var(--s5);
+    background: var(--ground);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links .nav-link {
+    padding-block: var(--s3);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* The disclosure has nothing to disclose in a panel that is already a
+     list — flatten it rather than nesting a menu inside a menu. */
+  .nav-sep,
+  .nav-more-btn {
+    display: none;
+  }
+
+  .nav-more-panel {
+    display: block;
+    position: static;
+    transform: none;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .nav-more-panel a {
+    padding: var(--s3) 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+  }
+
+  .nav-more-panel a:hover {
+    background: none;
+  }
+
+  .nav-pill {
+    margin-top: var(--s3);
+    text-align: center;
+    padding-block: 0.6rem;
+  }
+
+  .nav-inner {
+    gap: var(--s4);
+  }
+
+  .nav-logo {
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-sponsor {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Reduced motion — no reveal, no crossfade, no smooth scroll. The
+   sticky layout itself stays: it is position, not animation.
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .walk-step {
+    opacity: 1;
+  }
+}
+
+/* Print: drop the dark ground so a saved PDF is legible. */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .nav,
+  .hero-shot::after {
+    display: none;
+  }
+}
