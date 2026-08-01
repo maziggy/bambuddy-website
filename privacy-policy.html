@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bambuddy - Privacy Policy">
-  <meta name="robots" content="noindex">
+  <meta name="description" content="How bambuddy.cool handles personal data: hosting, self-hosted Matomo analytics, reviews, bug reports and your GDPR rights.">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bambuddy.cool/privacy-policy.html">
   <meta property="og:title" content="Privacy Policy - Bambuddy">
-  <meta property="og:description" content="Bambuddy - Privacy Policy">
+  <meta property="og:description" content="How bambuddy.cool handles personal data: hosting, self-hosted Matomo analytics, reviews, bug reports and your GDPR rights.">
   <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
   <meta property="og:site_name" content="Bambuddy">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy - Bambuddy">
-  <meta name="twitter:description" content="Bambuddy - Privacy Policy">
+  <meta name="twitter:description" content="How bambuddy.cool handles personal data: hosting, self-hosted Matomo analytics, reviews, bug reports and your GDPR rights.">
   <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
 
   <title>Privacy Policy - Bambuddy</title>
@@ -25,129 +22,149 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css?v=20260713c">
-  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/system.css">
+  <script>document.documentElement.className += ' js';</script>
+  <script>window.__matomoSiteId = '1';</script>
+  <script src="js/cookie-consent.js" defer></script>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/img/logo_transparent.png" alt="Bambuddy" class="logo-img">
+
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Bambuddy home">
+        <img src="assets/img/logo_transparent.png" alt="Bambuddy">
       </a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
+      <nav class="nav-links" id="nav-links">
         <a href="features.html" class="nav-link">Features</a>
-        <a href="installation.html" class="nav-link">Installation</a>
-        <a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener" class="nav-link">Docs</a>
-        <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" class="nav-link">Discord</a>
         <a href="comparison.html" class="nav-link">Compare</a>
-        <a href="reviews.html" class="nav-link">Reviews</a>
-        <a href="press.html" class="nav-link">Press</a>
-        <a href="appliance.html" class="nav-link nav-link-appliance">Appliance</a>
-        <a href="business.html" class="nav-link nav-link-featured">Business</a>
-        <a href="sponsors.html" class="nav-link">Sponsor</a>
-        <a href="https://github.com/maziggy/bambuddy" class="nav-cta" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor">
+        <a href="installation.html" class="nav-link">Install</a>
+        <a href="http://wiki.bambuddy.cool" class="nav-link" target="_blank" rel="noopener">Docs</a>
+
+        <div class="nav-more">
+          <button class="nav-more-btn" aria-expanded="false" aria-controls="nav-more-panel">
+            More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="nav-more-panel" id="nav-more-panel">
+            <a href="spoolbuddy.html">SpoolBuddy</a>
+            <a href="https://forum.bambuddy.cool" target="_blank" rel="noopener">Forum</a>
+            <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">Discord</a>
+            <a href="press.html">Press coverage</a>
+            <a href="reviews.html">User reviews</a>
+            <a href="sponsors.html">Sponsor</a>
+          </div>
+        </div>
+
+        <span class="nav-sep" aria-hidden="true"></span>
+
+        <a href="appliance.html" class="nav-pill">Appliance</a>
+        <a href="business.html" class="nav-pill nav-pill-signal">Business</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/maziggy/bambuddy" class="nav-icon" target="_blank" rel="noopener" aria-label="Bambuddy on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
-          GitHub
         </a>
+        <a href="https://demo.bambuddy.cool" class="btn btn-primary" target="_blank" rel="noopener">Live demo</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <section class="legal-page">
-    <div class="container">
-      <h1>Privacy Policy</h1>
+  <main>
+    <section class="page-head">
+      <div class="shell">
+        <p class="label label-signal">Legal</p>
+        <h1>Privacy Policy</h1>
+      </div>
+    </section>
 
-      <h2>1. Overview</h2>
-      <p>This privacy policy explains how we collect, use, and protect your personal data when you visit bambuddy.cool (the "Website"). We take the protection of your personal data very seriously and treat it confidentially in accordance with the EU General Data Protection Regulation (GDPR) and applicable German data protection laws.</p>
-      <p><strong>Data controller:</strong><br>
+    <section class="band-tight">
+      <div class="shell">
+        <div class="article" style="max-width: 78ch;">
+        <h2>1. Overview</h2>
+        <p>This privacy policy explains how we collect, use, and protect your personal data when you visit bambuddy.cool (the "Website"). We take the protection of your personal data very seriously and treat it confidentially in accordance with the EU General Data Protection Regulation (GDPR) and applicable German data protection laws.</p>
+        <p><strong>Data controller:</strong><br>
         Martin Ziegler<br>
         Warschauer Str. 12<br>
         10243 Berlin, Germany<br>
         Email: <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>
-      </p>
-
-      <h2>2. Hosting</h2>
-      <p>This website is hosted by a third-party provider. When you visit this website, the hosting provider automatically collects and stores information in server log files that your browser transmits. This includes:</p>
-      <ul>
+        </p>
+        <h2>2. Hosting</h2>
+        <p>This website is hosted by a third-party provider. When you visit this website, the hosting provider automatically collects and stores information in server log files that your browser transmits. This includes:</p>
+        <ul>
         <li>IP address</li>
         <li>Browser type and version</li>
         <li>Operating system</li>
         <li>Referrer URL</li>
         <li>Date and time of access</li>
-      </ul>
-      <p>This data is processed based on Art. 6(1)(f) GDPR, as it is necessary for the secure and efficient operation of this website. Server log files are deleted automatically after 30 days.</p>
-
-      <h2>3. Analytics (Matomo)</h2>
-      <p>We use <strong>Matomo</strong>, a self-hosted, open-source web analytics platform, to understand how visitors use this website. Matomo runs on our own infrastructure; no data is shared with third parties, and no data leaves the European Union.</p>
-      <p>Our Matomo installation is configured to process data anonymously:</p>
-      <ul>
+        </ul>
+        <p>This data is processed based on Art. 6(1)(f) GDPR, as it is necessary for the secure and efficient operation of this website. Server log files are deleted automatically after 30 days.</p>
+        <h2>3. Analytics (Matomo)</h2>
+        <p>We use <strong>Matomo</strong>, a self-hosted, open-source web analytics platform, to understand how visitors use this website. Matomo runs on our own infrastructure; no data is shared with third parties, and no data leaves the European Union.</p>
+        <p>Our Matomo installation is configured to process data anonymously:</p>
+        <ul>
         <li><strong>No cookies</strong> are set in your browser</li>
         <li><strong>No personal identifiers</strong> (user ID, order ID, referrer paths beyond the domain) are stored</li>
         <li><strong>IP addresses are truncated</strong> by 2 bytes (e.g. <code>144.76.176.12</code> is stored as <code>144.76.0.0</code>) before being written to the database, so no individual visitor can be identified</li>
         <li>The anonymized IP is also used for geolocation (country-level only)</li>
         <li><strong>Do Not Track (DNT)</strong> browser signals are honored — if your browser sends DNT, no data is recorded</li>
         <li>Raw visit logs are <strong>automatically deleted after 180 days</strong></li>
-      </ul>
-      <p>The following anonymous, aggregated data is collected:</p>
-      <ul>
+        </ul>
+        <p>The following anonymous, aggregated data is collected:</p>
+        <ul>
         <li>Pages visited and time spent</li>
         <li>Referrer domain (how you arrived at the site)</li>
         <li>Browser and device type</li>
         <li>Approximate country (from the truncated IP)</li>
-      </ul>
-      <p>Because the data is anonymized at the point of collection and no cookies or personal identifiers are used, this processing does not require consent under the GDPR. Legal basis: <strong>Art. 6(1)(f) GDPR (legitimate interest)</strong> — our legitimate interest being the operation and improvement of this website.</p>
-      <p>You have the right to object to this processing at any time under Art. 21 GDPR by enabling Do Not Track in your browser or by contacting us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
-
-      <h2>4. User Reviews</h2>
-      <p>If you submit a review on our website, the following data is collected:</p>
-      <ul>
+        </ul>
+        <p>Because the data is anonymized at the point of collection and no cookies or personal identifiers are used, this processing does not require consent under the GDPR. Legal basis: <strong>Art. 6(1)(f) GDPR (legitimate interest)</strong> — our legitimate interest being the operation and improvement of this website.</p>
+        <p>You have the right to object to this processing at any time under Art. 21 GDPR by enabling Do Not Track in your browser or by contacting us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
+        <h2>4. User Reviews</h2>
+        <p>If you submit a review on our website, the following data is collected:</p>
+        <ul>
         <li>Your review text</li>
         <li>Your rating (1-5 stars)</li>
         <li>Your name (optional)</li>
-      </ul>
-      <p>Reviews are stored using <strong>Supabase</strong>, a cloud database service. Supabase processes data in accordance with GDPR. Reviews are moderated before being displayed publicly. You can request deletion of your review by contacting us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
-      <p>Legal basis: Art. 6(1)(a) GDPR (consent through voluntary submission).</p>
-
-      <h2>5. Bug Reports</h2>
-      <p>If you submit a bug report through this website, the following data may be collected:</p>
-      <ul>
+        </ul>
+        <p>Reviews are stored using <strong>Supabase</strong>, a cloud database service. Supabase processes data in accordance with GDPR. Reviews are moderated before being displayed publicly. You can request deletion of your review by contacting us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
+        <p>Legal basis: Art. 6(1)(a) GDPR (consent through voluntary submission).</p>
+        <h2>5. Bug Reports</h2>
+        <p>If you submit a bug report through this website, the following data may be collected:</p>
+        <ul>
         <li>Bug description</li>
         <li>Your email address (optional)</li>
         <li>System information and logs (optional)</li>
         <li>Screenshots (optional)</li>
-      </ul>
-      <p>Bug reports are used to create GitHub issues for tracking and resolution. Personal information (IP addresses, serial numbers, names) is automatically sanitized from logs before submission. Your email address, if provided, is only used to follow up on the reported issue.</p>
-      <p>Legal basis: Art. 6(1)(a) GDPR (consent through voluntary submission).</p>
-
-      <h2>6. Contact by Email</h2>
-      <p>If you contact us by email, your data (email address, name, message content) will be stored and processed for the purpose of handling your request. This data will not be shared with third parties without your consent.</p>
-      <p>Legal basis: Art. 6(1)(f) GDPR (legitimate interest in responding to inquiries).</p>
-
-      <h2>7. Third-Party Services</h2>
-      <h3>GitHub</h3>
-      <p>Our website links to GitHub (github.com) for source code, issues, and releases. When you follow these links, GitHub's privacy policy applies.</p>
-      <h3>Discord</h3>
-      <p>Our website links to our Discord community server. When you follow these links, Discord's privacy policy applies.</p>
-      <h3>Ko-fi</h3>
-      <p>Our website links to Ko-fi for voluntary donations. When you follow these links, Ko-fi's privacy policy applies.</p>
-      <h3>Visitor Badge</h3>
-      <p>This website uses a visitor badge image from api.visitorbadge.io to display a visitor counter. When this image loads, your IP address is transmitted to this service.</p>
-
-      <h2>8. Your Rights</h2>
-      <p>Under the GDPR, you have the following rights regarding your personal data:</p>
-      <ul>
+        </ul>
+        <p>Bug reports are used to create GitHub issues for tracking and resolution. Personal information (IP addresses, serial numbers, names) is automatically sanitized from logs before submission. Your email address, if provided, is only used to follow up on the reported issue.</p>
+        <p>Legal basis: Art. 6(1)(a) GDPR (consent through voluntary submission).</p>
+        <h2>6. Contact by Email</h2>
+        <p>If you contact us by email, your data (email address, name, message content) will be stored and processed for the purpose of handling your request. This data will not be shared with third parties without your consent.</p>
+        <p>Legal basis: Art. 6(1)(f) GDPR (legitimate interest in responding to inquiries).</p>
+        <h2>7. Third-Party Services</h2>
+        <h3>GitHub</h3>
+        <p>Our website links to GitHub (github.com) for source code, issues, and releases. When you follow these links, GitHub's privacy policy applies.</p>
+        <h3>Discord</h3>
+        <p>Our website links to our Discord community server. When you follow these links, Discord's privacy policy applies.</p>
+        <h3>Ko-fi</h3>
+        <p>Our website links to Ko-fi for voluntary donations. When you follow these links, Ko-fi's privacy policy applies.</p>
+        <h3>Visitor Badge</h3>
+        <p>This website uses a visitor badge image from api.visitorbadge.io to display a visitor counter. When this image loads, your IP address is transmitted to this service.</p>
+        <h2>8. Your Rights</h2>
+        <p>Under the GDPR, you have the following rights regarding your personal data:</p>
+        <ul>
         <li><strong>Right of access</strong> (Art. 15 GDPR) - You can request information about whether and which personal data we process about you.</li>
         <li><strong>Right to rectification</strong> (Art. 16 GDPR) - You can request correction of inaccurate data.</li>
         <li><strong>Right to erasure</strong> (Art. 17 GDPR) - You can request deletion of your personal data.</li>
@@ -155,31 +172,30 @@
         <li><strong>Right to data portability</strong> (Art. 20 GDPR) - You can request your data in a structured, machine-readable format.</li>
         <li><strong>Right to object</strong> (Art. 21 GDPR) - You can object to processing based on legitimate interests.</li>
         <li><strong>Right to withdraw consent</strong> (Art. 7(3) GDPR) - You can withdraw consent at any time.</li>
-      </ul>
-      <p>To exercise any of these rights, please contact us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
-      <p>You also have the right to lodge a complaint with a supervisory authority. The competent authority is:</p>
-      <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit<br>
+        </ul>
+        <p>To exercise any of these rights, please contact us at <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>.</p>
+        <p>You also have the right to lodge a complaint with a supervisory authority. The competent authority is:</p>
+        <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit<br>
         Friedrichstr. 219<br>
         10969 Berlin<br>
         <a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener">www.datenschutz-berlin.de</a>
-      </p>
-
-      <h2>9. Data Security</h2>
-      <p>This website uses TLS (HTTPS) encryption for secure data transmission. We take appropriate technical and organizational measures to protect your data against unauthorized access, loss, or manipulation.</p>
-
-      <h2>10. Changes to This Policy</h2>
-      <p>We may update this privacy policy from time to time. The current version is always available on this page.</p>
-
-      <p class="legal-updated">Last updated: April 10, 2026</p>
-    </div>
-  </section>
+        </p>
+        <h2>9. Data Security</h2>
+        <p>This website uses TLS (HTTPS) encryption for secure data transmission. We take appropriate technical and organizational measures to protect your data against unauthorized access, loss, or manipulation.</p>
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. The current version is always available on this page.</p>
+        <p class="svc-note">Last updated: April 10, 2026</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-corporate">
-        <div class="footer-corporate-label">Backed by our Corporate Sponsors</div>
-        <div class="footer-corporate-logos">
-          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener" aria-label="North Pole 3D Printing">
+    <div class="shell">
+      <div class="footer-sponsor">
+        <div>
+          <p class="label" style="margin-bottom: 0.6rem;">Backed by our corporate sponsors</p>
+          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener">
             <img src="img/sponsors/northpole-3d-printing.jpg" alt="North Pole 3D Printing" loading="lazy">
           </a>
         </div>
@@ -187,67 +203,59 @@
 
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <img src="assets/img/logo_transparent.png" alt="Bambuddy" class="logo-img">
+          <a href="index.html" aria-label="Bambuddy home">
+            <img src="assets/img/logo_transparent.png" alt="Bambuddy">
           </a>
           <p>Self-hosted command center for Bambu Lab 3D printers.</p>
         </div>
 
-        <div class="footer-column">
-          <h5>Product</h5>
-          <ul>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="appliance.html">Appliance</a></li>
-            <li><a href="comparison.html">Compare</a></li>
-            <li><a href="installation.html">Installation</a></li>
-            <li><a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener">Documentation</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="press.html">Press</a></li>
-            <li><a href="business.html">For Business</a></li>
-          </ul>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="appliance.html">Appliance</a>
+          <a href="spoolbuddy.html">SpoolBuddy</a>
+          <a href="comparison.html">Compare</a>
+          <a href="installation.html">Installation</a>
+          <a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener">Documentation</a>
         </div>
-
-        <div class="footer-column">
-          <h5>Resources</h5>
-          <ul>
-            <li><a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">Issues</a></li>
-            <li><a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a></li>
-          </ul>
+        <div class="footer-col">
+          <h4>Evidence</h4>
+          <a href="press.html">Press coverage</a>
+          <a href="reviews.html">User reviews</a>
+          <a href="https://demo.bambuddy.cool" target="_blank" rel="noopener">Live demo</a>
+          <a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a>
         </div>
-
-        <div class="footer-column">
-          <h5>Legal</h5>
-          <ul>
-            <li><a href="legal-notice.html">Legal Notice</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          </ul>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <a href="https://forum.bambuddy.cool" target="_blank" rel="noopener">Forum</a>
+          <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">Discord</a>
+          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">Issues</a>
+          <a href="http://wiki.bambuddy.cool/community/" target="_blank" rel="noopener">Community add-ons</a>
+        </div>
+        <div class="footer-col">
+          <h4>Business</h4>
+          <a href="business.html">For business</a>
+          <a href="sponsors.html">Sponsor Bambuddy</a>
+          <a href="https://github.com/sponsors/maziggy" target="_blank" rel="noopener">GitHub Sponsors</a>
+          <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>Released under the AGPL-3.0 License. Made with care for the 3D printing community.</p>
-        <div class="footer-social">
-          <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" aria-label="Discord">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-            </svg>
-          </a>
-          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-          </a>
-          <a href="https://ko-fi.com/maziggy" target="_blank" rel="noopener" aria-label="Ko-fi">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-          </a>
+        <p>
+          Released under the AGPL-3.0 License. Made with care for the 3D printing community.<br>
+          &copy; 2026 Bambuddy. Not affiliated with Bambu Lab.
+        </p>
+        <div class="footer-legal">
+          <a href="legal-notice.html">Legal notice</a>
+          <a href="privacy-policy.html">Privacy policy</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/system.js" defer></script>
+
 </body>
 </html>
