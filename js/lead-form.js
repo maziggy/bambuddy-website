@@ -28,6 +28,47 @@
     el.className = 'lead-status is-visible is-' + kind;
   }
 
+  /**
+   * Qualifying answers, folded into the message body.
+   *
+   * The relay reads a fixed set of keys (interest, printers, timeframe, region,
+   * email, message, website, context) and silently ignores anything else — and
+   * `api/` is deliberately not carried by the website rsync, so a new field
+   * would need a separate relay deploy to be seen at all. Until then it would
+   * look like it worked and reach nobody. Prepending the answers to `message`
+   * keeps them in the email that already gets sent, with no server change.
+   *
+   * With JS off the native POST carries the raw fields instead, and these two
+   * answers are lost — the lead itself still arrives, exactly as before.
+   */
+  var EXTRA_FIELDS = [
+    { name: 'use', label: 'Business or personal' },
+    { name: 'trigger', label: 'What prompted this' }
+  ];
+
+  var LABELS = {
+    business: 'Business — part of how they earn',
+    institution: 'A school, university or makerspace',
+    personal: 'Personal / hobby',
+    outgrew: 'Outgrew how they track things today',
+    incident: 'Something went wrong; wants cover',
+    cloud: 'Needs to keep files off the cloud',
+    evaluating: 'Evaluating options, nothing urgent',
+    missing: 'Bambuddy is missing something they need'
+  };
+
+  function composeMessage(fd) {
+    var body = fd.get('message') || '';
+    var lines = [];
+    for (var i = 0; i < EXTRA_FIELDS.length; i++) {
+      var f = EXTRA_FIELDS[i];
+      var v = fd.get(f.name);
+      if (v) lines.push(f.label + ': ' + (LABELS[v] || v));
+    }
+    if (!lines.length) return body;
+    return lines.join('\n') + (body ? '\n\n' + body : '');
+  }
+
   function enhance(form) {
     var btn = form.querySelector('.lead-submit-btn');
     var btnLabel = btn ? btn.querySelector('.lead-btn-label') : null;
@@ -44,7 +85,7 @@
         timeframe: fd.get('timeframe') || '',
         region: fd.get('region') || '',
         email: fd.get('email') || '',
-        message: fd.get('message') || '',
+        message: composeMessage(fd),
         website: fd.get('website') || '', // honeypot
         context: context
       };
