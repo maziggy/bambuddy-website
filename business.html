@@ -256,32 +256,18 @@
         </div>
 
         <div class="panel" style="margin-top: 2rem;">
-          <h3>If you are going through a vendor review</h3>
+          <h3>Your files stay on your network</h3>
           <p>
-            Several enquiries have come from organisations with a procurement process, so this
-            is worth stating plainly. Bambuddy is self-hosted and can run with no outbound
-            connectivity at all, so your files stay on your own network &mdash; usually the
-            first question, and the easiest to answer.
+            Bambuddy is self-hosted, and it runs perfectly well with no outbound connectivity
+            at all. For design studios, labs and anyone under an NDA, that is usually the whole
+            question &mdash; and it is answered by where the software runs, not by a policy
+            document.
           </p>
           <p style="margin-top: 1rem;">
-            There is a documented disclosure process in <code>SECURITY.md</code>: reports go to
-            a private address and are acknowledged within 48 hours. Fixes ship in ordinary
-            releases, and the release notes deliberately do <em>not</em> describe the
-            vulnerability &mdash; most self-hosted installations do not update the day a fix
-            lands, and a precise description is a how-to for everyone who hasn't yet. The
-            project's security history is on the public repository rather than tidied away.
-          </p>
-          <p style="margin-top: 1rem;">
-            What you can inspect for yourself: four checks in the test suite fail the build on
-            the specific mistakes that have caused real problems here before &mdash; a route
-            shipping without an authentication dependency, a hardcoded fallback secret, an
-            exception handler in auth code that fails open, a permission with no API-key
-            classification. They are public, alongside everything else.
-          </p>
-          <p style="margin-top: 1rem;">
-            If your review needs something specific &mdash; a questionnaire, an architecture
-            note, a statement on data flows &mdash; ask in the form below and you will get it
-            directly rather than an invitation to a portal.
+            One caveat worth hearing before you ask, rather than after: whether a printer talks
+            to Bambu Lab's cloud is a setting on the printer, not something Bambuddy controls.
+            Bambuddy works fully in LAN-only mode, but putting your printers there is a change
+            you make on the machines themselves.
           </p>
         </div>
       </div>
