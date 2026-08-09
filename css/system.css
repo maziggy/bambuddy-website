@@ -2731,6 +2731,13 @@ select.form-input option {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  /* The appliance page prices two tiers, not five. Without this they take the
+     first two of five columns and sit squeezed against the left edge, which
+     reads as a broken layout rather than a short price list. */
+  .tiers-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .goals-list,
   .reviews-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

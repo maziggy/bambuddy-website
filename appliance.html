@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A pre-built Bambuddy appliance: Raspberry Pi 5, imaged and ready, with its own admin panel, self-reverting updates and a real reset button. Sold through authorised resellers.">
+  <meta name="description" content="A Raspberry Pi 5 image you flash yourself: Bambuddy already configured, its own admin panel, updates that undo themselves. Annual subscription from October 2026.">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bambuddy.cool/appliance.html">
   <meta property="og:title" content="The Bambuddy Appliance - self-hosting without the hosting">
-  <meta property="og:description" content="A pre-built Bambuddy appliance: Raspberry Pi 5, imaged and ready, with its own admin panel, self-reverting updates and a real reset button. Sold through authorised resellers.">
+  <meta property="og:description" content="The Bambuddy Appliance: a Raspberry Pi 5 image you flash yourself, with its own admin panel, self-reverting updates and support from the maintainer. An annual subscription, from October 2026.">
   <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
   <meta property="og:site_name" content="Bambuddy">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Bambuddy Appliance - self-hosting without the hosting">
-  <meta name="twitter:description" content="A pre-built Bambuddy appliance: Raspberry Pi 5, imaged and ready, with its own admin panel, self-reverting updates and a real reset button. Sold through authorised resellers.">
+  <meta name="twitter:description" content="The Bambuddy Appliance: a Raspberry Pi 5 image you flash yourself, with its own admin panel, self-reverting updates and support from the maintainer. An annual subscription, from October 2026.">
   <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
 
   <title>The Bambuddy Appliance - self-hosting without the hosting</title>
@@ -72,7 +72,7 @@
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
         </a>
-        <a href="#buy" class="btn btn-primary">Find a reseller</a>
+        <a href="#buy" class="btn btn-primary">Get notified</a>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
             <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
@@ -88,14 +88,19 @@
         <p class="label label-signal">Appliance</p>
         <h1>Self-hosting, without the hosting.</h1>
         <p class="prose">
-          A Raspberry&nbsp;Pi&nbsp;5 that arrives with Bambuddy already installed. No Docker
-          to learn, no compose file to edit, no cloud account to create. Your prints, your
-          data, your network.
+          Bambuddy on a Raspberry&nbsp;Pi, as an appliance rather than a project. You write
+          one image to a memory card and the box does the rest &mdash; no Docker to learn, no
+          compose file to edit, no cloud account to create. Your prints, your data, your
+          network.
         </p>
         <p class="prose" style="margin-top: 1rem;">
-          Everything Bambuddy does, in a box that is already set up. Plug it in, open your
-          browser, add your printers. Available only through authorised resellers &mdash; we
-          do not sell it directly.
+          An annual subscription, <strong>from October 2026</strong>. You supply the
+          Raspberry&nbsp;Pi; we supply the image, every update to it, and someone to ask.
+        </p>
+        <p class="hero-facts" style="margin-top: 1.5rem;">
+          <span>You keep your own hardware</span>
+          <span>Nothing to ship, nothing to wait for</span>
+          <span>Bambuddy itself stays free</span>
         </p>
       </div>
     </section>
@@ -107,29 +112,136 @@
         </div>
         <div class="spec">
           <div class="spec-item">
-            <h3>Fifteen minutes from box to first print</h3>
-            <p>Plug in ethernet, or join the appliance's own WiFi network. A five-step wizard opens in your browser. No screen, no keyboard.</p>
+            <h3>Fifteen minutes from card to first print</h3>
+            <p>Flash the image, plug in ethernet or join the appliance's own WiFi network, and a setup wizard opens in your browser. No screen, no keyboard.</p>
           </div>
           <div class="spec-item">
             <h3>Upgrades that undo themselves</h3>
             <p>A new Bambuddy version is pulled, started, and health-checked. If it doesn't come up, the appliance puts the old one back on its own.</p>
           </div>
           <div class="spec-item">
+            <h3>Two copies of its own operating system</h3>
+            <p>System updates are written to the spare copy and booted once to prove they work. A bad one falls back to the copy that was fine, by itself.</p>
+          </div>
+          <div class="spec-item">
             <h3>Its own admin panel</h3>
-            <p>Temperature, power flags, disk, logs, updates and network — on a separate port, so you can still fix the box when Bambuddy itself is down.</p>
+            <p>Temperature, power flags, disk, logs, updates and network &mdash; on a separate port, so you can still fix the box when Bambuddy itself is down.</p>
           </div>
           <div class="spec-item">
             <h3>Reach it from anywhere</h3>
             <p>Sign in to Tailscale from the panel and reach the appliance and its virtual printers remotely. No router ports opened, no cloud in the middle.</p>
           </div>
           <div class="spec-item">
-            <h3>A real reset button</h3>
-            <p>Hold it for ten seconds and you are back at a fresh setup wizard. The recovery path that works when nothing else does.</p>
+            <h3>A way back from every state</h3>
+            <p>A factory reset from the admin panel, or over SSH when the panel is unreachable, returns you to a fresh setup wizard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="hardware">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What you need to buy</h2>
+          <p>Four parts, all of them stocked by every Raspberry&nbsp;Pi dealer. Roughly &euro;120&ndash;150 depending on where you shop, and it is yours &mdash; not rented from us.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-item">
+            <h3>Raspberry Pi 5, 4&nbsp;GB</h3>
+            <p>8&nbsp;GB if you run a large fleet. A Pi&nbsp;4 will not work: the two-copy update layout needs the Pi&nbsp;5's bootloader.</p>
           </div>
           <div class="spec-item">
-            <h3>Supported by the people who built it</h3>
-            <p>Sold through authorised resellers, with a support path that isn't a GitHub issue and a hope.</p>
+            <h3>The official 27&nbsp;W supply</h3>
+            <p>Undervoltage is the most common cause of a mysteriously unreliable Pi, and it shows up as dropped printer connections rather than an error.</p>
           </div>
+          <div class="spec-item">
+            <h3>The official Active Cooler</h3>
+            <p>This box runs every hour of every day. A throttled Pi looks exactly like slow software.</p>
+          </div>
+          <div class="spec-item">
+            <h3>microSD, 32&nbsp;GB or more</h3>
+            <p>64&nbsp;GB recommended, endurance-rated if you can. The two system copies claim 21&nbsp;GB before any of your data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="guide">
+      <div class="shell">
+        <div class="panel">
+          <h2>Read the quick start before you buy anything</h2>
+          <p>
+            The full setup guide &mdash; the parts list, flashing the card, the setup wizard,
+            adding your first printer, updates, backups and every recovery path. Sixteen
+            pages, written for someone who has never opened Raspberry&nbsp;Pi Imager. It is
+            the same booklet subscribers get, and you can read all of it now.
+          </p>
+          <p>
+            If it does not look like something you want to do, that is a useful answer, and it
+            cost you nothing.
+          </p>
+          <p style="margin-top: 1.25rem;">
+            <a href="assets/downloads/bambuddy-appliance-quickstart.pdf" class="btn btn-primary" download>
+              Download the quick start (PDF, 0.4&nbsp;MB)
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="pricing">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What the subscription costs</h2>
+          <p>Launch pricing, from October 2026. One year of updates and support, per appliance.</p>
+        </div>
+
+        <div class="tiers tiers-pair">
+          <div class="tier-card">
+            <div class="tier-name">Personal</div>
+            <div class="tier-price">&euro;79</div>
+            <div class="tier-price-suffix">per year &middot; about $89</div>
+            <ul class="tier-perks">
+              <li>The appliance image, and every update to it</li>
+              <li>System updates that roll themselves back</li>
+              <li>Best-effort support, by email, from the maintainer</li>
+              <li>Non-commercial use</li>
+            </ul>
+            <a href="#buy" class="btn btn-ghost tier-cta">Get notified</a>
+          </div>
+
+          <div class="tier-card featured">
+            <div class="tier-badge">For print farms</div>
+            <div class="tier-name">Business</div>
+            <div class="tier-price">&euro;249</div>
+            <div class="tier-price-suffix">per year &middot; about $279</div>
+            <ul class="tier-perks">
+              <li>Everything in Personal</li>
+              <li>Commercial use</li>
+              <li>A named channel, not a shared inbox</li>
+              <li>An agreed response time, in writing</li>
+              <li>Your questions ahead of the queue</li>
+            </ul>
+            <a href="#buy" class="btn btn-primary tier-cta">Get notified</a>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 2rem;">
+          <h3>Three things worth saying plainly</h3>
+          <p>
+            <strong>The tier is about how you use it, not how many printers you have.</strong>
+            There is no metering, no seat count and nothing to police. A hobbyist with twelve
+            printers is Personal; a shop with two is Business.
+          </p>
+          <p style="margin-top: 1rem;">
+            <strong>If you stop paying, your appliance keeps working.</strong> Exactly as it
+            is, indefinitely. What stops is updates and support &mdash; not the software you
+            already have. Nothing is held hostage.
+          </p>
+          <p style="margin-top: 1rem;">
+            <strong>Per appliance, not per printer.</strong> One subscription covers one box,
+            however many printers you point it at.
+          </p>
         </div>
       </div>
     </section>
@@ -138,8 +250,19 @@
       <div class="shell">
         <div class="panel">
           <h2>It is still the same Bambuddy</h2>
-          <p>The appliance runs the ordinary, open-source, AGPL-licensed Bambuddy — the same container you would install yourself. There are no exclusive features, no locked functionality, and no subscription.</p>
-          <p>What you are buying is the box around it: the hardware, the first-boot experience, the admin panel, the upgrade safety net, and someone to call. If you would rather build it yourself, the <a href="installation.html">installation guide</a> has everything you need, and always will.</p>
+          <p>
+            The appliance runs the ordinary, open-source, AGPL-licensed Bambuddy &mdash; the
+            same container you would install yourself. There are no exclusive features and no
+            functionality locked behind the subscription. There never will be.
+          </p>
+          <p>
+            What you are paying for is everything around it: an image that is already
+            configured, updates that are tested together and undo themselves when they go
+            wrong, an admin panel for the box itself, and a person to ask when something is
+            strange. If you would rather do all of that yourself, the
+            <a href="installation.html">installation guide</a> has everything you need, costs
+            nothing, and always will.
+          </p>
         </div>
       </div>
     </section>
@@ -150,35 +273,8 @@
           <h2>What it sends home</h2>
         </div>
         <div class="article" style="max-width: 78ch;">
-          <p>Four things, once on first boot and then about once a day: a random identifier it generates for itself, which reseller batch it came from, its hardware model, and its image version.</p>
-          <p>No printer data. No print history. No user accounts. No credentials. Nothing about what you print, when, or with what. This is how a unit is identified for warranty and offered updates &mdash; and if it never reaches us, the appliance works exactly the same. An appliance you build yourself from the image contacts nothing at all. <a href="http://wiki.bambuddy.cool/appliance/registration/" target="_blank" rel="noopener">Read the details</a>.</p>
-          <p>The appliance is not sold directly by us. Every box is built, sold, and supported by an authorised reseller &mdash; so you always have someone local to invoice you, answer the phone, and stand behind the hardware.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="band-tight">
-      <div class="shell">
-        <div class="masthead masthead-sub">
-          <h2>What is in the box</h2>
-        </div>
-        <div class="spec">
-          <div class="spec-item">
-            <h3>Raspberry Pi 5, 4&nbsp;GB</h3>
-            <p>With an Active Cooler, because a throttled Pi is a slow Pi.</p>
-          </div>
-          <div class="spec-item">
-            <h3>27&nbsp;W power supply</h3>
-            <p>The right one. Undervoltage is the most common cause of a mysteriously unreliable Pi.</p>
-          </div>
-          <div class="spec-item">
-            <h3>microSD, imaged and ready</h3>
-            <p>Bambuddy is baked in, so the first boot doesn't wait on a download.</p>
-          </div>
-          <div class="spec-item">
-            <h3>Case with a reset button</h3>
-            <p>Recessed, so you cannot lean on it by accident.</p>
-          </div>
+          <p>Three things, once on first boot and then about once a day: a random identifier it generates for itself, its hardware model, and its image version.</p>
+          <p>No printer data. No print history. No user accounts. No credentials. Nothing about what you print, when, or with what. That is how a subscription is matched to a box and offered updates &mdash; and if it never reaches us, the appliance works exactly the same. An appliance you build yourself from source contacts nothing at all. <a href="http://wiki.bambuddy.cool/appliance/registration/" target="_blank" rel="noopener">Read the details</a>.</p>
         </div>
       </div>
     </section>
@@ -186,100 +282,103 @@
     <section class="band band-ruled band-raised" id="buy">
       <div class="shell">
         <div class="masthead masthead-sub">
-          <h2>Available only through authorised resellers</h2>
+          <h2>It goes on sale in October 2026</h2>
           <p>
-            The appliance is not sold directly by us. Every box is built, sold and supported
-            by an authorised reseller &mdash; so you always have someone local to call.
+            Leave your email and we will tell you when it does. No newsletter, no drip
+            sequence &mdash; one message when there is something to buy, and a reply from the
+            person who builds it if you ask a question, because there is no sales team.
           </p>
         </div>
 
-        <div class="svc-grid" style="grid-template-columns: 1fr;">
-          <div class="split" style="align-items: start;">
-            <div class="split-copy">
-              <h3>Looking to buy one?</h3>
-              <p>
-                Tell us roughly where you are and we will point you at an authorised reseller
-                who can quote you and ship a box. Not sure the appliance is the right fit? Ask
-                us first &mdash; you will get a reply from the person who builds it, not a
-                sales team, because there isn't one.
-              </p>
-              <form class="lead-form" data-context="appliance" novalidate>
-              <input type="hidden" name="interest" value="buy_appliance">
-              <div class="form-row">
-              <div class="form-group">
+        <noscript>
+          <p class="noscript-note">
+            This form needs JavaScript to submit. With it disabled, email
+            <a href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance" class="link">appliance@bambuddy.cool</a>
+            instead and it will reach the same place.
+          </p>
+        </noscript>
+
+        <form class="lead-form form-grid" data-context="appliance" style="max-width: 720px;" novalidate>
+          <input type="hidden" name="interest" value="buy_appliance">
+          <div class="form-row">
+            <div class="form-group">
               <label class="form-label" for="buy-region">Where are you?</label>
               <input class="form-input" id="buy-region" name="region" type="text" required autocomplete="country-name" placeholder="Country / region">
-              </div>
-              <div class="form-group">
+            </div>
+            <div class="form-group">
               <label class="form-label" for="buy-printers">How many printers? <span class="form-hint">(optional)</span></label>
               <select class="form-input" id="buy-printers" name="printers">
-              <option value="" disabled selected>Select…</option>
-              <option value="1-5">1–5</option>
-              <option value="6-15">6–15</option>
-              <option value="16-40">16–40</option>
-              <option value="40+">40+</option>
+                <option value="" disabled selected>Select&hellip;</option>
+                <option value="1-5">1&ndash;5</option>
+                <option value="6-15">6&ndash;15</option>
+                <option value="16-40">16&ndash;40</option>
+                <option value="40+">40+</option>
               </select>
-              </div>
-              </div>
-              <div class="form-group">
-              <label class="form-label" for="buy-email">Your email</label>
-              <input class="form-input" id="buy-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
-              </div>
-              <div class="form-group">
-              <label class="form-label" for="buy-message">Anything else? <span class="form-hint">(optional)</span></label>
-              <textarea class="form-textarea" id="buy-message" name="message" placeholder="Questions about the appliance, or what you'd use it for."></textarea>
-              </div>
-              <div class="lead-hp" aria-hidden="true">
-              <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-              </div>
-              <button type="submit" class="btn btn-primary lead-submit-btn" data-label="Find a reseller">
-              <span class="lead-btn-label">Find a reseller</span>
-              </button>
-              <p class="lead-status" role="status" aria-live="polite"></p>
-              </form>
-            </div>
-            <div class="split-copy">
-              <h3>Want to become a reseller?</h3>
-              <p>
-                You build the box and sell it under your own name; we keep the software, the
-                first-boot wizard and the update channel current behind it. Tell us a little
-                about your shop and we will explain how it works.
-              </p>
-              <form class="lead-form" data-context="appliance" novalidate>
-              <input type="hidden" name="interest" value="reseller">
-              <div class="form-group">
-              <label class="form-label" for="res-region">Where is your shop?</label>
-              <input class="form-input" id="res-region" name="region" type="text" required autocomplete="country-name" placeholder="Country / region">
-              </div>
-              <div class="form-group">
-              <label class="form-label" for="res-email">Your email</label>
-              <input class="form-input" id="res-email" name="email" type="email" required autocomplete="email" placeholder="you@yourshop.com">
-              </div>
-              <div class="form-group">
-              <label class="form-label" for="res-message">Tell us about your shop <span class="form-hint">(optional)</span></label>
-              <textarea class="form-textarea" id="res-message" name="message" placeholder="What you sell, roughly how many boxes a month you'd expect, and anything else useful."></textarea>
-              </div>
-              <div class="lead-hp" aria-hidden="true">
-              <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-              </div>
-              <button type="submit" class="btn btn-primary lead-submit-btn" data-label="Become a reseller">
-              <span class="lead-btn-label">Become a reseller</span>
-              </button>
-              <p class="lead-status" role="status" aria-live="polite"></p>
-              </form>
             </div>
           </div>
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="buy-email">Your email</label>
+            <input class="form-input" id="buy-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="buy-message">Anything else? <span class="form-hint">(optional)</span></label>
+            <textarea class="form-textarea" id="buy-message" name="message" placeholder="Questions about the appliance, or what you'd use it for."></textarea>
+          </div>
+          <div class="lead-hp" aria-hidden="true">
+            <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <button type="submit" class="btn btn-primary lead-submit-btn" data-label="Tell me when it's ready">
+            <span class="lead-btn-label">Tell me when it's ready</span>
+          </button>
+          <p class="lead-status" role="status" aria-live="polite"></p>
+        </form>
 
         <p style="margin-top: 2rem; color: var(--dim); font-size: var(--t-sm);">
-          Just want to read up first?
-          <a href="http://wiki.bambuddy.cool/appliance/" target="_blank" rel="noopener" class="link">Read the documentation</a>
+          Want to read more first?
+          <a href="assets/downloads/bambuddy-appliance-quickstart.pdf" class="link" download>Download the quick start</a>,
+          <a href="http://wiki.bambuddy.cool/appliance/" target="_blank" rel="noopener" class="link">read the documentation</a>,
           or <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener" class="link">ask on Discord</a>.
           Prefer email?
           <a href="mailto:appliance@bambuddy.cool?subject=Bambuddy%20Appliance" class="link">appliance@bambuddy.cool</a>.
         </p>
+
+        <hr style="margin: 2.5rem 0 1.75rem; border: 0; border-top: 1px solid var(--rule);">
+
+        <div class="panel" style="max-width: 720px;">
+          <h3>Selling hardware, and want to include this?</h3>
+          <p>
+            We do not sell hardware and we are not looking for resellers. But if you already
+            build and sell Raspberry&nbsp;Pi kits, shipping one with a prepaid subscription is
+            something we are open to. Tell us about your shop.
+          </p>
+          <div style="margin-top: 1.25rem;">
+            <form class="lead-form" data-context="appliance" novalidate>
+              <input type="hidden" name="interest" value="reseller">
+              <div class="form-group">
+                <label class="form-label" for="res-region">Where is your shop?</label>
+                <input class="form-input" id="res-region" name="region" type="text" required autocomplete="country-name" placeholder="Country / region">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="res-email">Your email</label>
+                <input class="form-input" id="res-email" name="email" type="email" required autocomplete="email" placeholder="you@yourshop.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="res-message">Tell us about your shop <span class="form-hint">(optional)</span></label>
+                <textarea class="form-textarea" id="res-message" name="message" placeholder="What you sell, roughly how many kits a month you'd expect, and anything else useful."></textarea>
+              </div>
+              <div class="lead-hp" aria-hidden="true">
+                <label>Do not fill this in <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
+              <button type="submit" class="btn btn-ghost lead-submit-btn" data-label="Start a conversation">
+                <span class="lead-btn-label">Start a conversation</span>
+              </button>
+              <p class="lead-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
+  </main>
   </main>
 
   <footer class="footer">
