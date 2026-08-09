@@ -1830,6 +1830,14 @@ svg.alert-icon,
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--faint);
+  /* One short label, never two lines. Uppercase mono at 0.12em tracking is far
+     wider than it reads, so a suffix carrying a currency conversion ("per year ·
+     about $279") breaks after "about" on the first layout that is tighter than
+     expected — a narrower window, a zoom level, a fallback font. It is the kind
+     of break that looks like a bug rather than a wrap. There is room for it at
+     every breakpoint (~169px of label against 297px of card at the narrowest
+     two-column layout), so refusing to break costs nothing. */
+  white-space: nowrap;
 }
 
 .tier-perks {
