@@ -40,6 +40,7 @@ Bambuddy runs in Docker (recommended) or natively in Python on any LAN-reachable
 - [Tailscale Engineering Blog](https://tailscale.com/blog/bambuddy-bambu-lab-3d-printer-access) (May 2026) — "Bambuddy: self-hosted 3D printing beyond the vendor cloud", by Kevin Purdy.
 - [XDA-Developers](https://www.xda-developers.com/finally-have-full-control-bambu-lab-printer-ditched-bambu-cloud/) (March 2026) — Adam Conway: "the companion app that Bambu Lab should have built from day one."
 - [How-To Geek](https://www.howtogeek.com/free-your-bambu-lab-3d-printer-from-the-cloud/) — Tim Brookes.
+- [Open Source For You](https://www.opensourceforu.com/2026/07/browser-based-tool-simplifies-3d-printer-management/) (July 2026) — Ananthu Ashok: "more flexible for those who are looking for automation, self-hosting, and privacy."
 - [Fabbaloo](https://www.fabbaloo.com/news/bambuddy-launches-as-open-source-alternative-to-bambu-labs-cloud) — "features seem to exceed those provided by Bambu Lab's own cloud."
 - [Igor's Lab (DE)](https://www.igorslab.de/en/bambuddy-the-silent-alternative-to-the-bamboo-cloud/).
 - [3Druck (DE)](https://3druck.com/en/programs/bambuddy-open-source-tool-replaces-bambu-cloud-for-management-and-automation-of-3d-print-jobs-38153226/) — "list of functions seems so extensive that it even goes beyond what Bambu Lab offers in its own cloud."
