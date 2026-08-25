@@ -69,7 +69,38 @@
     return lines.join('\n') + (body ? '\n\n' + body : '');
   }
 
+  /**
+   * The two "what prompted this" answers that have historically arrived as bug
+   * reports or feature requests rather than commercial enquiries. Picking one
+   * reveals the GitHub route inline, at the moment before the person types the
+   * report into the message box.
+   *
+   * Only the business form carries the hint element; the appliance form has no
+   * .lead-route-hint and this is a no-op there. With JS off nothing is revealed
+   * and the banner above the form carries the same message.
+   */
+  var ROUTE_HINT_TRIGGERS = ['missing', 'incident'];
+
+  function wireRouteHint(form) {
+    var hint = form.querySelector('.lead-route-hint');
+    var trigger = form.querySelector('[name="trigger"]');
+    if (!hint || !trigger) return null;
+
+    function sync() {
+      var show = ROUTE_HINT_TRIGGERS.indexOf(trigger.value) !== -1;
+      hint.className = 'lead-route-hint' + (show ? ' is-visible' : '');
+    }
+
+    trigger.addEventListener('change', sync);
+    // A back/forward navigation restores the previous selection without firing
+    // change, so the hint would be out of step with the visible answer.
+    sync();
+    return sync;
+  }
+
   function enhance(form) {
+    var syncRouteHint = wireRouteHint(form);
+
     var btn = form.querySelector('.lead-submit-btn');
     var btnLabel = btn ? btn.querySelector('.lead-btn-label') : null;
     var status = form.querySelector('.lead-status');
@@ -121,6 +152,9 @@
             // relay on a confirmed send — see the note at the top of this file.
             track('submit_success', payload.interest);
             form.reset();
+            // reset() clears the select without firing change, which would
+            // leave the hint visible under a blank answer.
+            if (syncRouteHint) syncRouteHint();
             setStatus(status, 'success', msg || "Thanks — we'll be in touch shortly.");
             // Leave the button disabled (prevents an accidental resubmit) but
             // clear the spinner and show a settled label.

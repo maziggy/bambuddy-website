@@ -285,6 +285,25 @@
           </p>
         </div>
 
+        <!-- Every enquiry so far that described an actual problem described a bug
+             or a missing feature, not a commercial question. Answering those over
+             email turns this form into the fast lane past GitHub: the answer
+             reaches one person, helps nobody else, and the issue never gets filed
+             at all. Saying so here costs a paragraph. Saying it in the reply costs
+             an afternoon of investigation first, every time. -->
+        <div class="alert alert-warning" style="max-width: 720px; margin-bottom: var(--s5);">
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <strong>Found a bug, or need a feature? That goes on GitHub, not here.</strong>
+            <a href="https://github.com/maziggy/bambuddy/issues" class="link" target="_blank" rel="noopener">File an issue</a>
+            &mdash; it is public, other people running your fleet size find it and pile on, and
+            that is what gets something prioritised and fixed for everyone. It is free, and it is
+            faster than we are. We do not provide email support for the open-source software,
+            and a support contract does not change that &mdash; it changes where your issue sits
+            in the queue.
+          </div>
+        </div>
+
         <noscript>
           <p class="noscript-note">
             This form needs JavaScript to submit. With it disabled, email
@@ -336,6 +355,17 @@
                 <option value="evaluating">Evaluating options, nothing urgent</option>
                 <option value="missing">Bambuddy is missing something we need</option>
               </select>
+              <!-- Revealed by js/lead-form.js for the two answers that have
+                   historically arrived as bug reports. It fires at the moment
+                   someone picks one, which is just before they type the report
+                   into the message box below — the banner above the form is what
+                   covers the same ground with JS off. -->
+              <p class="lead-route-hint">
+                If that is a bug or a missing feature, it belongs on
+                <a href="https://github.com/maziggy/bambuddy/issues" class="link" target="_blank" rel="noopener">GitHub</a>
+                rather than in this form &mdash; that is the route that gets it fixed, and it
+                costs nothing. Use this form for the commercial side.
+              </p>
             </div>
           </div>
 

@@ -2496,6 +2496,22 @@ select.form-input option {
   }
 }
 
+/* Inline "this belongs on GitHub" hint under the trigger select. Follows the
+   .lead-status pattern (display:none + .is-visible) rather than the [hidden]
+   attribute, because nothing in this stylesheet forces [hidden] to win over a
+   display declaration. */
+.lead-route-hint {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+.lead-route-hint.is-visible {
+  display: block;
+}
+
 .lead-status {
   display: none;
   font-size: var(--t-sm);
