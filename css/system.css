@@ -2410,6 +2410,12 @@ svg.alert-icon,
 .form-group {
   display: grid;
   gap: var(--s2);
+  /* Grid items stretch by default, so a .form-row whose other column is taller
+     (a group carrying a hint under its input) hands this group extra height,
+     and the auto rows absorb it — inflating the <select> into a tall empty box.
+     Pinning the content to the top keeps every input its natural height and
+     leaves the surplus as blank space at the bottom of the shorter column. */
+  align-content: start;
 }
 
 .form-label {
