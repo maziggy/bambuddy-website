@@ -318,10 +318,30 @@
               <label class="form-label" for="biz-interest">What do you need?</label>
               <select class="form-input" id="biz-interest" name="interest" required>
                 <option value="" disabled selected>Select one&hellip;</option>
-                <option value="support">Priority support / SLA</option>
-                <option value="licensing">Commercial / redistribution licence</option>
-                <option value="custom_dev">Deployment / custom development</option>
+                <option value="support">Priority support / SLA (paid)</option>
+                <option value="licensing">Commercial / redistribution licence (paid)</option>
+                <option value="custom_dev">Deployment / custom development (paid)</option>
+                <option value="other">Something else &mdash; a question about running Bambuddy</option>
               </select>
+              <!-- The banner above covers bugs and feature requests. It does not
+                   cover "will this work for us", which is what actually arrives
+                   here: someone evaluating Bambuddy picks the closest paid
+                   category because none of the three says it is paid and none of
+                   them fits a question. Saying "paid" in the labels settles the
+                   pricing question before anyone types, and this option gives
+                   that person somewhere to land. It still submits -- we want to
+                   see what is being asked -- but it sets the expectation that
+                   the answer comes from GitHub rather than by return email. -->
+              <p class="lead-route-hint lead-interest-hint">
+                Bambuddy is free and open source, and so is help with running it &mdash; that
+                lives on
+                <a href="https://github.com/maziggy/bambuddy/issues" class="link" target="_blank" rel="noopener">GitHub</a>,
+                where the answer is public and everyone running your setup benefits from it.
+                Installation and configuration are covered in
+                <a href="https://wiki.bambuddy.cool" class="link" target="_blank" rel="noopener">the documentation</a>.
+                Send this anyway if you would like us to see it &mdash; it shows us what the docs
+                are missing &mdash; but expect the answer on GitHub, not by return email.
+              </p>
             </div>
             <div class="form-group">
               <label class="form-label" for="biz-printers">How many printers?</label>
@@ -360,7 +380,7 @@
                    someone picks one, which is just before they type the report
                    into the message box below — the banner above the form is what
                    covers the same ground with JS off. -->
-              <p class="lead-route-hint">
+              <p class="lead-route-hint lead-trigger-hint">
                 If that is a bug or a missing feature, file it on
                 <a href="https://github.com/maziggy/bambuddy/issues" class="link" target="_blank" rel="noopener">GitHub</a>
                 &mdash; that is the route that gets it fixed. Use this form for the

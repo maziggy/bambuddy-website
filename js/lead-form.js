@@ -81,21 +81,47 @@
    */
   var ROUTE_HINT_TRIGGERS = ['missing', 'incident'];
 
-  function wireRouteHint(form) {
-    var hint = form.querySelector('.lead-route-hint');
-    var trigger = form.querySelector('[name="trigger"]');
-    if (!hint || !trigger) return null;
+  /**
+   * The interest answers that are not a commercial enquiry. Separate from the
+   * trigger hint above because they catch a different mistake: that one is for
+   * someone who knows they have a bug, this one is for someone evaluating
+   * Bambuddy who picked the nearest paid category because none of them said
+   * "paid" and none of them fitted a question.
+   */
+  var ROUTE_HINT_INTERESTS = ['other'];
+
+  /**
+   * Both hints share .lead-route-hint for styling and carry a second class that
+   * selects them. Selecting on the shared class alone would bind whichever sits
+   * first in the DOM to both fields.
+   *
+   * classList rather than assigning className: that would drop the selector
+   * class on the first toggle and the element would never be found again.
+   */
+  function wireHint(form, hintClass, fieldName, values) {
+    var hint = form.querySelector('.' + hintClass);
+    var field = form.querySelector('[name="' + fieldName + '"]');
+    if (!hint || !field) return null;
 
     function sync() {
-      var show = ROUTE_HINT_TRIGGERS.indexOf(trigger.value) !== -1;
-      hint.className = 'lead-route-hint' + (show ? ' is-visible' : '');
+      hint.classList.toggle('is-visible', values.indexOf(field.value) !== -1);
     }
 
-    trigger.addEventListener('change', sync);
+    field.addEventListener('change', sync);
     // A back/forward navigation restores the previous selection without firing
     // change, so the hint would be out of step with the visible answer.
     sync();
     return sync;
+  }
+
+  function wireRouteHint(form) {
+    var syncTrigger = wireHint(form, 'lead-trigger-hint', 'trigger', ROUTE_HINT_TRIGGERS);
+    var syncInterest = wireHint(form, 'lead-interest-hint', 'interest', ROUTE_HINT_INTERESTS);
+    if (!syncTrigger && !syncInterest) return null;
+    return function () {
+      if (syncTrigger) syncTrigger();
+      if (syncInterest) syncInterest();
+    };
   }
 
   function enhance(form) {

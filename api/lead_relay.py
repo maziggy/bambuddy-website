@@ -82,6 +82,11 @@ INTEREST_ROUTING = {
     "support": ("Priority support / SLA", LEAD_TO_BUSINESS),
     "licensing": ("Commercial / redistribution licence", LEAD_TO_BUSINESS),
     "custom_dev": ("Deployment / custom development", LEAD_TO_BUSINESS),
+    # Not a commercial enquiry, and deliberately still delivered: it shows what
+    # people are asking that the docs do not answer. The form already tells the
+    # sender the answer comes from GitHub, so this arrives as information rather
+    # than as a support ticket. Excluded from the conversion goal below.
+    "other": ("Something else — question about running Bambuddy", LEAD_TO_BUSINESS),
 }
 PRINTERS_LABELS = {
     "1-5": "1-5 printers",
@@ -179,6 +184,11 @@ def _send_lead_email(to_addr: str, subject: str, body: str, reply_to: str) -> bo
     except Exception:
         logger.exception("Failed to relay lead email")
         return False
+
+
+# Interests that are delivered but must not count towards the commercial-lead
+# goal. Kept beside the routing table so a new interest has to make a choice.
+NON_COMMERCIAL_INTERESTS = frozenset({"other"})
 
 
 def _track_conversion(page_url: str) -> None:
@@ -319,10 +329,18 @@ def lead():
 
     # Off-thread: the prospect waits on SMTP already, and a slow or unreachable
     # Matomo must not add to that or fail a lead that is already delivered.
-    threading.Thread(
-        target=_track_conversion,
-        args=(CONTEXT_PAGE_URLS.get(context, DEFAULT_PAGE_URL),),
-        daemon=True,
-    ).start()
+    #
+    # Counted only for the interests that are actually a commercial enquiry.
+    # Goal 1 is "Commercial lead" and is what the conversion rate on this funnel
+    # is read from; folding product questions into it would inflate the number
+    # the commercial track is steered by. Expect the recorded rate to fall when
+    # this ships -- that is the goal measuring what it says it measures, not a
+    # regression.
+    if interest not in NON_COMMERCIAL_INTERESTS:
+        threading.Thread(
+            target=_track_conversion,
+            args=(CONTEXT_PAGE_URLS.get(context, DEFAULT_PAGE_URL),),
+            daemon=True,
+        ).start()
 
     return jsonify({"success": True, "message": "Thanks — we'll be in touch shortly."})
