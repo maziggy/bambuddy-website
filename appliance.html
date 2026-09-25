@@ -210,7 +210,7 @@
           <div class="tier-card">
             <div class="tier-name">Personal</div>
             <div class="tier-price">&euro;79</div>
-            <div class="tier-price-suffix">per year &middot; about $89</div>
+            <div class="tier-price-suffix">per year, VAT included &middot; $89 plus sales tax</div>
             <ul class="tier-perks">
               <li>The appliance image, and every update to it</li>
               <li>System updates that roll themselves back</li>
@@ -221,23 +221,22 @@
           </div>
 
           <div class="tier-card featured">
-            <div class="tier-badge">For print farms</div>
+            <div class="tier-badge">For commercial use</div>
             <div class="tier-name">Business</div>
             <div class="tier-price">&euro;249</div>
-            <div class="tier-price-suffix">per year &middot; about $279</div>
+            <div class="tier-price-suffix">per year, plus VAT &middot; $279 plus sales tax</div>
             <ul class="tier-perks">
               <li>Everything in Personal</li>
-              <li>Commercial use</li>
-              <li>A named channel, not a shared inbox</li>
-              <li>An agreed response time, in writing</li>
-              <li>Your questions ahead of the queue</li>
+              <li>Commercial use, invoiced to your company</li>
+              <li>Your requests handled first</li>
+              <li>A response time in writing: normally the next working day, two at the most</li>
             </ul>
             <a href="#buy" class="btn btn-primary tier-cta">Get notified</a>
           </div>
         </div>
 
         <div class="panel" style="margin-top: 2rem;">
-          <h3>Three things worth saying plainly</h3>
+          <h3>Four things worth saying plainly</h3>
           <p>
             <strong>The tier is about how you use it, not how many printers you have.</strong>
             There is no metering, no seat count and nothing to police. A hobbyist with twelve
@@ -251,6 +250,63 @@
           <p style="margin-top: 1rem;">
             <strong>Per appliance, not per printer.</strong> One subscription covers one box,
             however many printers you point it at.
+          </p>
+          <p style="margin-top: 1rem;">
+            <strong>Business is support for the appliance, not for your print floor.</strong>
+            It covers the box: the image, updates, registration, and faults in the appliance
+            itself. It is not a support contract for running a fleet &mdash; not your network,
+            not your printers, and not Bambuddy as an application. If that is what you need,
+            it is a <a href="business.html">different conversation</a> with a contract of its
+            own, and &euro;249 a year is not it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="support">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What support actually means</h2>
+          <p>One person answers it. Better to be exact about that now than to let you find out later.</p>
+        </div>
+
+        <div class="article" style="max-width: 78ch;">
+          <p>
+            <strong>By email, to one address, whichever tier you are on.</strong> Business
+            requests are handled first, and that follows from your subscription rather than
+            from a second inbox you have to remember. Monday to Friday, 09:00 to 17:00 Central
+            European Time &mdash; which covers most of the morning on the US east coast, and
+            almost none of the working day on the west.
+          </p>
+          <p>
+            <strong>Business response time: normally the next working day, within two at the
+            latest.</strong> What is promised is a response, not a fix. Nobody can honestly
+            promise a fix by a date, and a promise is only worth what it is worth in the worst
+            week of the year.
+          </p>
+          <p>
+            <strong>For up to fifteen working days a year, that clock stops.</strong> Holiday,
+            illness, the ordinary reasons. Planned absences are announced a week ahead, by
+            email and in the admin panel. One person cannot cover a whole year without them,
+            and a promise that pretends otherwise is one that breaks when it matters.
+          </p>
+          <p>
+            <strong>What it does not cover:</strong> your network, your printers and their
+            firmware, print results, hardware outside the list above, and your own containers
+            or modifications. Nor Bambuddy itself as an application &mdash; bugs there belong
+            in the
+            <a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">public issue tracker</a>,
+            where they are handled the same for everyone, subscription or not.
+          </p>
+        </div>
+
+        <div class="panel" style="margin-top: 2rem;">
+          <h3>Already running Bambuddy somewhere else?</h3>
+          <p>
+            Moving an existing installation &mdash; Docker, or a server of your own &mdash;
+            onto the appliance is a fixed &euro;149, once. It is a separate job rather than
+            part of the subscription, and it covers your data and your printer connections:
+            not rebuilding containers, automations or system changes you have built around it.
           </p>
         </div>
       </div>
@@ -283,8 +339,9 @@
           <h2>What it sends home</h2>
         </div>
         <div class="article" style="max-width: 78ch;">
-          <p>Three things, once on first boot and then about once a day: a random identifier it generates for itself, its hardware model, and its image version.</p>
-          <p>No printer data. No print history. No user accounts. No credentials. Nothing about what you print, when, or with what. That is how a subscription is matched to a box and offered updates &mdash; and if it never reaches us, the appliance works exactly the same. An appliance you build yourself from source contacts nothing at all. <a href="http://wiki.bambuddy.cool/appliance/registration/" target="_blank" rel="noopener">Read the details</a>.</p>
+          <p>Five things, once on first boot and then about once a day: an identifier for the board, the batch the image came from, your subscription key, the hardware model, and the appliance version. In between, once an hour, it asks one short question &mdash; is this subscription still valid? &mdash; and sends nothing but its identifier and the token it was given. That check writes nothing on our side; it exists so a renewal or a cancellation reaches the box within the hour instead of a day later.</p>
+          <p>The identifier is derived from the Raspberry&nbsp;Pi's own serial number rather than generated at random, so it survives rewriting the card &mdash; that is what lets a subscription follow the box through a reinstall instead of being spent twice. Your IP address is stored only as a salted hash, never in the clear, and only to notice one key running on several boards at once.</p>
+          <p>No printer data. No print history. No files. No user accounts. No credentials. Nothing about what you print, when, or with what. That is how a subscription is matched to a box and offered updates &mdash; and if it never reaches us, the appliance works exactly the same. Bambuddy installed the ordinary way, from the <a href="installation.html">installation guide</a>, contacts nothing at all. <a href="http://wiki.bambuddy.cool/appliance/registration/" target="_blank" rel="noopener">Read the details</a>.</p>
         </div>
       </div>
     </section>
@@ -389,7 +446,6 @@
         </div>
       </div>
     </section>
-  </main>
   </main>
 
   <footer class="footer">
