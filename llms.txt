@@ -23,7 +23,7 @@ Bambuddy runs in Docker (recommended) or natively in Python on any LAN-reachable
 - **Server-side slicing** — bundled sidecar runs OrcaSlicer or Bambu Studio headlessly. Slice STL or 3MF to printable G-code from any browser with one click; no desktop slicer required.
 - **MakerWorld integration** — browse and import models from MakerWorld.com directly into your library.
 - **Virtual Printer (Proxy Mode)** — Bambu Studio and OrcaSlicer connect to Bambuddy as if it were the printer; Bambuddy forwards to the real printer. Works over Tailscale or any VPN for remote printing without exposing the printer to the internet.
-- **AI failure detection** — optional [Obico](https://github.com/TheSpaghettiDetective/obico-server) integration for ML-based failed-print detection.
+- **AI failure detection** — optional [Obico](https://github.com/TheSpaghettiDetective/obico-server) or [OctoEverywhere](https://octoeverywhere.com) integrations for ML-based failed-print detection. Both support notifications, pausing, or pausing and turning off linked smart plugs.
 - **Authentication** — optional multi-user with permissions, 2FA (TOTP and email OTP), OIDC/SSO, LDAP.
 - **Notifications** — email, Discord, ntfy, Home Assistant, Telegram, generic webhook.
 - **Database** — SQLite (default, single host) or PostgreSQL (recommended for multi-printer farms under load).
