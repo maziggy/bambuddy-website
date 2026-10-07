@@ -80,7 +80,7 @@
         <h2>Section 2 — Definitions</h2>
         <p><strong>Appliance Software</strong> means the Provider's proprietary software: the first-boot setup wizard, the admin panel, the provisioning and registration command-line tooling, the image build scripts, the systemd units, and the associated configuration, templates, assets and documentation.</p>
         <p><strong>Bundled Components</strong> means third-party software packaged into, or downloaded at build time by, an image — in particular Bambuddy, Raspberry Pi OS, Debian packages and container images. Bundled Components are <strong>not</strong> part of the Appliance Software and are governed solely by their own licences.</p>
-        <p><strong>Image</strong> means the bootable image file supplied by the Provider.</p>
+        <p><strong>Image</strong> means the image file supplied by the Provider for writing to a storage medium.</p>
         <p><strong>Device</strong> means the single-board computer on which the Customer runs an Image.</p>
         <p><strong>Licence Key</strong> means the string issued to the Customer on purchase.</p>
         <p><strong>Registrar</strong> means the Provider's service with which a Device registers and from which it retrieves its status.</p>
@@ -102,7 +102,7 @@
         <ol type="a"><li style="list-style-type: lower-alpha;">copy, distribute, rent, lend or make publicly available the Image or the Appliance Software,</li><li style="list-style-type: lower-alpha;">pass on or publish the Licence Key,</li><li style="list-style-type: lower-alpha;">run the Appliance Software on more than one Device at a time per Licence Key,</li><li style="list-style-type: lower-alpha;">circumvent or tamper with registration or entitlement checking,</li><li style="list-style-type: lower-alpha;">remove or alter copyright, licence or provenance notices.</li></ol>
         <p>(3) Mandatory rights under sections 69d and 69e of the German Copyright Act (error correction, decompilation for interoperability) are unaffected.</p>
         <p>(4) <strong>For the avoidance of doubt.</strong> Subsections (1) to (3) apply solely to the Appliance Software. Bundled Components are governed solely by their own licences. Nothing in these Terms restricts the rights those licences grant.</p>
-        <p>(5) Use in the course of a business or profession requires a Business subscription.</p>
+        <p>(5) The subscription is offered in two editions: <strong>Personal</strong> and <strong>Business</strong>. Use in the course of a commercial or other professional activity requires a Business subscription; the Personal subscription is limited to non-commercial use.</p>
         <h2>Section 6 — Licence Key, registration, device binding</h2>
         <p>(1) The Customer receives the Licence Key on purchase and enters it in the setup wizard.</p>
         <p>(2) The Device registers with the Registrar and thereafter reports approximately once a day. Only the following are transmitted: a device identifier derived from the board serial number, the batch identifier, the Licence Key, the hardware model designation, and the Appliance Software version. In addition, the Device retrieves its entitlement status hourly; that request transmits only the device identifier and the device token issued by the Registrar, and is not logged by the Provider. <strong>No print data, no files, no user data and no credentials are transmitted.</strong> The IP address is stored only as a salted hash and only for the detection of multiple use, never in the clear.</p>
@@ -112,7 +112,7 @@
         <p>(1) The Term is twelve months from issue of the Licence Key.</p>
         <p>(2) For consumers, the contract continues after the Term for an indefinite period and may be terminated at any time on one month's notice.</p>
         <p>(3) For business customers, the contract renews for successive periods of twelve months unless terminated on one month's notice before the end of the Term.</p>
-        <p>(4) Termination is effected through the Paddle buyer portal linked in the subscription confirmation email, through paddle.net, or in text form to <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a>.</p>
+        <p>(4) Termination is effected through the Paddle buyer portal linked in the subscription confirmation, through paddle.net, or in text form to <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a>.</p>
         <p>(5) The right to terminate for cause is unaffected.</p>
         <h2>Section 8 — Effect of the Term ending</h2>
         <p>(1) <strong>The Appliance continues to run unchanged.</strong> Bambuddy, the connected printers, running and queued print jobs, and all stored data are unaffected. Nothing is switched off, locked or deleted.</p>
@@ -129,7 +129,7 @@
         <h2>Section 10 — Customer obligations and responsibilities</h2>
         <p>(1) The Customer uses hardware in accordance with the published hardware list (computer model, memory, power supply, cooling, storage medium). Support for deviating hardware is provided on a best-efforts basis only.</p>
         <p>(2) Operation, power supply, network, network security, credentials and backup of the Customer's own data are the Customer's responsibility.</p>
-        <p>(3) <strong>Printer operation.</strong> 3D printers are heated machines with moving parts. Their siting, operation, supervision, fire safety and compliance with their manufacturer's instructions are exclusively the Customer's responsibility. The Appliance Software controls printers at the Customer's instruction; it does not replace supervision and is not a safety device.</p>
+        <p>(3) <strong>Printer operation.</strong> 3D printers are heated machines with moving parts. Their siting, operation, supervision, fire safety and compliance with their manufacturer's instructions are exclusively the Customer's responsibility. The Appliance Software controls printers at the Customer's instruction; it does not replace supervision and is not a safety device within the meaning of product safety law.</p>
         <h2>Section 11 — Prices, payment, taxes</h2>
         <p>(1) The prices stated in the Paddle checkout apply. Payment, invoicing and the treatment of VAT, sales tax and comparable taxes are governed by Paddle's Buyer Terms as seller (Section 1(2)).</p>
         <p>(2) Prices shown to consumers are total prices inclusive of the applicable VAT (section 3 of the German Price Indication Ordinance). Prices shown to business customers are net of VAT, which is added at the statutory rate; within the European Union, supplies to a customer providing a valid VAT identification number are invoiced under the reverse-charge procedure.</p>
@@ -147,7 +147,7 @@
         <p>(3) Liability is otherwise excluded.</p>
         <p>(4) For loss of data the Provider is liable under the preceding subsections only up to the cost of restoration that would have been incurred had the Customer taken proper and regular backups.</p>
         <p>(5) The Provider is not liable for damage arising from the operation, siting or unsupervised running of connected printers (Section 10(3)), nor for impairments caused by third-party services, firmware or interfaces (Section 4(3)).</p>
-        <p>(6) The above limitations also operate in favour of the Provider's agents and subcontractors.</p>
+        <p>(6) The above limitations also operate in favour of the Provider's vicarious agents.</p>
         <h2>Section 15 — Data protection</h2>
         <p>The processing of personal data is governed by the privacy notice at <a href="https://get.bambuddy.cool/privacy-policy.html">https://get.bambuddy.cool/privacy-policy.html</a>. What the Device transmits to the Registrar is described exhaustively in Section 6(2).</p>
         <h2>Section 16 — Changes to these Terms</h2>
@@ -195,6 +195,7 @@
           <a href="/#pricing">Pricing</a>
           <a href="/#support">Support</a>
           <a href="assets/downloads/bambuddy-appliance-quickstart.pdf">Quickstart (PDF)</a>
+          <a href="assets/downloads/bambuddy-appliance-quickstart-de.pdf" hreflang="de" lang="de">Kurzanleitung (PDF)</a>
         </div>
         <div class="footer-col">
           <h4>Bambuddy</h4>
