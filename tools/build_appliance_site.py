@@ -37,8 +37,8 @@ PAGES = {
 # Paddle checkout. The client-side token is public by design -- it ends up in the
 # page source either way. The API key and the webhook secret never go here.
 PADDLE = {
-    "environment": "sandbox",  # "sandbox" or "production"
-    "token": "test_25eddac35c0daf9d5a49937875b",  # client-side token: test_... for sandbox, live_... for production
+    "environment": "production",  # "sandbox" or "production"
+    "token": "live_3626a6a7442a456348e16909954",  # client-side token: test_... for sandbox, live_... for production
 }
 
 # Pages that exist on the subdomain, so relative links to them stay relative.
