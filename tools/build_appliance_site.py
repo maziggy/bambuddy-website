@@ -15,6 +15,8 @@ Run after editing appliance.html, privacy-policy.html or legal-notice.html:
 The terms and refund pages are generated into appliance/ by
 bambuddy-appliance/docs/legal/build_terms_pages.py and build_refund_page.py,
 which use appliance/legal-notice.html as their template -- so run this first.
+Then build_terms_pdfs.py there prints them to assets/downloads/ for the licence
+key email.
 """
 
 import os
