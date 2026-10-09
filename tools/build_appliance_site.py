@@ -169,7 +169,7 @@ PAY_MAIN = """<main>
         <div class="article" style="max-width: 78ch;">
         <p class="lead" id="pay-text">The payment form is provided by Paddle.com, our online reseller and the Merchant of Record for all our orders. It opens on top of this page.</p>
         <p id="pay-fallback">If nothing opens, check that your browser is not blocking scripts from cdn.paddle.com, or go back to the <a href="/#pricing">pricing</a> and try again. Questions: <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a>.</p>
-        <p class="svc-note">By paying you agree to the <a href="terms.html">subscription terms</a>. Full refund within 14 days, no reason needed: <a href="refund-policy.html">refund policy</a>.</p>
+        <p class="svc-note">By paying you agree to the <a href="terms.html">terms</a>. Full refund within 14 days, no reason needed: <a href="refund-policy.html">refund policy</a>.</p>
         </div>
       </div>
     </section>
@@ -233,7 +233,7 @@ def build_pay() -> None:
 
     head = head.replace(f"{SUB}/legal-notice.html", f"{SUB}/pay.html")
     head = head.replace("Legal Notice - Bambuddy", "Checkout - Bambuddy Appliance")
-    head = re.sub(r'content="Legal notice and provider identification[^"]*"', 'content="Checkout for the Bambuddy Appliance subscription."', head)
+    head = re.sub(r'content="Legal notice and provider identification[^"]*"', 'content="Checkout for the Bambuddy Appliance."', head)
     head = head.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"', 1)
 
     script = PAY_SCRIPT.replace("__PADDLE__", json.dumps(PADDLE))
