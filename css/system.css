@@ -2964,3 +2964,17 @@ select.form-input option {
     display: none;
   }
 }
+
+/* The appliance prices three tiers. Two columns would leave the third card alone
+   on a row, so it stays one column until all three fit side by side. */
+@media (min-width: 640px) and (max-width: 899px) {
+  .tiers-trio {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .tiers-trio {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
