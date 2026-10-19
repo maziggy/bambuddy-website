@@ -80,7 +80,7 @@ INTEREST_ROUTING = {
     "buy_appliance": ("Buy an appliance", LEAD_TO_APPLIANCE),
     "reseller": ("Become a reseller", LEAD_TO_APPLIANCE),
     "support": ("Priority support / SLA", LEAD_TO_BUSINESS),
-    "licensing": ("Commercial / redistribution licence", LEAD_TO_BUSINESS),
+    "licensing": ("Appliance / redistribution question", LEAD_TO_BUSINESS),
     "custom_dev": ("Deployment / custom development", LEAD_TO_BUSINESS),
     # Not a commercial enquiry, and deliberately still delivered: it shows what
     # people are asking that the docs do not answer. The form already tells the
