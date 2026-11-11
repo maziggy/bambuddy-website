@@ -615,6 +615,52 @@ section {
   background: var(--rule-bright);
 }
 
+/* Announcement above the hero claim: one product launch at a time, a
+   link card in the accent colour so it is the first thing read. */
+.announce {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2) var(--s3);
+  margin-bottom: var(--s6);
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--signal-deep);
+  border-radius: var(--r-md);
+  background: var(--signal-wash);
+  color: var(--text);
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.announce:hover,
+.announce:focus-visible {
+  border-color: var(--signal);
+  background: rgba(255, 138, 61, 0.16);
+}
+
+.announce-tag {
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a0d03;
+  background: var(--signal);
+  border-radius: var(--r-full);
+}
+
+.announce-text {
+  flex: 1 1 22rem;
+}
+
+.announce-cta {
+  color: var(--signal);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 /* The screenshot. One, large, legible — cropped at the bottom so it
    reads as a window into the app rather than a floating card. */
 .hero-shot {
