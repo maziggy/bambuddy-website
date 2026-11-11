@@ -166,9 +166,14 @@
         <p>A Bambuddy Appliance registers with our licence service and then reports roughly once a day. It sends only: a device identifier derived from the board's serial number, the batch identifier of the image, the licence key, the hardware model and the Appliance software version. Once an hour it also checks its licence status; that request carries only the device identifier and a device token, and we do not log it.</p>
         <p><strong>No print data, files, printer data, user data or credentials are ever transmitted.</strong> Your IP address is not stored in the clear: we keep only a salted, truncated hash of it, and only to detect one licence key being used on several devices.</p>
         <p>Legal basis: Art. 6(1)(b) GDPR (performance of the contract) and Art. 6(1)(f) GDPR (preventing misuse of licence keys). The registration is kept while the licence and the device registration exist; ask us at <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a> to delete it once you no longer use the Appliance.</p>
-        <h2>10. Bambuddy Orders Licence Check</h2>
-        <p>Bambuddy Orders runs on your own server. When you activate it, and then roughly once a day, it contacts our licence service. It sends only: a random installation identifier, the licence key (once, at activation; it is not stored in your installation), afterwards an installation token issued by the licence service, the Orders version and the domain of the connected shop. We use the shop domain to match support requests to your licence and to detect a licence being used for shops other than your own.</p>
-        <p><strong>No orders, buyer data, print data or credentials for your shop or for Bambuddy are ever transmitted.</strong> Your shop credentials stay encrypted in your installation. Order data in your installation is processed by you, not by us. Bambuddy Orders stores neither the names nor the email or postal addresses of your buyers.</p>
+        <h2>10. Bambuddy Orders</h2>
+        <h3>Licence check and updates</h3>
+        <p>Bambuddy Orders runs on your own server. When you activate it, and then roughly every six hours, it contacts our licence service. It sends only: a random installation identifier, the licence key (once, at activation; it is not stored in your installation), afterwards an installation token issued by the licence service, the Orders version and the domain of the first connected shop. We use the shop domain to match support requests to your licence and to detect a licence being used for shops other than your own. Orders and its updates are downloaded from our image registry, which checks your licence key on every download.</p>
+        <p><strong>Apart from the Etsy gateway below, no orders, buyer data, print data or credentials for your shop or for Bambuddy are ever transmitted.</strong> Your shop credentials stay encrypted in your installation. Order data in your installation is processed by you, not by us. Bambuddy Orders stores neither the names nor the email or postal addresses of your buyers.</p>
+        <h3>Etsy gateway</h3>
+        <p>An installation that connects an Etsy shop reaches Etsy with our Etsy app. Etsy requires the app's key on every request and the key cannot be shipped with Orders, so these requests run through our gateway. The gateway adds the app's key, passes each request on to Etsy and Etsy's answer back to your installation, and only allows the requests Orders needs. Etsy's answers contain your orders, including the buyer's name and postal address; the gateway passes them through and does not store them. Your Etsy access tokens pass through it when they are issued or renewed and are not kept either; they stay encrypted in your installation.</p>
+        <p>The gateway stores, per licence, the number of each Etsy shop reached through it and when it was first and last used. We need this to keep within the number of shops Etsy allows our app and to check the number of shops your plan includes.</p>
+        <p>For the buyer data passing through the gateway we act as your processor under Art. 28 GDPR; our data processing agreement forms part of the Bambuddy Orders terms. For the shop list, the licence check and the image registry we are the controller.</p>
         <p>If you buy a Bambuddy Orders subscription, section 8 applies accordingly.</p>
         <p>Legal basis: Art. 6(1)(b) GDPR (performance of the contract) and Art. 6(1)(f) GDPR (preventing misuse of licence keys). The installation record is kept while the licence exists; ask us at <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a> to delete it after the licence has ended.</p>
         <h2>11. Third-Party Services</h2>
@@ -202,7 +207,7 @@
         <p>This website uses TLS (HTTPS) encryption for secure data transmission. We take appropriate technical and organizational measures to protect your data against unauthorized access, loss, or manipulation.</p>
         <h2>14. Changes to This Policy</h2>
         <p>We may update this privacy policy from time to time. The current version is always available on this page.</p>
-        <p class="svc-note">Last updated: October 9, 2026</p>
+        <p class="svc-note">Last updated: November 11, 2026</p>
         </div>
       </div>
     </section>

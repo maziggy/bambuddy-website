@@ -42,7 +42,8 @@ PADDLE = {
 }
 
 # Pages that exist on the subdomain, so relative links to them stay relative.
-LOCAL = {"privacy-policy.html", "legal-notice.html", "terms.html", "terms-de.html", "refund-policy.html"}
+LOCAL = {"privacy-policy.html", "legal-notice.html", "terms.html", "terms-de.html", "refund-policy.html",
+         "orders-terms.html", "orders-terms-de.html", "orders-dpa.html", "orders-dpa-de.html"}
 
 HEADER = """<header class="nav">
     <div class="shell nav-inner">
