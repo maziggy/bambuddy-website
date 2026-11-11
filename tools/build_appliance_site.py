@@ -210,7 +210,7 @@ PAY_SCRIPT = """
       eventCallback: function (event) {
         if (event.name === 'checkout.completed') {
           show('Thank you',
-            'Your order is complete. Your licence key and the download link arrive by email within a few minutes.');
+            'Your order is complete. Your licence key and how to get started arrive by email within a few minutes.');
         } else if (event.name === 'checkout.closed') {
           show('Checkout closed', 'Nothing was charged. You can go back to the pricing and start again.');
         }
@@ -233,8 +233,8 @@ def build_pay() -> None:
     tail = html[html.index("</main>") + len("</main>") :]
 
     head = head.replace(f"{SUB}/legal-notice.html", f"{SUB}/pay.html")
-    head = head.replace("Legal Notice - Bambuddy", "Checkout - Bambuddy Appliance")
-    head = re.sub(r'content="Legal notice and provider identification[^"]*"', 'content="Checkout for the Bambuddy Appliance."', head)
+    head = head.replace("Legal Notice - Bambuddy", "Checkout - Bambuddy")
+    head = re.sub(r'content="Legal notice and provider identification[^"]*"', 'content="Checkout for Bambuddy products."', head)
     head = head.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n  <meta name="viewport"', 1)
 
     script = PAY_SCRIPT.replace("__PADDLE__", json.dumps(PADDLE))

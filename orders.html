@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bambuddy.cool/orders.html">
+  <meta property="og:title" content="Bambuddy Orders - paid orders in, parcels out">
+  <meta property="og:description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+  <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
+  <meta property="og:site_name" content="Bambuddy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bambuddy Orders - paid orders in, parcels out">
+  <meta name="twitter:description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+  <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
+
+  <title>Bambuddy Orders - paid orders in, parcels out</title>
+  <link rel="canonical" href="https://bambuddy.cool/orders.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/system.css">
+  <script>document.documentElement.className += ' js';</script>
+  <script>window.__matomoSiteId = '1';</script>
+  <script src="js/cookie-consent.js" defer></script>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Bambuddy home">
+        <img src="assets/img/logo_transparent.png" alt="Bambuddy">
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="features.html" class="nav-link">Features</a>
+        <a href="comparison.html" class="nav-link">Compare</a>
+        <a href="installation.html" class="nav-link">Install</a>
+        <a href="http://wiki.bambuddy.cool" class="nav-link" target="_blank" rel="noopener">Docs</a>
+
+        <div class="nav-more">
+          <button class="nav-more-btn" aria-expanded="false" aria-controls="nav-more-panel">
+            More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="nav-more-panel" id="nav-more-panel">
+            <a href="spoolbuddy.html">SpoolBuddy</a>
+            <a href="https://forum.bambuddy.cool" target="_blank" rel="noopener">Forum</a>
+            <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">Discord</a>
+            <a href="press.html">Press coverage</a>
+            <a href="reviews.html">User reviews</a>
+            <a href="sponsors.html">Sponsor</a>
+          </div>
+        </div>
+
+        <span class="nav-sep" aria-hidden="true"></span>
+
+        <a href="https://get.bambuddy.cool/" class="nav-pill">Appliance</a>
+        <a href="orders.html" class="nav-pill" aria-current="page">Orders</a>
+        <a href="business.html" class="nav-pill nav-pill-signal">Business</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/maziggy/bambuddy" class="nav-icon" target="_blank" rel="noopener" aria-label="Bambuddy on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="#pricing" class="btn btn-primary">Buy</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="shell">
+        <p class="label label-signal">Bambuddy Orders</p>
+        <h1>Paid orders in, parcels out.</h1>
+        <p class="prose">
+          Bambuddy Orders takes the paid orders from your Shopify and Etsy shops, sends what
+          needs printing to Bambuddy's print queue, follows every print, and reports the order
+          back to the shop as shipped, with its tracking number. One screen from order to
+          parcel, running on your own server next to Bambuddy.
+        </p>
+        <p class="prose" style="margin-top: 1rem;">
+          A yearly licence, <strong>from &euro;79</strong>. Bambuddy itself stays free.
+        </p>
+        <p style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+          <a href="#pricing" class="btn btn-primary">See the plans</a>
+          <a href="http://wiki.bambuddy.cool/orders/" class="btn btn-ghost" target="_blank" rel="noopener">Read the documentation</a>
+        </p>
+        <p class="hero-facts" style="margin-top: 1.5rem;">
+          <span>Shopify and Etsy</span>
+          <span>Runs on your own server</span>
+          <span>No buyer names or addresses stored</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="band-tight">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>How an order flows</h2>
+        </div>
+        <div class="spec">
+          <div class="spec-item">
+            <h3>1. A buyer pays</h3>
+            <p>Within about a minute the order is in Orders (Etsy: within five). Each shop's orders land in the same lists.</p>
+          </div>
+          <div class="spec-item">
+            <h3>2. Orders knows what to print</h3>
+            <p>Each product is set up once: the print file from Bambuddy's library, the plate, how many fit on it. Pieces already on your shelf are taken from stock.</p>
+          </div>
+          <div class="spec-item">
+            <h3>3. Bambuddy prints it</h3>
+            <p>The jobs go to Bambuddy's queue, started at once or staged for you to start. <em>In production</em> shows live progress per order.</p>
+          </div>
+          <div class="spec-item">
+            <h3>4. You pack and ship</h3>
+            <p>Printed orders wait under <em>To pack</em> with a pick list. Enter the tracking numbers, press Ship, and the shop marks the order fulfilled and tells the buyer.</p>
+          </div>
+        </div>
+        <p class="prose" style="margin-top: 1.5rem;">
+          Anything Orders can't decide alone &mdash; a product without a setup, a personalised
+          item, a failed print &mdash; stops under <em>To do</em>, with its fix right there.
+          Nothing goes to a printer you didn't mean it to, and you can keep every order waiting
+          for your go until you trust your setups.
+        </p>
+      </div>
+    </section>
+
+    <section class="band-tight">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What it does for you</h2>
+        </div>
+        <div class="spec">
+          <div class="spec-item">
+            <h3>Shopify and Etsy, side by side</h3>
+            <p>Connect several stores and shops at once. A product sold in both is linked once and shares one setup.</p>
+          </div>
+          <div class="spec-item">
+            <h3>Stock that counts itself</h3>
+            <p>Keep printed parts on the shelf. Orders takes from it first, prints only what is missing, and tops the shelf up in whole plates.</p>
+          </div>
+          <div class="spec-item">
+            <h3>Ship-by days</h3>
+            <p>Every order has a ship-by day and turns red when it is late. Etsy orders use the date Etsy gives them.</p>
+          </div>
+          <div class="spec-item">
+            <h3>Local pickup</h3>
+            <p>Shopify pickup orders, paid or paid at the counter, get Ready for pickup and Picked up instead of Ship.</p>
+          </div>
+          <div class="spec-item">
+            <h3>On your phone through Bambuddy</h3>
+            <p>Orders that need you, a shop that can't be reached, the daily pack list: through the notification channels Bambuddy already has.</p>
+          </div>
+          <div class="spec-item">
+            <h3>Inside Bambuddy</h3>
+            <p>Add Orders to Bambuddy's sidebar and it opens there, with a count of what waits for you. Your team signs in with their Bambuddy accounts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="data">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>Your orders stay with you</h2>
+        </div>
+        <div class="article" style="max-width: 78ch;">
+          <p>
+            Orders runs on your own server, as a Docker container next to Bambuddy. Your shop
+            credentials stay encrypted there. It stores no buyer names, email or postal
+            addresses: only the order number, the items, the total and the country an order
+            ships to.
+          </p>
+          <p>
+            What it sends us is the licence check, about every six hours: an installation
+            identifier, a token, the Orders version and your first shop's domain. No orders.
+          </p>
+          <p>
+            <strong>The one exception is Etsy, and we say so plainly.</strong> Etsy requires our
+            app's key on every request, and that key can't ship inside your installation, so
+            Etsy requests pass through our gateway in Germany. It passes your orders through
+            without storing them and only notes which Etsy shop belongs to which licence. For
+            that we act as your processor under a
+            <a href="https://get.bambuddy.cool/orders-dpa.html">data processing agreement</a>
+            that is part of the terms. Shopify connects directly, with an app of your own.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-tight" id="pricing">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What it costs</h2>
+          <p>Every feature in both plans. They differ only in how many shops you connect,
+            Shopify and Etsy counted together.</p>
+        </div>
+
+        <div class="tiers tiers-pair">
+          <div class="tier-card">
+            <div class="tier-name">Starter</div>
+            <div class="tier-price">&euro;79</div>
+            <div class="tier-price-suffix">per year, plus VAT</div>
+            <ul class="tier-perks">
+              <li>Up to 2 connected shops, for example one Shopify store and one Etsy shop</li>
+              <li>All features, every update while the licence runs</li>
+              <li>Support through GitHub issues</li>
+            </ul>
+            <a href="https://get.bambuddy.cool/pay.html?price=pri_01m6ggs7vz9j86vg80kxdev6dc" class="btn btn-ghost tier-cta">Buy Starter</a>
+          </div>
+
+          <div class="tier-card featured">
+            <div class="tier-badge">For several shops</div>
+            <div class="tier-name">Pro</div>
+            <div class="tier-price">&euro;149</div>
+            <div class="tier-price-suffix">per year, plus VAT</div>
+            <ul class="tier-perks">
+              <li>Up to 10 connected shops</li>
+              <li>All features, every update while the licence runs</li>
+              <li>Support through GitHub issues</li>
+            </ul>
+            <a href="https://get.bambuddy.cool/pay.html?price=pri_01m6ggqwss19xn6q6k7ap0zjxm" class="btn btn-primary tier-cta">Buy Pro</a>
+          </div>
+        </div>
+
+        <p class="svc-note" style="margin-top: 1.25rem;">
+          For businesses. Sold through our online reseller Paddle.com, the Merchant of Record
+          for all our orders. Full refund within 14 days of the purchase or of a renewal, no
+          reason needed.
+          <a href="https://get.bambuddy.cool/orders-terms.html">Terms</a> &middot;
+          <a href="https://get.bambuddy.cool/orders-dpa.html">Data processing agreement</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="band-tight" id="requirements">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>What you need</h2>
+        </div>
+        <div class="spec">
+          <div class="spec-item">
+            <h3>Bambuddy 1.3.0 or newer</h3>
+            <p>Reachable from the machine that runs Orders, with an API key Orders can use.</p>
+          </div>
+          <div class="spec-item">
+            <h3>Docker</h3>
+            <p>Docker Compose v2 on a machine that is always on; the one running Bambuddy is fine. 64-bit PCs and Raspberry&nbsp;Pi 4/5.</p>
+          </div>
+          <div class="spec-item">
+            <h3>A shop</h3>
+            <p>A Shopify store you own, an Etsy shop, or both. Setup takes about half an hour, most of it the Shopify app.</p>
+          </div>
+        </div>
+        <p class="prose" style="margin-top: 1.5rem;">
+          The whole setup is in the <a href="http://wiki.bambuddy.cool/orders/install/" target="_blank" rel="noopener">documentation</a>;
+          read it before you buy.
+        </p>
+      </div>
+    </section>
+
+    <section class="band-tight" id="faq">
+      <div class="shell">
+        <div class="masthead masthead-sub">
+          <h2>Questions worth answering up front</h2>
+        </div>
+        <div class="article" style="max-width: 78ch;">
+          <p>
+            <strong>What happens when the licence ends?</strong> Orders stops taking in new
+            orders. Orders already in it can still be printed, packed and shipped, and nothing
+            is locked or deleted. Renew, and it takes in what came in meanwhile.
+          </p>
+          <p>
+            <strong>Can I move to another server?</strong> Yes. A licence runs one installation
+            at a time; press <em>Remove from this install</em> on the old one and activate the
+            new one.
+          </p>
+          <p>
+            <strong>Do I need my own Etsy app?</strong> No. You approve our app for your shop
+            on Etsy's own page. For Shopify you create an app in Shopify's Dev Dashboard; the
+            documentation walks you through it.
+          </p>
+          <p>
+            <strong>Is there a limit on orders?</strong> No. The plans count shops, not orders.
+          </p>
+          <p>
+            <strong>Where is support?</strong> In the
+            <a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">public issue tracker</a>;
+            say it is about Orders, and never post your licence key there. Your key, your
+            subscription or a refund: <a href="mailto:support@bambuddy.cool">support@bambuddy.cool</a>.
+          </p>
+          <p>
+            <strong>Is Bambuddy still free?</strong> Yes, and it stays that way. Orders is a
+            separate application that talks to Bambuddy through its API. Bambuddy gets no
+            features locked behind this licence.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-sponsor">
+        <div>
+          <p class="label" style="margin-bottom: 0.6rem;">Backed by our corporate sponsors</p>
+          <a href="https://northpole3dprinting.com/" target="_blank" rel="noopener">
+            <img src="img/sponsors/northpole-3d-printing.jpg" alt="North Pole 3D Printing" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" aria-label="Bambuddy home">
+            <img src="assets/img/logo_transparent.png" alt="Bambuddy">
+          </a>
+          <p>Self-hosted command center for Bambu Lab 3D printers.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="https://get.bambuddy.cool/">Appliance</a>
+          <a href="orders.html">Orders</a>
+          <a href="spoolbuddy.html">SpoolBuddy</a>
+          <a href="comparison.html">Compare</a>
+          <a href="installation.html">Installation</a>
+          <a href="http://wiki.bambuddy.cool" target="_blank" rel="noopener">Documentation</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Evidence</h4>
+          <a href="press.html">Press coverage</a>
+          <a href="reviews.html">User reviews</a>
+          <a href="https://demo.bambuddy.cool" target="_blank" rel="noopener">Live demo</a>
+          <a href="https://github.com/maziggy/bambuddy/releases" target="_blank" rel="noopener">Releases</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <a href="https://forum.bambuddy.cool" target="_blank" rel="noopener">Forum</a>
+          <a href="https://discord.gg/aFS3ZfScHM" target="_blank" rel="noopener">Discord</a>
+          <a href="https://github.com/maziggy/bambuddy" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/maziggy/bambuddy/issues" target="_blank" rel="noopener">Issues</a>
+          <a href="http://wiki.bambuddy.cool/community/" target="_blank" rel="noopener">Community add-ons</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Business</h4>
+          <a href="business.html">For business</a>
+          <a href="sponsors.html">Sponsor Bambuddy</a>
+          <a href="https://github.com/sponsors/maziggy" target="_blank" rel="noopener">GitHub Sponsors</a>
+          <a href="mailto:martin@bambuddy.cool">martin@bambuddy.cool</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          Released under the AGPL-3.0 License. Made with care for the 3D printing community.<br>
+          &copy; 2026 Bambuddy. Not affiliated with Bambu Lab.
+        </p>
+        <div class="footer-legal">
+          <a href="legal-notice.html">Legal notice</a>
+          <a href="privacy-policy.html">Privacy policy</a>
+          <a href="https://get.bambuddy.cool/terms.html">Terms</a>
+          <a href="https://get.bambuddy.cool/refund-policy.html">Refund policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/system.js" defer></script>
+  <script src="js/lead-form.js" defer></script>
+</body>
+</html>
