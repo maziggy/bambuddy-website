@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+  <meta name="description" content="Bambuddy Orders takes paid orders from your Shopify store into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bambuddy.cool/orders.html">
   <meta property="og:title" content="Bambuddy Orders - paid orders in, parcels out">
-  <meta property="og:description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+  <meta property="og:description" content="Bambuddy Orders takes paid orders from your Shopify store into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
   <meta property="og:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
   <meta property="og:site_name" content="Bambuddy">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bambuddy Orders - paid orders in, parcels out">
-  <meta name="twitter:description" content="Bambuddy Orders takes paid orders from Shopify and Etsy into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
+  <meta name="twitter:description" content="Bambuddy Orders takes paid orders from your Shopify store into Bambuddy's print queue and reports them shipped with tracking. On your own server, from €79 a year.">
   <meta name="twitter:image" content="https://bambuddy.cool/assets/screenshots/printers.png">
 
   <title>Bambuddy Orders - paid orders in, parcels out</title>
@@ -89,7 +89,7 @@
         <p class="label label-signal">Bambuddy Orders</p>
         <h1>Paid orders in, parcels out.</h1>
         <p class="prose">
-          Bambuddy Orders takes the paid orders from your Shopify and Etsy shops, sends what
+          Bambuddy Orders takes the paid orders from your Shopify store, sends what
           needs printing to Bambuddy's print queue, follows every print, and reports the order
           back to the shop as shipped, with its tracking number. One screen from order to
           parcel, running on your own server next to Bambuddy.
@@ -102,9 +102,14 @@
           <a href="http://wiki.bambuddy.cool/orders/" class="btn btn-ghost" target="_blank" rel="noopener">Read the documentation</a>
         </p>
         <p class="hero-facts" style="margin-top: 1.5rem;">
-          <span>Shopify and Etsy</span>
+          <span>Shopify (Etsy on hold)</span>
           <span>Runs on your own server</span>
           <span>No buyer names or addresses stored</span>
+        </p>
+        <p class="svc-note" style="margin-top: 1.25rem;">
+          <strong>Etsy support is on hold.</strong> Etsy has disabled our app for now, and we're
+          working with Etsy to sort it out. Until it is back, Orders connects Shopify stores only.
+          The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.
         </p>
       </div>
     </section>
@@ -117,7 +122,7 @@
         <div class="spec">
           <div class="spec-item">
             <h3>1. A buyer pays</h3>
-            <p>Within about a minute the order is in Orders (Etsy: within five). Each shop's orders land in the same lists.</p>
+            <p>Within about a minute the order is in Orders. Each shop's orders land in the same lists.</p>
           </div>
           <div class="spec-item">
             <h3>2. Orders knows what to print</h3>
@@ -148,8 +153,8 @@
         </div>
         <div class="spec">
           <div class="spec-item">
-            <h3>Shopify and Etsy, side by side</h3>
-            <p>Connect several stores and shops at once. A product sold in both is linked once and shares one setup.</p>
+            <h3>Several shops, one list</h3>
+            <p>Connect several stores at once. A product sold in more than one is linked once and shares one setup.</p>
           </div>
           <div class="spec-item">
             <h3>Stock that counts itself</h3>
@@ -157,7 +162,7 @@
           </div>
           <div class="spec-item">
             <h3>Ship-by days</h3>
-            <p>Every order has a ship-by day and turns red when it is late. Etsy orders use the date Etsy gives them.</p>
+            <p>Every order has a ship-by day and turns red when it is late.</p>
           </div>
           <div class="spec-item">
             <h3>Local pickup</h3>
@@ -192,7 +197,7 @@
             identifier, a token, the Orders version and your first shop's domain. No orders.
           </p>
           <p>
-            <strong>The one exception is Etsy, and we say so plainly.</strong> Etsy requires our
+            <strong>The one exception is Etsy, once it is back, and we say so plainly.</strong> Etsy requires our
             app's key on every request, and that key can't ship inside your installation, so
             Etsy requests pass through our gateway in Germany. It passes your orders through
             without storing them and only notes which Etsy shop belongs to which licence. For
@@ -208,8 +213,7 @@
       <div class="shell">
         <div class="masthead masthead-sub">
           <h2>What it costs</h2>
-          <p>Every feature in both plans. They differ only in how many shops you connect,
-            Shopify and Etsy counted together.</p>
+          <p>Every feature in both plans. They differ only in how many shops you connect.</p>
         </div>
 
         <div class="tiers tiers-pair">
@@ -218,7 +222,7 @@
             <div class="tier-price">&euro;79</div>
             <div class="tier-price-suffix">per year, plus VAT &middot; about $89 plus sales tax</div>
             <ul class="tier-perks">
-              <li>Up to 2 connected shops, for example one Shopify store and one Etsy shop</li>
+              <li>Up to 2 connected shops</li>
               <li>All features, every update while the licence runs</li>
               <li>Support through GitHub issues</li>
             </ul>
@@ -266,7 +270,7 @@
           </div>
           <div class="spec-item">
             <h3>A shop</h3>
-            <p>A Shopify store you own, an Etsy shop, or both. Setup takes about half an hour, most of it the Shopify app.</p>
+            <p>A Shopify store you own. Setup takes about half an hour, most of it the Shopify app.</p>
           </div>
         </div>
         <p class="prose" style="margin-top: 1.5rem;">
@@ -293,9 +297,10 @@
             new one.
           </p>
           <p>
-            <strong>Do I need my own Etsy app?</strong> No. You approve our app for your shop
-            on Etsy's own page. For Shopify you create an app in Shopify's Dev Dashboard; the
-            documentation walks you through it.
+            <strong>What about Etsy?</strong> Etsy has disabled our app for now, and we're
+            working with Etsy to sort it out. Until it is back, Orders connects Shopify stores
+            only. For Shopify you create an app in Shopify's Dev Dashboard; the documentation
+            walks you through it.
           </p>
           <p>
             <strong>Is there a limit on orders?</strong> No. The plans count shops, not orders.
